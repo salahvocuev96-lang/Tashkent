@@ -464,7 +464,11 @@ a { color: inherit; }
 }
 .dish-plate { width: 100%; }
 .dish-body { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-.dish-name { margin: 0; font-weight: 600; font-size: 1.0625rem; line-height: 1.25; }
+.dish-name {
+  margin: 0; font-weight: 600; font-size: 1.0625rem; line-height: 1.25;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; word-break: break-word;
+}
 .dish-desc { margin: -4px 0 0; color: var(--muted); font-size: .9375rem; }
 .dish-foot { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 
