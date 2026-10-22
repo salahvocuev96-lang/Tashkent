@@ -30,6 +30,7 @@ const CHINESE_MEAT_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang
 const STUFFED_PEPPER_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/stuffed-pepper.jpg';
 const CHICKEN_SOUR_CREAM_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/chicken-sour-cream.jpg';
 const GOULASH_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/goulash.jpg';
+const STROGANOFF_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/stroganoff.jpg';
 
 const MENU = [
   // Горячие блюда
@@ -43,7 +44,7 @@ const MENU = [
   { id: 'stuffed-pepper',     name: 'Фарш-перец',          category: 'hot', price: null, description: '', photo: STUFFED_PEPPER_PHOTO, featured: true },
   { id: 'chicken-sour-cream', name: 'Курица в сметане',     category: 'hot', price: null, description: '', photo: CHICKEN_SOUR_CREAM_PHOTO, featured: true },
   { id: 'goulash',            name: 'Гуляш с гарниром',     category: 'hot', price: null, description: '', photo: GOULASH_PHOTO, featured: true },
-  { id: 'stroganoff',         name: 'Бефстроганов',         category: 'hot', price: null, description: '', photo: '' },
+  { id: 'stroganoff',         name: 'Бефстроганов',         category: 'hot', price: null, description: '', photo: STROGANOFF_PHOTO, featured: true },
   { id: 'legs-potatoes',      name: 'Окорочка с картошкой', category: 'hot', price: null, description: '', photo: '' },
   { id: 'beef-roast',         name: 'Жаркое из говядины',   category: 'hot', price: null, description: '', photo: '' },
   { id: 'chicken-roast',      name: 'Жаркое из курицы',     category: 'hot', price: null, description: '', photo: '' },
