@@ -22,11 +22,12 @@ const CATEGORIES = [
 
 const PLOV_PHOTO = 'https://commons.wikimedia.org/wiki/Special:FilePath/Uzbek_palov_in_Yerevan_Food_Court.jpg?width=700';
 const DOLMA_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/dolma.jpg';
+const KAZAN_KEBAB_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/kazan-kebab.jpg';
 
 const MENU = [
   // Горячие блюда
   { id: 'plov',               name: 'Плов из говядины',     category: 'hot', price: null, description: '', photo: PLOV_PHOTO, featured: true },
-  { id: 'kazan-kebab',        name: 'Казан-кебаб',          category: 'hot', price: null, description: '', photo: '', featured: true },
+  { id: 'kazan-kebab',        name: 'Казан-кебаб',          category: 'hot', price: null, description: '', photo: KAZAN_KEBAB_PHOTO, featured: true },
   { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: null, description: '', photo: '', featured: true },
   { id: 'khanum',             name: 'Ханум',                category: 'hot', price: null, description: '', photo: '', featured: true },
   { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: null, description: '', photo: '' },
