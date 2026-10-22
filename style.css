@@ -663,7 +663,7 @@ a { color: inherit; }
   position: relative; overflow: hidden;
   background:
     linear-gradient(rgba(4, 14, 42, 0.55), rgba(4, 14, 42, 0.60)),
-    url('images/about-bg.jpg') center / cover no-repeat;
+    url('images/about-bg.jpg') center 30% / cover no-repeat;
   color: #fff;
   padding: 104px var(--pad) 118px;
 }
@@ -696,7 +696,10 @@ a { color: inherit; }
 .about-list dd { margin: 8px 0 0; color: rgba(255, 255, 255, .85); max-width: 46ch; }
 
 @media (min-width: 960px) {
-  .about { padding-top: 140px; padding-bottom: 150px; }
+  .about {
+    padding-top: 140px; padding-bottom: 150px;
+    background-position-y: 15%;
+  }
   .about-inner { grid-template-columns: 1.1fr 1fr; gap: 6vw; align-items: start; }
   .about-deco { width: 640px; right: -260px; bottom: -260px; }
 }
