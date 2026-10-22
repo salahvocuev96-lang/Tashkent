@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Чайхана «Ташкент» — Москва, улица Зорге, 2</title>
+  <meta name="description" content="Чайхана «Ташкент» на улице Зорге, 2: узбекская, центральноазиатская и домашняя кухня рядом с метро Полежаевская и Хорошёвская.">
+  <meta name="theme-color" content="#1D3F8A">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+  <!-- Иконки: используются через <use href="#i-..."> -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.5 8h13l-1.2 12.2H6.7L5.5 8z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.3-7-11.5a7 7 0 0 1 14 0C19 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5v.5"/></symbol>
+  </svg>
+ 
+  <a class="skip-link" href="#menu">Перейти к меню</a>
+ 
+  <header class="site-header" id="site-header">
+    <a class="brand" href="#top" aria-label="Чайхана «Ташкент», в начало страницы">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-sub">чайхана</span>
+        <span class="brand-name">Ташкент</span>
+      </span>
+    </a>
+ 
+    <nav class="site-nav" id="site-nav" aria-label="Разделы сайта">
+      <a href="#menu">Меню</a>
+      <a href="#about">О чайхане</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+ 
+    <div class="header-actions">
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть навигацию">
+        <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+      <button class="cart-btn" id="cart-btn" type="button" aria-label="Корзина пуста">
+        <svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>
+        <span class="cart-btn-label">Корзина</span>
+        <span class="cart-count is-zero" id="cart-count" aria-hidden="true">0</span>
+      </button>
+    </div>
+  </header>
+ 
+  <main id="top">
+    <!-- ПЕРВЫЙ ЭКРАН -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-visual">
+        <div class="plate plate--hero" data-tone="hot" data-rim>
+          <div class="plate-food">
+            <span class="plate-mono" aria-hidden="true">П</span>
+            <!-- Фото можно заменить своим: например images/hero-plov.jpg -->
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Uzbek_palov_in_Yerevan_Food_Court.jpg?width=1000"
+                 alt="Узбекский плов с морковью и мясом" width="1000" height="1000" fetchpriority="high">
+          </div>
+        </div>
+ 
+        <svg class="hero-stamp" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <defs><path id="stamp-path" d="M60 60m-43 0a43 43 0 1 1 86 0a43 43 0 1 1-86 0"/></defs>
+          <circle cx="60" cy="60" r="58"/>
+          <text><textPath href="#stamp-path" textLength="268" lengthAdjust="spacing">узбекская и домашняя кухня ✶ Зорге, 2 ✶</textPath></text>
+          <path class="stamp-bowl" d="M42 60h36c0 8.5-8 14.5-18 14.5S42 68.5 42 60zM53 78h14"/>
+          <path class="stamp-steam" d="M55 53c-3-3 3-5.5 0-9s3-5.5 0-8.5M65 53c-3-3 3-5.5 0-9s3-5.5 0-8.5"/>
+        </svg>
+      </div>
+ 
+      <div class="hero-copy">
+        <h1 class="hero-title" id="hero-title">
+          <span class="hero-title-pre"><span>Чайхана</span></span>
+          <span class="hero-title-main"><span>Ташкент</span></span>
+        </h1>
+        <p class="hero-lead">Плов, шурпа, лагман, манты и домашние горячие блюда. Заходите пообедать на улицу Зорге,&nbsp;2 — рядом с метро Полежаевская и&nbsp;Хорошёвская.</p>
+        <div class="hero-actions">
+          <a class="btn btn--saffron" href="#menu">Посмотреть меню</a>
+          <a class="btn btn--ghost" href="#contacts">Как нас найти</a>
+        </div>
+      </div>
+ 
+      <p class="hero-credit">Фото: <a href="https://commons.wikimedia.org/wiki/File:Uzbek_palov_in_Yerevan_Food_Court.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></p>
+      <div class="scallop" aria-hidden="true"></div>
+    </section>
+ 
+    <!-- МЕНЮ -->
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="menu-head" data-reveal>
+        <h2 class="section-title" id="menu-title">Меню</h2>
+        <p class="menu-note">
+          <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+          <span>Актуальные цены пока не внесены — у каждого блюда стоит пометка «Цена уточняется».</span>
+        </p>
+      </div>
+ 
+      <div class="menu-controls" id="menu-controls">
+        <div class="search">
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+          <input type="search" id="menu-search" placeholder="Найти блюдо" aria-label="Поиск по меню" autocomplete="off" enterkeyhint="search">
+          <button class="search-clear" id="search-clear" type="button" aria-label="Очистить поиск" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+          </button>
+        </div>
+        <div class="tabs" id="menu-tabs" role="group" aria-label="Разделы меню"></div>
+      </div>
+ 
+      <p class="sr-only" id="menu-status" aria-live="polite"></p>
+ 
+      <div class="menu-list" id="menu-list"></div>
+ 
+      <div class="menu-empty" id="menu-empty" hidden>
+        <div class="plate plate--empty-state" data-tone="other" data-rim><div class="plate-food"></div></div>
+        <h3 class="menu-empty-title" id="menu-empty-title"></h3>
+        <p class="menu-empty-text" id="menu-empty-text"></p>
+        <button class="btn btn--cobalt" id="menu-empty-btn" type="button"></button>
+      </div>
+    </section>
+ 
+    <!-- О ЗАВЕДЕНИИ -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-deco" data-rim aria-hidden="true"></div>
+      <div class="about-inner">
+        <div data-reveal>
+          <h2 class="about-title" id="about-title">Чай, плов и горячий обед</h2>
+          <p class="about-lead">Чайхана — место, куда приходят поесть и выпить чаю. В «Ташкенте» готовят блюда узбекской и центральноазиатской кухни, а рядом с ними в меню — привычная домашняя еда.</p>
+        </div>
+        <dl class="about-list" data-reveal>
+          <div>
+            <dt>Узбекская и центральноазиатская кухня</dt>
+            <dd>Плов, шурпа из баранины, лагман, манты, казан-кебаб, ханум.</dd>
+          </div>
+          <div>
+            <dt>Домашние блюда</dt>
+            <dd>Борщ, гуляш, бефстроганов, тефтели, жаркое, курица в сметане, долма.</dd>
+          </div>
+          <div>
+            <dt>Обед рядом с работой и учёбой</dt>
+            <dd>Доступные цены и выбор от салата до горячего — удобно зайти в перерыв.</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="scallop scallop--teal" aria-hidden="true"></div>
+    </section>
+ 
+    <!-- КОНТАКТЫ -->
+    <section class="contacts" id="contacts" aria-labelledby="contacts-title">
+      <div class="contacts-main" data-reveal>
+        <h2 class="contacts-label" id="contacts-title">Как нас найти</h2>
+        <p class="address-big" aria-hidden="true">Зорге,&nbsp;2</p>
+      </div>
+      <div class="contacts-details" data-reveal>
+        <p class="address-full">
+          <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+          <span>Москва, улица Зорге, 2</span>
+        </p>
+        <ul class="metro" aria-label="Ближайшие станции метро">
+          <li><span class="metro-mark" aria-hidden="true">М</span>Полежаевская</li>
+          <li><span class="metro-mark" aria-hidden="true">М</span>Хорошёвская</li>
+        </ul>
+        <div class="contact-actions">
+          <a class="btn btn--cobalt" href="https://yandex.ru/maps/?text=Москва,%20улица%20Зорге,%202" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+          <button class="btn btn--line" id="copy-address" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+            Скопировать адрес
+          </button>
+        </div>
+        <p class="contact-note">Телефон и часы работы появятся здесь после согласования с чайханой.</p>
+      </div>
+    </section>
+  </main>
+ 
+  <footer class="site-footer">
+    <div class="scallop scallop--up" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-sub">чайхана</p>
+        <p class="footer-brand">Ташкент</p>
+        <p class="footer-address">Москва, улица Зорге, 2</p>
+      </div>
+      <nav class="footer-nav" aria-label="Навигация в подвале">
+        <a href="#top">Наверх</a>
+        <a href="#menu">Меню</a>
+        <a href="#about">О чайхане</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <p class="footer-small">Демонстрационная версия сайта. Фото плова — <a href="https://commons.wikimedia.org/wiki/File:Uzbek_palov_in_Yerevan_Food_Court.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, не из этой чайханы.</p>
+    </div>
+  </footer>
+ 
+  <!-- КОРЗИНА -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" inert>
+ 
+    <!-- 1. Список блюд -->
+    <div class="drawer-view" data-view="cart">
+      <div class="drawer-head">
+        <h2 class="drawer-title" id="cart-title">Корзина</h2>
+        <button class="icon-btn" type="button" data-close aria-label="Закрыть корзину">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <div class="drawer-body">
+        <ul class="cart-list" id="cart-list"></ul>
+        <div class="cart-empty" id="cart-empty">
+          <p class="cart-empty-title">Пока пусто</p>
+          <p>Добавьте блюда из меню — они появятся здесь.</p>
+          <button class="btn btn--cobalt" type="button" data-close>Вернуться к меню</button>
+        </div>
+      </div>
+      <div class="drawer-foot" id="cart-foot">
+        <div class="cart-total">
+          <span>Итого</span>
+          <strong id="cart-total">—</strong>
+        </div>
+        <p class="cart-total-note" id="cart-total-note"></p>
+        <button class="btn btn--saffron btn--block" id="to-checkout" type="button">Оформить заказ</button>
+      </div>
+    </div>
+ 
+    <!-- 2. Оформление (демо) -->
+    <form class="drawer-view" data-view="checkout" id="checkout-form" novalidate hidden>
+      <div class="drawer-head">
+        <button class="icon-btn" type="button" id="back-to-cart" aria-label="Назад в корзину">
+          <svg class="icon" aria-hidden="true"><use href="#i-back"/></svg>
+        </button>
+        <h2 class="drawer-title">Оформление</h2>
+        <button class="icon-btn" type="button" data-close aria-label="Закрыть">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <div class="drawer-body">
+        <p class="demo-banner">
+          <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+          <span>Это демонстрационная версия: приём заказов ещё не подключён, заказ никуда не отправится.</span>
+        </p>
+ 
+        <div class="field">
+          <label for="f-name">Как к вам обращаться</label>
+          <input id="f-name" name="name" type="text" autocomplete="given-name" maxlength="40" required aria-describedby="f-name-error">
+          <p class="field-error" id="f-name-error" hidden>Введите имя — хотя бы две буквы.</p>
+        </div>
+ 
+        <fieldset class="field choice">
+          <legend>Как получить заказ</legend>
+          <label class="choice-opt"><input type="radio" name="mode" value="takeaway" checked><span>Заберу с собой</span></label>
+          <label class="choice-opt"><input type="radio" name="mode" value="inside"><span>Поем в чайхане</span></label>
+        </fieldset>
+ 
+        <div class="field">
+          <label for="f-comment">Комментарий <span class="optional">необязательно</span></label>
+          <textarea id="f-comment" name="comment" rows="3" maxlength="300"></textarea>
+        </div>
+ 
+        <div class="order-summary">
+          <p class="order-summary-title" id="order-summary-title"></p>
+          <ul id="order-summary-list"></ul>
+        </div>
+      </div>
+      <div class="drawer-foot">
+        <button class="btn btn--saffron btn--block" type="submit">Подтвердить заказ (демо)</button>
+      </div>
+    </form>
+ 
+    <!-- 3. Результат демо-оформления -->
+    <div class="drawer-view drawer-view--done" data-view="done" hidden>
+      <div class="drawer-head drawer-head--end">
+        <button class="icon-btn" type="button" data-close aria-label="Закрыть">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <div class="drawer-body done-body">
+        <div class="done-mark" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></div>
+        <h2 class="drawer-title" id="done-title" tabindex="-1">Это демо-версия</h2>
+        <p>Заказ не отправлен: приём заказов на сайте ещё не подключён, и ваши данные никуда не передавались.</p>
+        <p>Выбранные блюда остались в корзине.</p>
+        <div class="done-actions">
+          <button class="btn btn--cobalt btn--block" type="button" data-close>Вернуться к меню</button>
+          <button class="btn btn--line btn--block" type="button" id="clear-cart">Очистить корзину</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+ 
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-text" id="toast-text"></span>
+    <button class="toast-action" id="toast-action" type="button">Открыть корзину</button>
+  </div>
+ 
+  <script src="script.js" defer></script>
+</body>
+</html>
+ 
