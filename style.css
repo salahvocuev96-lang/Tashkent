@@ -661,7 +661,10 @@ a { color: inherit; }
 /* ---------- О чайхане ---------- */
 .about {
   position: relative; overflow: hidden;
-  background: var(--teal); color: #fff;
+  background:
+    linear-gradient(rgba(4, 14, 42, 0.55), rgba(4, 14, 42, 0.60)),
+    url('images/about-bg.jpg') center / cover no-repeat;
+  color: #fff;
   padding: 104px var(--pad) 118px;
 }
 /* полоса изразцов: восьмиконечные звёзды */
