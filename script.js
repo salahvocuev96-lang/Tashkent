@@ -38,7 +38,7 @@ const MENU = [
   { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: null, description: '', photo: BIFSHTEKS_PHOTO, featured: true },
   { id: 'dolma',              name: 'Долма',                category: 'hot', price: null, description: '', photo: DOLMA_PHOTO, featured: true },
   { id: 'chinese-meat',       name: 'Мясо по-китайски',     category: 'hot', price: null, description: '', photo: CHINESE_MEAT_PHOTO, featured: true },
-  { id: 'stuffed-pepper',     name: 'Фаршированный перец',  category: 'hot', price: null, description: '', photo: STUFFED_PEPPER_PHOTO, featured: true },
+  { id: 'stuffed-pepper',     name: 'Фарш-перец',          category: 'hot', price: null, description: '', photo: STUFFED_PEPPER_PHOTO, featured: true },
   { id: 'chicken-sour-cream', name: 'Курица в сметане',     category: 'hot', price: null, description: '', photo: '' },
   { id: 'goulash',            name: 'Гуляш с гарниром',     category: 'hot', price: null, description: '', photo: '' },
   { id: 'stroganoff',         name: 'Бефстроганов',         category: 'hot', price: null, description: '', photo: '' },
