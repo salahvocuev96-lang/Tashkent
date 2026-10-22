@@ -29,7 +29,7 @@ const MENU = [
   { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: null, description: '', photo: '', featured: true },
   { id: 'khanum',             name: 'Ханум',                category: 'hot', price: null, description: '', photo: '', featured: true },
   { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: null, description: '', photo: '' },
-  { id: 'dolma',              name: 'Долма',                category: 'hot', price: null, description: '', photo: 'images/dolma.png' },
+  { id: 'dolma',              name: 'Долма',                category: 'hot', price: null, description: '', photo: 'images/dolma.jpg' },
   { id: 'chinese-meat',       name: 'Мясо по-китайски',     category: 'hot', price: null, description: '', photo: '' },
   { id: 'stuffed-pepper',     name: 'Фаршированный перец',  category: 'hot', price: null, description: '', photo: '' },
   { id: 'chicken-sour-cream', name: 'Курица в сметане',     category: 'hot', price: null, description: '', photo: '' },
