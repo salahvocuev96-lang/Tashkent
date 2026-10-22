@@ -55,7 +55,7 @@ const MENU = [
   { id: 'lagman', name: 'Лагман',            category: 'soups', price: null, description: '', photo: '' },
 
   // Другие блюда
-  { id: 'manty', name: 'Манты', category: 'other', price: null, description: '', photo: '', featured: true },
+  { id: 'manty', name: 'Манты', category: 'hot', price: null, description: '', photo: '', featured: true },
 
   // Салаты
   { id: 'veg-salad',      name: 'Овощной салат',       category: 'salads', price: null, description: '', photo: '' },
