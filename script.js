@@ -25,6 +25,7 @@ const DOLMA_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashke
 const KAZAN_KEBAB_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/kazan-kebab.jpg';
 const CHICKEN_SHASHLIK_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/chicken-shashlik.jpg';
 const KHANUM_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/khanum.jpg';
+const BIFSHTEKS_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/bifshteks.jpg';
 
 const MENU = [
   // Горячие блюда
@@ -32,7 +33,7 @@ const MENU = [
   { id: 'kazan-kebab',        name: 'Казан-кебаб',          category: 'hot', price: null, description: '', photo: KAZAN_KEBAB_PHOTO, featured: true },
   { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: null, description: '', photo: CHICKEN_SHASHLIK_PHOTO, featured: true },
   { id: 'khanum',             name: 'Ханум',                category: 'hot', price: null, description: '', photo: KHANUM_PHOTO, featured: true },
-  { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: null, description: '', photo: '' },
+  { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: null, description: '', photo: BIFSHTEKS_PHOTO, featured: true },
   { id: 'dolma',              name: 'Долма',                category: 'hot', price: null, description: '', photo: DOLMA_PHOTO, featured: true },
   { id: 'chinese-meat',       name: 'Мясо по-китайски',     category: 'hot', price: null, description: '', photo: '' },
   { id: 'stuffed-pepper',     name: 'Фаршированный перец',  category: 'hot', price: null, description: '', photo: '' },
