@@ -21,6 +21,7 @@ const CATEGORIES = [
 ];
 
 const PLOV_PHOTO = 'https://commons.wikimedia.org/wiki/Special:FilePath/Uzbek_palov_in_Yerevan_Food_Court.jpg?width=700';
+const DOLMA_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/dolma.jpg';
 
 const MENU = [
   // Горячие блюда
@@ -29,7 +30,7 @@ const MENU = [
   { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: null, description: '', photo: '', featured: true },
   { id: 'khanum',             name: 'Ханум',                category: 'hot', price: null, description: '', photo: '', featured: true },
   { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: null, description: '', photo: '' },
-  { id: 'dolma',              name: 'Долма',                category: 'hot', price: null, description: '', photo: 'images/dolma.jpg' },
+  { id: 'dolma',              name: 'Долма',                category: 'hot', price: null, description: '', photo: DOLMA_PHOTO, featured: true },
   { id: 'chinese-meat',       name: 'Мясо по-китайски',     category: 'hot', price: null, description: '', photo: '' },
   { id: 'stuffed-pepper',     name: 'Фаршированный перец',  category: 'hot', price: null, description: '', photo: '' },
   { id: 'chicken-sour-cream', name: 'Курица в сметане',     category: 'hot', price: null, description: '', photo: '' },
