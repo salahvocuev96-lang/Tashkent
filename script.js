@@ -20,7 +20,7 @@ const CATEGORIES = [
   { id: 'salads', title: 'Салаты' },
 ];
 
-const PLOV_PHOTO = 'https://commons.wikimedia.org/wiki/Special:FilePath/Uzbek_palov_in_Yerevan_Food_Court.jpg?width=700';
+const PLOV_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/plov.jpg';
 const DOLMA_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/dolma.jpg';
 const KAZAN_KEBAB_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/kazan-kebab.jpg';
 const CHICKEN_SHASHLIK_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/chicken-shashlik.jpg';
