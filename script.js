@@ -26,6 +26,7 @@ const KAZAN_KEBAB_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/
 const CHICKEN_SHASHLIK_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/chicken-shashlik.jpg';
 const KHANUM_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/khanum.jpg';
 const BIFSHTEKS_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/bifshteks.jpg';
+const CHINESE_MEAT_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/chinese-meat.jpg';
 
 const MENU = [
   // Горячие блюда
@@ -35,7 +36,7 @@ const MENU = [
   { id: 'khanum',             name: 'Ханум',                category: 'hot', price: null, description: '', photo: KHANUM_PHOTO, featured: true },
   { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: null, description: '', photo: BIFSHTEKS_PHOTO, featured: true },
   { id: 'dolma',              name: 'Долма',                category: 'hot', price: null, description: '', photo: DOLMA_PHOTO, featured: true },
-  { id: 'chinese-meat',       name: 'Мясо по-китайски',     category: 'hot', price: null, description: '', photo: '' },
+  { id: 'chinese-meat',       name: 'Мясо по-китайски',     category: 'hot', price: null, description: '', photo: CHINESE_MEAT_PHOTO, featured: true },
   { id: 'stuffed-pepper',     name: 'Фаршированный перец',  category: 'hot', price: null, description: '', photo: '' },
   { id: 'chicken-sour-cream', name: 'Курица в сметане',     category: 'hot', price: null, description: '', photo: '' },
   { id: 'goulash',            name: 'Гуляш с гарниром',     category: 'hot', price: null, description: '', photo: '' },
