@@ -197,16 +197,8 @@ function renderMenu({ animate = false } = {}) {
   const items = filterItems(state.category);
   let html = '';
 
-  for (const cat of CATEGORIES) {
-    const group = items.filter(i => i.category === cat.id);
-    if (!group.length) continue;
-    html += `<section class="menu-group" aria-labelledby="group-${cat.id}">
-        <div class="group-head">
-          <h3 id="group-${cat.id}">${esc(cat.title)}</h3>
-          <span class="group-count">${group.length} ${plural(group.length, DISH_FORMS)}</span>
-        </div>
-        <div class="dish-grid">${group.map(cardMarkup).join('')}</div>
-      </section>`;
+  if (items.length) {
+    html = `<div class="dish-grid">${items.map(cardMarkup).join('')}</div>`;
   }
 
   menuList.innerHTML = html;
