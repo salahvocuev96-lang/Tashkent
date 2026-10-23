@@ -39,6 +39,7 @@ const POLLOCK_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tash
 const SHURPA_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shurpa.jpg';
 const BORSCH_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/borsch.jpg';
 const LAGMAN_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lagman.jpg';
+const MANTY_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/manty.jpg';
 
 const MENU = [
   // Горячие блюда
@@ -65,7 +66,7 @@ const MENU = [
   { id: 'lagman', name: 'Лагман',            category: 'soups', price: null, description: '', photo: LAGMAN_PHOTO, featured: true },
 
   // Другие блюда
-  { id: 'manty', name: 'Манты', category: 'hot', price: null, description: '', photo: '', featured: true },
+  { id: 'manty', name: 'Манты', category: 'hot', price: null, description: '', photo: MANTY_PHOTO, featured: true },
 
   // Салаты
   { id: 'veg-salad',      name: 'Овощной салат',       category: 'salads', price: null, description: '', photo: '' },
