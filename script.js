@@ -32,6 +32,7 @@ const CHICKEN_SOUR_CREAM_PHOTO = 'https://raw.githubusercontent.com/salahvocuev9
 const GOULASH_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/goulash.jpg';
 const STROGANOFF_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/stroganoff.jpg';
 const LEGS_POTATOES_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/legs-potatoes.jpg';
+const BEEF_ROAST_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/beef-roast.jpg';
 
 const MENU = [
   // Горячие блюда
@@ -47,7 +48,7 @@ const MENU = [
   { id: 'goulash',            name: 'Гуляш с гарниром',     category: 'hot', price: null, description: '', photo: GOULASH_PHOTO, featured: true },
   { id: 'stroganoff',         name: 'Бефстроганов',         category: 'hot', price: null, description: '', photo: STROGANOFF_PHOTO, featured: true },
   { id: 'legs-potatoes',      name: 'Окорочка с картошкой', category: 'hot', price: null, description: '', photo: LEGS_POTATOES_PHOTO, featured: true },
-  { id: 'beef-roast',         name: 'Жаркое из говядины',   category: 'hot', price: null, description: '', photo: '' },
+  { id: 'beef-roast',         name: 'Жаркое из говядины',   category: 'hot', price: null, description: '', photo: BEEF_ROAST_PHOTO, featured: true },
   { id: 'chicken-roast',      name: 'Жаркое из курицы',     category: 'hot', price: null, description: '', photo: '' },
   { id: 'meatballs',          name: 'Тефтели',              category: 'hot', price: null, description: '', photo: '' },
   { id: 'pollock',            name: 'Жареный минтай',       category: 'hot', price: null, description: '', photo: '' },
