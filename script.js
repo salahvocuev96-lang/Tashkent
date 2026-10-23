@@ -36,6 +36,7 @@ const BEEF_ROAST_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/T
 const CHICKEN_ROAST_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/chicken-roast.jpg';
 const MEATBALLS_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/meatballs.jpg';
 const POLLOCK_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pollock.jpg';
+const SHURPA_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shurpa.jpg';
 
 const MENU = [
   // Горячие блюда
@@ -57,7 +58,7 @@ const MENU = [
   { id: 'pollock',            name: 'Жареный минтай',       category: 'hot', price: null, description: '', photo: POLLOCK_PHOTO, featured: true },
 
   // Супы
-  { id: 'shurpa', name: 'Шурпа из баранины', category: 'soups', price: null, description: '', photo: '', featured: true },
+  { id: 'shurpa', name: 'Шурпа из баранины', category: 'soups', price: null, description: '', photo: SHURPA_PHOTO, featured: true },
   { id: 'borsch', name: 'Борщ',              category: 'soups', price: null, description: '', photo: '' },
   { id: 'lagman', name: 'Лагман',            category: 'soups', price: null, description: '', photo: '' },
 
