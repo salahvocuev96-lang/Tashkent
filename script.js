@@ -41,6 +41,7 @@ const BORSCH_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashk
 const LAGMAN_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lagman.jpg';
 const MANTY_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/manty.jpg';
 const VEG_SALAD_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/veg-salad.jpg';
+const CARROT_SALAD_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/carrot-salad.jpg';
 
 const MENU = [
   // Горячие блюда
@@ -71,7 +72,7 @@ const MENU = [
 
   // Салаты
   { id: 'veg-salad',      name: 'Овощной салат',       category: 'salads', price: null, description: '', photo: VEG_SALAD_PHOTO, featured: true },
-  { id: 'carrot-salad',   name: 'Морковный салат',     category: 'salads', price: null, description: '', photo: '' },
+  { id: 'carrot-salad',   name: 'Морковный салат',     category: 'salads', price: null, description: '', photo: CARROT_SALAD_PHOTO, featured: true },
   { id: 'olivier',        name: 'Оливье',              category: 'salads', price: null, description: '', photo: '' },
   { id: 'eggplant-salad', name: 'Салат из баклажанов', category: 'salads', price: null, description: '', photo: '' },
 ];
