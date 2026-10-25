@@ -147,7 +147,7 @@ function plateMarkup(item, extraClass = '') {
     ? `<img src="${esc(item.photo)}" alt="${esc(item.name)}" loading="lazy" decoding="async">`
     : '';
   return `<div class="plate ${extraClass}" data-tone="${item.category}">
-      <div class="plate-food"><span class="plate-mono" aria-hidden="true">${esc(item.name.charAt(0))}</span>${img}</div>
+      <div class="plate-food">${img}</div>
       ${rimMarkup()}
     </div>`;
 }
