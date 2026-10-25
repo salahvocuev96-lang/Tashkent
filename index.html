@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 </head>
 <body>
 
@@ -307,6 +307,29 @@
     <button class="toast-action" id="toast-action" type="button">Открыть корзину</button>
   </div>
 
-  <script src="script.js?v=19" defer></script>
+  <!-- Модалка блюда -->
+  <div class="dish-modal-backdrop" id="dish-modal-backdrop" hidden></div>
+  <aside class="dish-modal" id="dish-modal" role="dialog" aria-modal="true" aria-labelledby="dish-modal-name" hidden>
+    <div class="dish-modal-photo" id="dish-modal-photo"></div>
+    <button class="icon-btn dish-modal-close" type="button" data-close aria-label="Закрыть">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <div class="dish-modal-body">
+      <span class="dish-modal-cat" id="dish-modal-cat"></span>
+      <h3 class="dish-modal-name" id="dish-modal-name" tabindex="-1"></h3>
+      <p class="dish-modal-desc" id="dish-modal-desc" hidden></p>
+      <div class="dish-modal-tags">
+        <span class="dish-tag">✓ халяль</span>
+        <span class="dish-tag">домашняя кухня</span>
+        <span class="dish-tag">свежее приготовление</span>
+      </div>
+    </div>
+    <div class="dish-modal-foot">
+      <span class="dish-modal-price" id="dish-modal-price"></span>
+      <div class="dish-modal-control" id="dish-modal-control"></div>
+    </div>
+  </aside>
+
+  <script src="script.js?v=20" defer></script>
 </body>
 </html>

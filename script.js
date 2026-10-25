@@ -317,31 +317,37 @@ emptyBtn.addEventListener('click', () => {
 /* ---------- Действия в карточках ---------- */
 menuList.addEventListener('click', e => {
   const btn = e.target.closest('[data-action]');
-  if (!btn) return;
-  const card = btn.closest('.dish');
-  const id = card.dataset.id;
-  const qty = cart.get(id) || 0;
+  if (btn) {
+    const card = btn.closest('.dish');
+    const id = card.dataset.id;
+    const qty = cart.get(id) || 0;
 
-  switch (btn.dataset.action) {
-    case 'add':
-      setQty(id, 1, 'inc');
-      flyToCart($('.dish-plate', card));
-      showToast(`«${itemById[id].name}» в корзине`);
-      break;
-    case 'inc':
-      setQty(id, qty + 1, 'inc');
-      bumpCart();
-      break;
-    case 'dec':
-      setQty(id, qty - 1, qty - 1 > 0 ? 'dec' : 'add');
-      break;
+    switch (btn.dataset.action) {
+      case 'add':
+        setQty(id, 1, 'inc');
+        flyToCart($('.dish-plate', card));
+        showToast(`«${itemById[id].name}» в корзине`);
+        break;
+      case 'inc':
+        setQty(id, qty + 1, 'inc');
+        bumpCart();
+        break;
+      case 'dec':
+        setQty(id, qty - 1, qty - 1 > 0 ? 'dec' : 'add');
+        break;
+    }
+    return;
   }
+  // Клик по карточке (не по кнопке) — открыть модалку с крупным фото
+  const card = e.target.closest('.dish');
+  if (card) openDishModal(card.dataset.id);
 });
 
 function setQty(id, qty, focusAction) {
   if (qty > 0) cart.set(id, Math.min(qty, 99));
   else cart.delete(id);
   updateCardControl(id, focusAction);
+  updateModalControl(id);
   renderCart();
   updateCount();
 }
@@ -373,6 +379,104 @@ function refreshAllCardControls() {
     $('.dish-control', card).innerHTML = controlMarkup(item, cart.get(item.id) || 0);
   });
 }
+
+/* ---------- Модалка блюда ---------- */
+const dishModal        = $('#dish-modal');
+const dishModalBackdrop = $('#dish-modal-backdrop');
+const dishModalPhoto   = $('#dish-modal-photo');
+const dishModalCat     = $('#dish-modal-cat');
+const dishModalName    = $('#dish-modal-name');
+const dishModalDesc    = $('#dish-modal-desc');
+const dishModalPrice   = $('#dish-modal-price');
+const dishModalControl = $('#dish-modal-control');
+let modalItemId = null;
+let modalLastFocus = null;
+
+function openDishModal(id) {
+  const item = itemById[id];
+  if (!item) return;
+  modalItemId = id;
+  modalLastFocus = document.activeElement;
+
+  dishModalCat.textContent = catById[item.category]?.title || '';
+  dishModalName.textContent = item.name;
+  if (item.description) {
+    dishModalDesc.textContent = item.description;
+    dishModalDesc.hidden = false;
+  } else {
+    dishModalDesc.hidden = true;
+  }
+
+  dishModalPrice.textContent = priceText(item);
+  dishModalPrice.classList.toggle('price--tbd', !hasPrice(item));
+
+  updateModalControl(id);
+
+  // фото: берём то же, что в карточке — в кэше, покажется мгновенно
+  dishModalPhoto.innerHTML = item.photo
+    ? `<img src="${esc(item.photo)}" alt="${esc(item.name)}" decoding="async">`
+    : '';
+  const img = dishModalPhoto.querySelector('img');
+  if (img) {
+    if (img.complete && img.naturalWidth) img.classList.add('is-loaded');
+    else img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
+  }
+
+  dishModal.hidden = false;
+  dishModalBackdrop.hidden = false;
+  // перезапуск transition
+  void dishModal.offsetWidth;
+  dishModal.classList.add('is-open');
+  dishModalBackdrop.classList.add('is-open');
+  document.documentElement.classList.add('is-locked');
+  $('[data-close]', dishModal).focus({ preventScroll: true });
+}
+
+function closeDishModal() {
+  if (!dishModal.classList.contains('is-open')) return;
+  dishModal.classList.remove('is-open');
+  dishModalBackdrop.classList.remove('is-open');
+  modalItemId = null;
+  // скрыть после transition
+  setTimeout(() => {
+    if (!dishModal.classList.contains('is-open')) {
+      dishModal.hidden = true;
+      dishModalBackdrop.hidden = true;
+    }
+  }, 450);
+  if (!drawer.classList.contains('is-open')) {
+    document.documentElement.classList.remove('is-locked');
+  }
+  if (modalLastFocus && document.contains(modalLastFocus)) {
+    modalLastFocus.focus({ preventScroll: true });
+  }
+}
+
+function updateModalControl(id) {
+  if (modalItemId !== id) return;
+  const item = itemById[id];
+  if (!item) return;
+  dishModalControl.innerHTML = controlMarkup(item, cart.get(id) || 0);
+}
+
+dishModalBackdrop.addEventListener('click', closeDishModal);
+dishModal.addEventListener('click', e => {
+  if (e.target.closest('[data-close]')) { closeDishModal(); return; }
+  const btn = e.target.closest('[data-action]');
+  if (!btn || !modalItemId) return;
+  const id = modalItemId;
+  const qty = cart.get(id) || 0;
+  if (btn.dataset.action === 'add') {
+    setQty(id, 1, 'inc');
+    bumpCart();
+    showToast(`«${itemById[id].name}» в корзине`);
+  } else if (btn.dataset.action === 'inc') {
+    setQty(id, qty + 1, 'inc');
+    bumpCart();
+  } else if (btn.dataset.action === 'dec') {
+    setQty(id, qty - 1, qty - 1 > 0 ? 'dec' : 'add');
+  }
+});
 
 /* ---------- Анимация «в корзину» ---------- */
 const cartBtn = $('#cart-btn');
@@ -669,7 +773,8 @@ document.addEventListener('click', e => {
 
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
-  if (drawer.classList.contains('is-open')) closeCart();
+  if (dishModal.classList.contains('is-open')) closeDishModal();
+  else if (drawer.classList.contains('is-open')) closeCart();
   else if (nav.classList.contains('is-open')) { setNav(false); navToggle.focus(); }
 });
 

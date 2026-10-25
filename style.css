@@ -932,6 +932,152 @@ a { color: inherit; }
   box-shadow: inset 0 0 0 5px var(--glaze), inset 0 0 0 7px var(--cobalt), 0 10px 20px -8px rgba(10, 20, 45, .5);
 }
 
+/* ---------- Модалка блюда ---------- */
+.dish-modal-backdrop {
+  position: fixed; inset: 0; z-index: 70;
+  background: rgba(10, 20, 45, .55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s, visibility 0s .3s;
+}
+.dish-modal-backdrop.is-open { opacity: 1; visibility: visible; transition: opacity .3s; }
+
+.dish-modal {
+  position: fixed; z-index: 80;
+  left: 0; right: 0; bottom: 0;
+  max-height: 92dvh;
+  display: flex; flex-direction: column;
+  border-radius: 28px 28px 0 0;
+  background: var(--glaze);
+  box-shadow: 0 -20px 60px -20px rgba(10, 20, 45, .5);
+  transform: translateY(105%); visibility: hidden;
+  transition: transform .4s var(--ease), visibility 0s .4s;
+  overflow: hidden;
+}
+.dish-modal::before {
+  content: ""; position: absolute; top: 8px; left: 50%; width: 40px; height: 4px;
+  margin-left: -20px; border-radius: 2px; background: rgba(19, 33, 63, .25);
+  z-index: 2;
+}
+.dish-modal.is-open { transform: none; visibility: visible; transition: transform .4s var(--ease); }
+
+@media (min-width: 640px) {
+  .dish-modal {
+    left: 50%; right: auto; top: 50%; bottom: auto;
+    width: min(480px, calc(100vw - 32px));
+    max-height: min(92vh, 760px);
+    border-radius: 28px;
+    transform: translate(-50%, -46%) scale(.96);
+    opacity: 0;
+    transition: transform .35s var(--ease), opacity .25s, visibility 0s .35s;
+  }
+  .dish-modal::before { display: none; }
+  .dish-modal.is-open {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: transform .35s var(--ease), opacity .25s;
+  }
+}
+
+.dish-modal-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--paper);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.dish-modal-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity .35s;
+}
+.dish-modal-photo img.is-loaded { opacity: 1; }
+
+.dish-modal-close {
+  position: absolute; top: 14px; right: 14px; z-index: 3;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .92);
+  color: var(--ink);
+  box-shadow: 0 4px 14px -2px rgba(10, 20, 45, .35);
+}
+.dish-modal-close:hover { background: #fff; }
+
+.dish-modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px 22px 10px;
+}
+.dish-modal-cat {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--cobalt);
+  margin-bottom: 6px;
+}
+.dish-modal-name {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -.02em;
+  line-height: 1.15;
+}
+.dish-modal-name:focus { outline: none; }
+.dish-modal-desc {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.dish-modal-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 10px 0 4px;
+}
+.dish-tag {
+  display: inline-flex; align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(29, 63, 138, .09);
+  color: var(--cobalt);
+  font-size: .8125rem;
+  font-weight: 500;
+}
+
+.dish-modal-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px 22px calc(18px + env(safe-area-inset-bottom));
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.dish-modal-price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.dish-modal-price.price--tbd {
+  font-size: 1rem;
+  color: var(--muted);
+}
+.dish-modal-control .add-btn {
+  padding: 14px 22px;
+  font-size: 1rem;
+}
+.dish-modal-control .stepper { height: 48px; }
+.dish-modal-control .stepper button { width: 48px; height: 48px; }
+
+/* Карточка кликабельная */
+.dish { cursor: pointer; }
+.dish-foot .dish-control,
+.dish-foot .dish-control * { cursor: auto; }
+
 /* ---------- Уменьшение анимаций ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
