@@ -47,7 +47,7 @@ const EGGPLANT_SALAD_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-la
 
 const MENU = [
   // Горячие блюда
-  { id: 'plov',               name: 'Плов из говядины',     category: 'hot', price: null, description: '', photo: PLOV_PHOTO, featured: true },
+  { id: 'plov',               name: 'Плов из говядины',     category: 'hot', price: 450, description: '', photo: PLOV_PHOTO, featured: true },
   { id: 'kazan-kebab',        name: 'Казан-кебаб',          category: 'hot', price: null, description: '', photo: KAZAN_KEBAB_PHOTO, featured: true },
   { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: null, description: '', photo: CHICKEN_SHASHLIK_PHOTO, featured: true },
   { id: 'khanum',             name: 'Ханум',                category: 'hot', price: null, description: '', photo: KHANUM_PHOTO, featured: true },
