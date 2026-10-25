@@ -48,35 +48,35 @@ const EGGPLANT_SALAD_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-la
 const MENU = [
   // Горячие блюда
   { id: 'plov',               name: 'Плов из говядины',     category: 'hot', price: 450, description: '', photo: PLOV_PHOTO, featured: true },
-  { id: 'kazan-kebab',        name: 'Казан-кебаб',          category: 'hot', price: null, description: '', photo: KAZAN_KEBAB_PHOTO, featured: true },
-  { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: null, description: '', photo: CHICKEN_SHASHLIK_PHOTO, featured: true },
-  { id: 'khanum',             name: 'Ханум',                category: 'hot', price: null, description: '', photo: KHANUM_PHOTO, featured: true },
-  { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: null, description: '', photo: BIFSHTEKS_PHOTO, featured: true },
-  { id: 'dolma',              name: 'Долма',                category: 'hot', price: null, description: '', photo: DOLMA_PHOTO, featured: true },
-  { id: 'chinese-meat',       name: 'Мясо по-китайски',     category: 'hot', price: null, description: '', photo: CHINESE_MEAT_PHOTO, featured: true },
-  { id: 'stuffed-pepper',     name: 'Фарш-перец',          category: 'hot', price: null, description: '', photo: STUFFED_PEPPER_PHOTO, featured: true },
-  { id: 'chicken-sour-cream', name: 'Курица в сметане',     category: 'hot', price: null, description: '', photo: CHICKEN_SOUR_CREAM_PHOTO, featured: true },
-  { id: 'goulash',            name: 'Гуляш с гарниром',     category: 'hot', price: null, description: '', photo: GOULASH_PHOTO, featured: true },
-  { id: 'stroganoff',         name: 'Бефстроганов',         category: 'hot', price: null, description: '', photo: STROGANOFF_PHOTO, featured: true },
-  { id: 'legs-potatoes',      name: 'Окорочка с картошкой', category: 'hot', price: null, description: '', photo: LEGS_POTATOES_PHOTO, featured: true },
-  { id: 'beef-roast',         name: 'Жаркое из говядины',   category: 'hot', price: null, description: '', photo: BEEF_ROAST_PHOTO, featured: true },
-  { id: 'chicken-roast',      name: 'Жаркое из курицы',     category: 'hot', price: null, description: '', photo: CHICKEN_ROAST_PHOTO, featured: true },
-  { id: 'meatballs',          name: 'Тефтели',              category: 'hot', price: null, description: '', photo: MEATBALLS_PHOTO, featured: true },
-  { id: 'pollock',            name: 'Жареный минтай',       category: 'hot', price: null, description: '', photo: POLLOCK_PHOTO, featured: true },
+  { id: 'kazan-kebab',        name: 'Казан-кебаб',          category: 'hot', price: 600, description: '', photo: KAZAN_KEBAB_PHOTO, featured: true },
+  { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: 200, description: '', photo: CHICKEN_SHASHLIK_PHOTO, featured: true },
+  { id: 'khanum',             name: 'Ханум',                category: 'hot', price: 400, description: '', photo: KHANUM_PHOTO, featured: true },
+  { id: 'beefsteak',          name: 'Бифштекс',             category: 'hot', price: 400, description: '', photo: BIFSHTEKS_PHOTO, featured: true },
+  { id: 'dolma',              name: 'Долма',                category: 'hot', price: 400, description: '', photo: DOLMA_PHOTO, featured: true },
+  { id: 'chinese-meat',       name: 'Мясо по-китайски',     category: 'hot', price: 400, description: '', photo: CHINESE_MEAT_PHOTO, featured: true },
+  { id: 'stuffed-pepper',     name: 'Фарш-перец',          category: 'hot', price: 400, description: '', photo: STUFFED_PEPPER_PHOTO, featured: true },
+  { id: 'chicken-sour-cream', name: 'Курица в сметане',     category: 'hot', price: 400, description: '', photo: CHICKEN_SOUR_CREAM_PHOTO, featured: true },
+  { id: 'goulash',            name: 'Гуляш с гарниром',     category: 'hot', price: 400, description: '', photo: GOULASH_PHOTO, featured: true },
+  { id: 'stroganoff',         name: 'Бефстроганов',         category: 'hot', price: 400, description: '', photo: STROGANOFF_PHOTO, featured: true },
+  { id: 'legs-potatoes',      name: 'Окорочка с картошкой', category: 'hot', price: 400, description: '', photo: LEGS_POTATOES_PHOTO, featured: true },
+  { id: 'beef-roast',         name: 'Жаркое из говядины',   category: 'hot', price: 400, description: '', photo: BEEF_ROAST_PHOTO, featured: true },
+  { id: 'chicken-roast',      name: 'Жаркое из курицы',     category: 'hot', price: 400, description: '', photo: CHICKEN_ROAST_PHOTO, featured: true },
+  { id: 'meatballs',          name: 'Тефтели',              category: 'hot', price: 400, description: '', photo: MEATBALLS_PHOTO, featured: true },
+  { id: 'pollock',            name: 'Жареный минтай',       category: 'hot', price: 250, description: '', photo: POLLOCK_PHOTO, featured: true },
 
   // Супы
-  { id: 'shurpa', name: 'Шурпа из баранины', category: 'soups', price: null, description: '', photo: SHURPA_PHOTO, featured: true },
-  { id: 'borsch', name: 'Борщ',              category: 'soups', price: null, description: '', photo: BORSCH_PHOTO, featured: true },
-  { id: 'lagman', name: 'Лагман',            category: 'soups', price: null, description: '', photo: LAGMAN_PHOTO, featured: true },
+  { id: 'shurpa', name: 'Шурпа из баранины', category: 'soups', price: 400, description: '', photo: SHURPA_PHOTO, featured: true },
+  { id: 'borsch', name: 'Борщ',              category: 'soups', price: 400, description: '', photo: BORSCH_PHOTO, featured: true },
+  { id: 'lagman', name: 'Лагман',            category: 'soups', price: 400, description: '', photo: LAGMAN_PHOTO, featured: true },
 
   // Другие блюда
-  { id: 'manty', name: 'Манты', category: 'hot', price: null, description: '', photo: MANTY_PHOTO, featured: true },
+  { id: 'manty', name: 'Манты', category: 'hot', price: 400, description: '', photo: MANTY_PHOTO, featured: true },
 
   // Салаты
-  { id: 'veg-salad',      name: 'Овощной салат',       category: 'salads', price: null, description: '', photo: VEG_SALAD_PHOTO, featured: true },
-  { id: 'carrot-salad',   name: 'Морковный салат',     category: 'salads', price: null, description: '', photo: CARROT_SALAD_PHOTO, featured: true },
-  { id: 'olivier',        name: 'Оливье',              category: 'salads', price: null, description: '', photo: OLIVIER_PHOTO, featured: true },
-  { id: 'eggplant-salad', name: 'Салат из баклажанов', category: 'salads', price: null, description: '', photo: EGGPLANT_SALAD_PHOTO, featured: true },
+  { id: 'veg-salad',      name: 'Овощной салат',       category: 'salads', price: 200, description: '', photo: VEG_SALAD_PHOTO, featured: true },
+  { id: 'carrot-salad',   name: 'Морковный салат',     category: 'salads', price: 200, description: '', photo: CARROT_SALAD_PHOTO, featured: true },
+  { id: 'olivier',        name: 'Оливье',              category: 'salads', price: 200, description: '', photo: OLIVIER_PHOTO, featured: true },
+  { id: 'eggplant-salad', name: 'Салат из баклажанов', category: 'salads', price: 200, description: '', photo: EGGPLANT_SALAD_PHOTO, featured: true },
 ];
 
 const ADDRESS = 'Москва, улица Зорге, 2';
