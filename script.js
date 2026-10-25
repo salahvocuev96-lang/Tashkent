@@ -442,15 +442,18 @@ function updateCount() {
     : 'Корзина пуста');
 }
 
-function cartItemMarkup(item, qty) {
-  const line = hasPrice(item)
+function cartItemPriceLine(item, qty) {
+  return hasPrice(item)
     ? (qty > 1 ? `${formatPrice(item.price)} × ${qty} = ${formatPrice(item.price * qty)}` : formatPrice(item.price))
     : 'Цена уточняется';
+}
+
+function cartItemMarkup(item, qty) {
   return `<li class="cart-item" data-id="${esc(item.id)}">
       ${plateMarkup(item)}
       <div>
         <p class="cart-item-name">${esc(item.name)}</p>
-        <p class="cart-item-price">${line}</p>
+        <p class="cart-item-price">${cartItemPriceLine(item, qty)}</p>
       </div>
       ${controlMarkup(item, qty)}
       <button class="icon-btn cart-remove" type="button" data-action="remove" aria-label="Удалить «${esc(item.name)}» из корзины">${icon('trash')}</button>
@@ -458,13 +461,34 @@ function cartItemMarkup(item, qty) {
 }
 
 function renderCart() {
-  // запоминаем фокус, чтобы не потерять его после перерисовки
   const focused = document.activeElement;
   const focusId = cartList.contains(focused) ? focused.closest('.cart-item')?.dataset.id : null;
   const focusAction = focusId ? focused.dataset.action : null;
 
   const entries = [...cart.entries()];
-  cartList.innerHTML = entries.map(([id, qty]) => cartItemMarkup(itemById[id], qty)).join('');
+  const cartIds = new Set(entries.map(([id]) => id));
+
+  // Удалить элементы, которых больше нет в корзине
+  $$('.cart-item', cartList).forEach(li => {
+    if (!cartIds.has(li.dataset.id)) li.remove();
+  });
+
+  // Обновить существующие или добавить новые (без замены картинок)
+  entries.forEach(([id, qty]) => {
+    const item = itemById[id];
+    let li = cartList.querySelector(`.cart-item[data-id="${CSS.escape(id)}"]`);
+    if (!li) {
+      const tmpl = document.createElement('template');
+      tmpl.innerHTML = cartItemMarkup(item, qty);
+      cartList.appendChild(tmpl.content.firstElementChild);
+    } else {
+      const priceEl = li.querySelector('.cart-item-price');
+      if (priceEl) priceEl.textContent = cartItemPriceLine(item, qty);
+      const ctrl = li.querySelector('.dish-control');
+      if (ctrl) ctrl.innerHTML = controlMarkup(item, qty);
+    }
+  });
+
   cartList.hidden = entries.length === 0;
   cartEmpty.hidden = entries.length > 0;
   cartFoot.hidden = entries.length === 0;
