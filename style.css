@@ -267,9 +267,9 @@ a { color: inherit; }
   pointer-events: none;
 }
 .hero-shawarma-img {
-  height: 60svh;
-  width: auto;
-  max-height: 460px;
+  width: 74vw;
+  height: auto;
+  max-width: 420px;
   display: block;
   filter: drop-shadow(-8px 20px 30px rgba(4, 14, 42, .6));
   animation: fade-up .9s var(--ease) .2s both;
