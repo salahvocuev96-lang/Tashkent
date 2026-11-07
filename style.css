@@ -258,12 +258,6 @@ a { color: inherit; }
   min-height: 320px;
   margin-right: -26vw;
 }
-/* круги-отголоски вокруг блюда */
-.hero-visual::before, .hero-visual::after {
-  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
-}
-.hero-visual::before { inset: -8%; border: 1.5px solid rgba(255, 255, 255, .16); }
-.hero-visual::after  { inset: -17%; border: 1.5px solid rgba(255, 255, 255, .08); }
 
 .plate--hero { box-shadow: 0 40px 70px -28px rgba(4, 14, 42, .75); }
 .plate--hero .plate-mono { font-size: 34cqw; }
