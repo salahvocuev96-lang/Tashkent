@@ -254,9 +254,15 @@ a { color: inherit; }
 .hero-visual {
   position: relative;
   justify-self: end;
-  width: 86vw; max-width: 520px;
-  min-height: 320px;
-  margin-right: -26vw;
+  width: 72vw; max-width: 420px;
+  margin-right: -16vw;
+}
+.hero-shawarma-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 40px rgba(4, 14, 42, .5));
+  animation: fade-up .9s var(--ease) .2s both;
 }
 
 .plate--hero { box-shadow: 0 40px 70px -28px rgba(4, 14, 42, .75); }
@@ -314,8 +320,9 @@ a { color: inherit; }
   .hero-copy { grid-row: 1; grid-column: 1; }
   .hero-visual {
     grid-row: 1; grid-column: 2;
-    width: 54vw; max-width: 900px;
-    margin-right: -13vw;
+    width: 44vw; max-width: 580px;
+    margin-right: -8vw;
+    display: flex; align-items: center; justify-content: center;
   }
   .hero-title-pre { font-size: clamp(1.6rem, 2.6vw, 2.6rem); }
   .hero-title-main { font-size: clamp(4rem, 7.6vw, 9rem); }
