@@ -284,20 +284,26 @@ a { color: inherit; }
   top: 0; left: 0;
   width: 100%; height: 100%;
   object-fit: contain;
-  animation: shawarma-cut-fade 6s ease-in-out 1.5s infinite;
+  opacity: 0;
+  animation: sw-cut 9s cubic-bezier(.4,0,.2,1) 2s infinite;
 }
 .shawarma-flip__whole {
-  animation: shawarma-whole-fade 6s ease-in-out 1.5s infinite;
+  animation: sw-whole 9s cubic-bezier(.4,0,.2,1) 2s infinite;
 }
-@keyframes shawarma-whole-fade {
-  0%, 35%  { opacity: 1; }
-  45%, 85% { opacity: 0; }
-  95%, 100%{ opacity: 1; }
+/* целая: видна 0-40%, резко уходит 40-46%, отсутствует до 94%, возвращается 94-100% */
+@keyframes sw-whole {
+  0%, 40%   { opacity: 1; transform: scale(1); }
+  46%       { opacity: 0; transform: scale(.9); }
+  94%       { opacity: 0; transform: scale(.9); }
+  100%      { opacity: 1; transform: scale(1); }
 }
-@keyframes shawarma-cut-fade {
-  0%, 35%  { opacity: 0; }
-  45%, 85% { opacity: 1; }
-  95%, 100%{ opacity: 0; }
+/* разрезанная: появляется 46-52% с лёгким "хлопком", видна до 90%, уходит 90-96% */
+@keyframes sw-cut {
+  0%, 46%   { opacity: 0; transform: scale(1.08); }
+  52%       { opacity: 1; transform: scale(1); }
+  90%       { opacity: 1; transform: scale(1); }
+  96%       { opacity: 0; transform: scale(.95); }
+  100%      { opacity: 0; transform: scale(1.08); }
 }
 .hero-copy {
   position: relative;
