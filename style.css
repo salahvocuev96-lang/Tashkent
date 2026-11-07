@@ -246,30 +246,38 @@ a { color: inherit; }
 .hero {
   position: relative;
   overflow: hidden;
-  display: grid; align-content: end; gap: 24px;
-  padding: calc(var(--header-h) - 12px) var(--pad) 76px;
-  min-height: max(520px, 90svh);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0;
+  padding-bottom: 72px;
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+  min-height: max(560px, 94svh);
   background: var(--cobalt);
   color: #fff;
 }
 .hero-visual {
-  width: 76vw;
-  max-width: 440px;
-  justify-self: end;
-  margin-right: -20vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: visible;
+  padding-top: calc(var(--header-h) + 12px);
+  margin-right: -8vw;
   z-index: 1;
   pointer-events: none;
+}
+.hero-shawarma-img {
+  height: 46svh;
+  width: auto;
+  max-height: 340px;
+  display: block;
+  filter: drop-shadow(-8px 20px 30px rgba(4, 14, 42, .6));
+  animation: fade-up .9s var(--ease) .2s both;
 }
 .hero-copy {
   position: relative;
   z-index: 2;
-}
-.hero-shawarma-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(-8px 20px 30px rgba(4, 14, 42, .6));
-  animation: fade-up .9s var(--ease) .2s both;
+  padding-bottom: 4px;
 }
 
 .plate--hero { box-shadow: 0 40px 70px -28px rgba(4, 14, 42, .75); }
