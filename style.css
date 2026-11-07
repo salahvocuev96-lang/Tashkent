@@ -259,19 +259,18 @@ a { color: inherit; }
 .hero-visual {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
   overflow: visible;
   padding-top: calc(var(--header-h) + 12px);
-  margin-right: -6vw;
   z-index: 1;
   pointer-events: none;
 }
 .food-flip {
   position: relative;
   flex: 0 0 auto;
-  width: 44vw;
-  max-width: 280px;
+  width: 46vw;
+  max-width: 320px;
   animation: fade-up .9s var(--ease) .2s both;
 }
 .food-flip__whole,
@@ -377,10 +376,14 @@ a { color: inherit; }
     overflow: visible;
     margin-right: -6vw;
   }
-  .hero-visual { gap: 24px; margin-right: -3vw; }
+  .hero-visual {
+    justify-content: flex-end;
+    gap: 28px;
+    margin-right: -4vw;
+  }
   .food-flip {
-    width: 26vw;
-    max-width: 420px;
+    width: 28vw;
+    max-width: 480px;
   }
   .food-flip__whole,
   .food-flip__cut {
