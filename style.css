@@ -285,25 +285,23 @@ a { color: inherit; }
   width: 100%; height: 100%;
   object-fit: contain;
   opacity: 0;
-  animation: sw-cut 9s cubic-bezier(.4,0,.2,1) 2s infinite;
+  animation: sw-cut 6s ease-in-out 1s infinite;
 }
 .shawarma-flip__whole {
-  animation: sw-whole 9s cubic-bezier(.4,0,.2,1) 2s infinite;
+  animation: sw-whole 6s ease-in-out 1s infinite;
 }
-/* целая: видна 0-40%, резко уходит 40-46%, отсутствует до 94%, возвращается 94-100% */
 @keyframes sw-whole {
-  0%, 40%   { opacity: 1; transform: scale(1); }
-  46%       { opacity: 0; transform: scale(.9); }
-  94%       { opacity: 0; transform: scale(.9); }
-  100%      { opacity: 1; transform: scale(1); }
+  0%, 28%   { opacity: 1; transform: scale(1); }
+  35%       { opacity: 0; transform: scale(.88); }
+  90%       { opacity: 0; transform: scale(.88); }
+  98%, 100% { opacity: 1; transform: scale(1); }
 }
-/* разрезанная: появляется 46-52% с лёгким "хлопком", видна до 90%, уходит 90-96% */
 @keyframes sw-cut {
-  0%, 46%   { opacity: 0; transform: scale(1.08); }
-  52%       { opacity: 1; transform: scale(1); }
-  90%       { opacity: 1; transform: scale(1); }
-  96%       { opacity: 0; transform: scale(.95); }
-  100%      { opacity: 0; transform: scale(1.08); }
+  0%, 33%   { opacity: 0; transform: scale(1.1); }
+  42%       { opacity: 1; transform: scale(1); }
+  85%       { opacity: 1; transform: scale(1); }
+  93%       { opacity: 0; transform: scale(.92); }
+  100%      { opacity: 0; transform: scale(1.1); }
 }
 .hero-copy {
   position: relative;
