@@ -253,11 +253,10 @@ a { color: inherit; }
   color: #fff;
 }
 .hero-visual {
-  position: absolute;
-  right: -4vw;
-  top: calc(var(--header-h) - 20px);
-  width: 48vw;
-  max-width: 300px;
+  width: 76vw;
+  max-width: 440px;
+  justify-self: end;
+  margin-right: -20vw;
   z-index: 1;
   pointer-events: none;
 }
@@ -329,7 +328,6 @@ a { color: inherit; }
   .hero-visual {
     position: relative;
     grid-row: 1; grid-column: 2;
-    top: auto; right: auto;
     width: auto; max-width: none;
     pointer-events: auto;
     display: flex;
@@ -340,8 +338,8 @@ a { color: inherit; }
   }
   .hero-shawarma-img {
     width: auto;
-    height: 88vh;
-    max-height: 680px;
+    height: 96vh;
+    max-height: 820px;
   }
   .hero-title-pre { font-size: clamp(1.6rem, 2.6vw, 2.6rem); }
   .hero-title-main { font-size: clamp(4rem, 7.6vw, 9rem); }
