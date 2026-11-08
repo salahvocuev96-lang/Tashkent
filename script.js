@@ -20,7 +20,7 @@ const CATEGORIES = [
   { id: 'salads', title: 'Салаты' },
 ];
 
-const PLOV_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/plov-beef-new.jpg';
+const SHAWARMA_MENU_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-menu.png';
 const DOLMA_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/dolma.jpg';
 const KAZAN_KEBAB_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/kazan-kebab.jpg';
 const CHICKEN_SHASHLIK_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/chicken-shashlik.jpg';
@@ -47,7 +47,7 @@ const EGGPLANT_SALAD_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-la
 
 const MENU = [
   // Горячие блюда
-  { id: 'plov',               name: 'Плов из говядины',     category: 'hot', price: 450, description: '', photo: PLOV_PHOTO, featured: true },
+  { id: 'shawarma',            name: 'Шаурма',               category: 'hot', price: 350, description: '', photo: SHAWARMA_MENU_PHOTO, featured: true },
   { id: 'kazan-kebab',        name: 'Казан-кебаб',          category: 'hot', price: 600, description: '', photo: KAZAN_KEBAB_PHOTO, featured: true },
   { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: 200, description: '', photo: CHICKEN_SHASHLIK_PHOTO, featured: true },
   { id: 'khanum',             name: 'Ханум',                category: 'hot', price: 400, description: '', photo: KHANUM_PHOTO, featured: true },
