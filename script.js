@@ -25,6 +25,7 @@ const SHAWARMA_MENU_PHOTO   = 'https://raw.githubusercontent.com/salahvocuev96-l
 const SHAWARMA_CHEESE_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-cheese.jpg';
 const SHAWARMA_BBQ_PHOTO      = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-bbq.jpg';
 const SHAWARMA_TERIYAKI_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-teriyaki.jpg';
+const SHAWARMA_CAESAR_PHOTO   = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-caesar.jpg';
 
 const MENU = [
   // Шаурма
@@ -32,7 +33,7 @@ const MENU = [
   { id: 'shawarma-cheese',   name: 'Шаурма чиз',          category: 'shawarma', price: 320, description: '', photo: SHAWARMA_CHEESE_PHOTO, featured: true },
   { id: 'shawarma-bbq',      name: 'Шаурма барбекю',      category: 'shawarma', price: 320, description: '', photo: SHAWARMA_BBQ_PHOTO, featured: true },
   { id: 'shawarma-teriyaki', name: 'Шаурма терияки',      category: 'shawarma', price: 310, description: '', photo: SHAWARMA_TERIYAKI_PHOTO, featured: true },
-  { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: '', photo: '', featured: true },
+  { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: '', photo: SHAWARMA_CAESAR_PHOTO, featured: true },
   { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, description: '', photo: '', featured: true },
   { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420,  description: '', photo: '', featured: true },
 ];
