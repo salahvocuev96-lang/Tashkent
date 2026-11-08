@@ -47,7 +47,7 @@ const EGGPLANT_SALAD_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-la
 
 const MENU = [
   // Горячие блюда
-  { id: 'shawarma',            name: 'Шаурма',               category: 'hot', price: 350, description: '', photo: SHAWARMA_MENU_PHOTO, featured: true },
+  { id: 'shawarma',            name: 'Шаурма классическая',  category: 'hot', price: 270, description: '', photo: SHAWARMA_MENU_PHOTO, featured: true },
   { id: 'kazan-kebab',        name: 'Казан-кебаб',          category: 'hot', price: 600, description: '', photo: KAZAN_KEBAB_PHOTO, featured: true },
   { id: 'chicken-shashlik',   name: 'Куриный шашлык',       category: 'hot', price: 200, description: '', photo: CHICKEN_SHASHLIK_PHOTO, featured: true },
   { id: 'khanum',             name: 'Ханум',                category: 'hot', price: 400, description: '', photo: KHANUM_PHOTO, featured: true },
