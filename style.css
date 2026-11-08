@@ -313,6 +313,8 @@ a { color: inherit; }
   .hero-lead { font-size: 1.25rem; margin-top: 28px; }
   .hero-actions { margin-top: 36px; }
   .hero-credit { left: var(--pad); right: auto; }
+  /* Пузырь вплотную к левому краю шаурмы */
+  .thought { right: 76%; top: 4%; }
 }
 
 /* Зубчатый край — как борт блюда. Цвета задаются переменными. */
@@ -453,6 +455,21 @@ a { color: inherit; }
   to   { transform: translateY(-5px) rotate(.4deg); }
 }
 
+/* Пузырь скрыт и заморожен — ждёт загрузки фото шаурмы */
+.thought { visibility: hidden; }
+.thought,
+.thought-cloud,
+.thought-line,
+.thought-accent::after,
+.thought-dot { animation-play-state: paused; }
+
+.sw-loaded .thought { visibility: visible; }
+.sw-loaded .thought,
+.sw-loaded .thought-cloud,
+.sw-loaded .thought-line,
+.sw-loaded .thought-accent::after,
+.sw-loaded .thought-dot { animation-play-state: running; }
+
 /* Телефон: освобождаем полосу над тарелкой и ставим облачко в неё */
 @media (max-width: 639px) {
   .hero-visual { margin-top: 72px; }
@@ -467,9 +484,9 @@ a { color: inherit; }
   .thought-dot--2 { width: 7px;  height: 7px;  right: -21px; top: calc(100% + 1px); }
   .thought-dot--3 { width: 5px;  height: 5px;  right: -30px; top: calc(100% + 8px); }
 }
-/* Планшет: тарелка ограничена 520px, места слева достаточно */
+/* Планшет: пузырь ближе к шаурме */
 @media (min-width: 640px) and (max-width: 959px) {
-  .thought { top: 4%; right: 95%; }
+  .thought { top: 4%; right: 80%; }
 }
 
 /* ---------- Заголовки секций ---------- */
