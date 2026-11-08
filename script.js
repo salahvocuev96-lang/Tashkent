@@ -42,6 +42,15 @@ const MENU = [
   { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
 ];
 
+const EXTRAS = [
+  { id: 'extra-beef',    name: 'Мясо говядина',  weight: 100, price: 160 },
+  { id: 'extra-chicken', name: 'Мясо курица',    weight: 100, price: 130 },
+  { id: 'extra-cheese',  name: 'Сыр',            weight: 70,  price: 120 },
+  { id: 'extra-fries',   name: 'Картошка фри',   weight: 70,  price: 50  },
+  { id: 'extra-sauce',   name: 'Соус на выбор',  weight: 30,  price: 50  },
+  { id: 'extra-jalapeno',name: 'Халапеньо',      weight: 30,  price: 30  },
+];
+
 const ADDRESS = 'Москва, улица Зорге, 2';
 
 /* =========================================================
@@ -351,8 +360,10 @@ const dishModalName    = $('#dish-modal-name');
 const dishModalDesc    = $('#dish-modal-desc');
 const dishModalPrice   = $('#dish-modal-price');
 const dishModalControl = $('#dish-modal-control');
+const dishModalExtras  = $('#dish-modal-extras');
 let modalItemId = null;
 let modalLastFocus = null;
+let modalSelectedExtras = new Set();
 
 function openDishModal(id) {
   const item = itemById[id];
@@ -369,8 +380,22 @@ function openDishModal(id) {
     dishModalDesc.hidden = true;
   }
 
-  dishModalPrice.textContent = priceText(item);
-  dishModalPrice.classList.toggle('price--tbd', !hasPrice(item));
+  modalSelectedExtras = new Set();
+  updateModalTotal(item);
+
+  // Добавки — только для категории шаурма
+  if (item.category === 'shawarma' && hasPrice(item)) {
+    dishModalExtras.innerHTML = '<p class="extras-title">Добавки</p>' +
+      EXTRAS.map(ex => `<label class="extra-row">
+        <input type="checkbox" class="extra-check" data-extra-id="${ex.id}" data-extra-price="${ex.price}">
+        <span class="extra-name">${esc(ex.name)} <span class="extra-weight">${ex.weight} г</span></span>
+        <span class="extra-price">+${formatPrice(ex.price)}</span>
+      </label>`).join('');
+    dishModalExtras.hidden = false;
+  } else {
+    dishModalExtras.innerHTML = '';
+    dishModalExtras.hidden = true;
+  }
 
   updateModalControl(id);
 
@@ -414,12 +439,38 @@ function closeDishModal() {
   }
 }
 
+function updateModalTotal(item) {
+  if (!item) item = itemById[modalItemId];
+  if (!item) return;
+  if (!hasPrice(item)) {
+    dishModalPrice.textContent = 'Цена уточняется';
+    dishModalPrice.classList.add('price--tbd');
+    return;
+  }
+  dishModalPrice.classList.remove('price--tbd');
+  const extrasSum = [...modalSelectedExtras].reduce((sum, id) => {
+    const ex = EXTRAS.find(e => e.id === id);
+    return sum + (ex ? ex.price : 0);
+  }, 0);
+  dishModalPrice.textContent = extrasSum > 0
+    ? `${formatPrice(item.price + extrasSum)}`
+    : formatPrice(item.price);
+}
+
 function updateModalControl(id) {
   if (modalItemId !== id) return;
   const item = itemById[id];
   if (!item) return;
   dishModalControl.innerHTML = controlMarkup(item, cart.get(id) || 0);
 }
+
+dishModalExtras.addEventListener('change', e => {
+  const cb = e.target.closest('.extra-check');
+  if (!cb) return;
+  if (cb.checked) modalSelectedExtras.add(cb.dataset.extraId);
+  else modalSelectedExtras.delete(cb.dataset.extraId);
+  updateModalTotal();
+});
 
 dishModalBackdrop.addEventListener('click', closeDishModal);
 dishModal.addEventListener('click', e => {

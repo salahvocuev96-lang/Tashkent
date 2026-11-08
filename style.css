@@ -1075,6 +1075,51 @@ a { color: inherit; }
   color: var(--muted);
   line-height: 1.5;
 }
+.dish-modal-extras {
+  margin: 4px 0 14px;
+  border-radius: 14px;
+  background: var(--paper);
+  padding: 2px 14px 6px;
+}
+.extras-title {
+  margin: 10px 0 2px;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--cobalt);
+}
+.extra-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+}
+.extra-row:last-child { border-bottom: none; }
+.extra-check {
+  flex: 0 0 20px;
+  width: 20px; height: 20px;
+  accent-color: var(--cobalt);
+  cursor: pointer;
+}
+.extra-name {
+  flex: 1;
+  font-size: .95rem;
+}
+.extra-weight {
+  color: var(--muted);
+  font-size: .8rem;
+  margin-left: 3px;
+}
+.extra-price {
+  font-weight: 600;
+  color: var(--cobalt);
+  white-space: nowrap;
+  font-size: .9rem;
+}
+
 .dish-modal-tags {
   display: flex; flex-wrap: wrap; gap: 8px;
   margin: 10px 0 4px;
