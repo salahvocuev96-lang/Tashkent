@@ -15,6 +15,7 @@
 
 const CATEGORIES = [
   { id: 'shawarma',    title: 'Шаурма' },
+  { id: 'lyulya',      title: 'Люля-кебаб' },
   { id: 'doner',       title: 'Донер' },
   { id: 'baking',      title: 'Выпечка' },
   { id: 'drinks',      title: 'Напитки' },
@@ -37,8 +38,8 @@ const MENU = [
   { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: '', photo: SHAWARMA_CAESAR_PHOTO, featured: true },
   { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, description: '', photo: SHAWARMA_MIX_PHOTO, featured: true },
   { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420,  description: '', photo: SHAWARMA_BEEF_PHOTO, featured: true },
-  { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'shawarma', price: null, description: '', photo: '', featured: true },
-  { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'shawarma', price: null, description: '', photo: '', featured: true },
+  { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
+  { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
 ];
 
 const ADDRESS = 'Москва, улица Зорге, 2';
