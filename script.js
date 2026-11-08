@@ -28,6 +28,8 @@ const SHAWARMA_TERIYAKI_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96
 const SHAWARMA_CAESAR_PHOTO   = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-caesar.jpg';
 const SHAWARMA_MIX_PHOTO      = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-mix.jpg';
 const SHAWARMA_BEEF_PHOTO     = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-beef.jpg';
+const DONER_CHICKEN_PHOTO     = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/doner-chicken.jpg';
+const DONER_BEEF_PHOTO        = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/doner-beef.jpg';
 
 const MENU = [
   // Шаурма
@@ -41,8 +43,8 @@ const MENU = [
   { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
   { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
   // Донер
-  { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, description: '', photo: '', featured: true },
-  { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, description: '', photo: '', featured: true },
+  { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, description: '', photo: DONER_CHICKEN_PHOTO, featured: true },
+  { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, description: '', photo: DONER_BEEF_PHOTO,    featured: true },
 ];
 
 const EXTRAS = [
