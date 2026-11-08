@@ -59,7 +59,7 @@ const MENU = [
   // Напитки
   { id: 'rich-apple',          name: 'Рич яблочный',          category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/rich-apple.jpg', featured: true },
   { id: 'rich-cola',           name: 'Рич кола',              category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/rich-cola.jpg', featured: true },
-  { id: 'coca-cola-1l',        name: 'Кока-Кола',             category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-05.jpg', featured: true },
+  { id: 'coca-cola-1l',        name: 'Кока-Кола',             category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-1l.jpg', featured: true },
   { id: 'natakhtari-dyushes',  name: 'Натахтари Дюшес',       category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-dyushes.jpg', featured: true },
   { id: 'natakhtari-cream',    name: 'Натахтари Крем-сода',   category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-cream.jpg', featured: true },
   { id: 'natakhtari-feijoa',   name: 'Натахтари Фейхоа',      category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-feijoa.jpg', featured: true },
