@@ -65,7 +65,7 @@ const MENU = [
   { id: 'natakhtari-feijoa',   name: 'Натахтари Фейхоа',      category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-feijoa.jpg', featured: true },
   { id: 'natakhtari-tarhun',   name: 'Натахтари Тархун',      category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-tarhun.jpg', featured: true },
   { id: 'sultan-lemon',        name: 'Султан чай Лимон',      category: 'drinks', price: 150, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sultan-lemon.jpg', featured: true },
-  { id: 'sultan-peach',        name: 'Султан чай Персик',     category: 'drinks', price: 150, description: '', photo: '', featured: true },
+  { id: 'sultan-peach',        name: 'Султан чай Персик',     category: 'drinks', price: 150, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sultan-peach.jpg', featured: true },
   { id: 'svgran-dyushes',      name: 'Святая Грань Дюшес',    category: 'drinks', price: 120, description: '', photo: '', featured: true },
   { id: 'svgran-tarhun',       name: 'Святая Грань Тархун',   category: 'drinks', price: 120, description: '', photo: '', featured: true },
   { id: 'flavis',              name: 'Флавис',                category: 'drinks', price: 120, description: '', photo: '', featured: true },
