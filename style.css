@@ -350,7 +350,7 @@ a { color: inherit; }
 .hero .rim-petal, .hero .rim-dot { animation: petal-in .45s ease-out both; animation-delay: calc(.3s + var(--i) * 45ms); }
 .hero-title-pre > span  { animation: rise .9s var(--ease) .1s both; }
 .hero-title-main > span { animation: rise 1s var(--ease) .22s both; }
-.hero-lead    { animation: fade-up .8s var(--ease) .5s both, text-float 4.5s ease-in-out 1.3s infinite; }
+.hero-lead    { animation: fade-up .8s var(--ease) .5s both; }
 .hero-actions { animation: fade-up .8s var(--ease) .62s both; }
 .hero-stamp   { animation: stamp-in 1s var(--ease) .9s both; }
 
