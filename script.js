@@ -40,6 +40,9 @@ const MENU = [
   { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420, description: 'Сочная говядина, свежие овощи и нежный фирменный соус в тонком лаваше, обжаренном до золотистой корочки. Насыщенный мясной вкус в каждом кусочке!', photo: SHAWARMA_BEEF_PHOTO, featured: true },
   { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
   { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
+  // Донер
+  { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: null, description: '', photo: '', featured: true },
+  { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: null, description: '', photo: '', featured: true },
 ];
 
 const EXTRAS = [
@@ -420,8 +423,8 @@ function openDishModal(id) {
   modalSelectedExtras = new Set();
   updateModalPrice(item);
 
-  // Добавки — только для шаурмы
-  if (item.category === 'shawarma' && hasPrice(item)) {
+  // Добавки — для шаурмы и донера
+  if ((item.category === 'shawarma' || item.category === 'doner') && hasPrice(item)) {
     dishModalExtras.innerHTML = '<p class="extras-title">Добавки</p>' +
       EXTRAS.map(ex => `<label class="extra-row">
         <input type="checkbox" class="extra-check" data-extra-id="${ex.id}" data-extra-price="${ex.price}">
