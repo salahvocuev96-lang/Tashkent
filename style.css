@@ -1095,15 +1095,8 @@ a { color: inherit; }
   gap: 10px;
   padding: 10px 0;
   border-bottom: 1px solid var(--line);
-  cursor: pointer;
 }
-.extra-row:last-child { border-bottom: none; }
-.extra-check {
-  flex: 0 0 20px;
-  width: 20px; height: 20px;
-  accent-color: var(--cobalt);
-  cursor: pointer;
-}
+.extra-row:last-of-type { border-bottom: none; }
 .extra-name {
   flex: 1;
   font-size: .95rem;
@@ -1118,6 +1111,12 @@ a { color: inherit; }
   color: var(--cobalt);
   white-space: nowrap;
   font-size: .9rem;
+}
+.extras-note {
+  margin: 8px 0 4px;
+  font-size: .78rem;
+  color: var(--muted);
+  text-align: center;
 }
 
 .dish-modal-tags {

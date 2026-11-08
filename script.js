@@ -362,7 +362,6 @@ const dishModalControl = $('#dish-modal-control');
 const dishModalExtras  = $('#dish-modal-extras');
 let modalItemId = null;
 let modalLastFocus = null;
-let modalSelectedExtras = new Set();
 
 function openDishModal(id) {
   const item = itemById[id];
@@ -379,17 +378,17 @@ function openDishModal(id) {
     dishModalDesc.hidden = true;
   }
 
-  modalSelectedExtras = new Set();
-  updateModalTotal(item);
+  dishModalPrice.textContent = priceText(item);
+  dishModalPrice.classList.toggle('price--tbd', !hasPrice(item));
 
   // Добавки — только для категории шаурма
-  if (item.category === 'shawarma' && hasPrice(item)) {
+  if (item.category === 'shawarma') {
     dishModalExtras.innerHTML = '<p class="extras-title">Добавки</p>' +
-      EXTRAS.map(ex => `<label class="extra-row">
-        <input type="checkbox" class="extra-check" data-extra-id="${ex.id}" data-extra-price="${ex.price}">
+      EXTRAS.map(ex => `<div class="extra-row">
         <span class="extra-name">${esc(ex.name)} <span class="extra-weight">${ex.weight} г</span></span>
         <span class="extra-price">+${formatPrice(ex.price)}</span>
-      </label>`).join('');
+      </div>`).join('') +
+      '<p class="extras-note">Добавки заказывайте у кассира</p>';
     dishModalExtras.hidden = false;
   } else {
     dishModalExtras.innerHTML = '';
@@ -438,38 +437,12 @@ function closeDishModal() {
   }
 }
 
-function updateModalTotal(item) {
-  if (!item) item = itemById[modalItemId];
-  if (!item) return;
-  if (!hasPrice(item)) {
-    dishModalPrice.textContent = 'Цена уточняется';
-    dishModalPrice.classList.add('price--tbd');
-    return;
-  }
-  dishModalPrice.classList.remove('price--tbd');
-  const extrasSum = [...modalSelectedExtras].reduce((sum, id) => {
-    const ex = EXTRAS.find(e => e.id === id);
-    return sum + (ex ? ex.price : 0);
-  }, 0);
-  dishModalPrice.textContent = extrasSum > 0
-    ? `${formatPrice(item.price + extrasSum)}`
-    : formatPrice(item.price);
-}
-
 function updateModalControl(id) {
   if (modalItemId !== id) return;
   const item = itemById[id];
   if (!item) return;
   dishModalControl.innerHTML = controlMarkup(item, cart.get(id) || 0);
 }
-
-dishModalExtras.addEventListener('change', e => {
-  const cb = e.target.closest('.extra-check');
-  if (!cb) return;
-  if (cb.checked) modalSelectedExtras.add(cb.dataset.extraId);
-  else modalSelectedExtras.delete(cb.dataset.extraId);
-  updateModalTotal();
-});
 
 dishModalBackdrop.addEventListener('click', closeDishModal);
 dishModal.addEventListener('click', e => {
