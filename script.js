@@ -14,9 +14,11 @@
    ========================================================= */
 
 const CATEGORIES = [
-  { id: 'shawarma', title: 'Шаурма' },
-  { id: 'baking',   title: 'Выпечка' },
-  { id: 'drinks',   title: 'Напитки' },
+  { id: 'shawarma',    title: 'Шаурма' },
+  { id: 'baking',      title: 'Выпечка' },
+  { id: 'drinks',      title: 'Напитки' },
+  { id: 'lyulya',      title: 'Люля-кебаб' },
+  { id: 'doner',       title: 'Донер' },
 ];
 
 const SHAWARMA_MENU_PHOTO   = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-menu.jpg';
@@ -32,8 +34,6 @@ const MENU = [
   { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: '', photo: '', featured: true },
   { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, description: '', photo: '', featured: true },
   { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420,  description: '', photo: '', featured: true },
-  { id: 'lyulya-kebab',      name: 'Люля-кебаб',          category: 'shawarma', price: null, description: '', photo: '', featured: true },
-  { id: 'doner',             name: 'Донер',               category: 'shawarma', price: null, description: '', photo: '', featured: true },
 ];
 
 const ADDRESS = 'Москва, улица Зорге, 2';
