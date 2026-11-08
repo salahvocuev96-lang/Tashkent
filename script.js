@@ -72,7 +72,7 @@ const MENU = [
   { id: 'fanta-05',            name: 'Фанта',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fanta.jpg', featured: true },
   { id: 'coca-cola-05',        name: 'Кока-Кола',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-05.jpg', featured: true },
   { id: 'fanta-033',           name: 'Фанта',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fanta.jpg', featured: true },
-  { id: 'coca-cola-033',       name: 'Кока-Кола',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola.jpg', featured: true },
+  { id: 'coca-cola-033',       name: 'Кока-Кола',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-033.jpg', featured: true },
   { id: 'ayran',               name: 'Айран',                 category: 'drinks', price: 120, description: '', photo: '', featured: true },
   { id: 'mors',                name: 'Морс',                  category: 'drinks', price: 120, description: '', photo: '', featured: true },
   { id: 'royal-granat',        name: 'Роял гранатовый',       category: 'drinks', price: 100, description: '', photo: '', featured: true },
