@@ -79,7 +79,7 @@ const MENU = [
   { id: 'drive',               name: 'Драйв',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/drive.jpg', featured: true },
   { id: 'gorilla',             name: 'Горилла',               category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/gorilla.jpg', featured: true },
   { id: 'adrenalin-449',       name: 'Адреналин',             category: 'drinks', price: 160, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
-  { id: 'adrenalin-zero',      name: 'Адреналин Зеро',        category: 'drinks', price: 160, description: '', photo: '', featured: true },
+  { id: 'adrenalin-zero',      name: 'Адреналин Зеро',        category: 'drinks', price: 160, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin-zero.jpg', featured: true },
   { id: 'adrenalin-100',       name: 'Адреналин',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
   { id: 'redbull-473',         name: 'Ред Булл',              category: 'drinks', price: 300, description: '', photo: '', featured: true },
   { id: 'redbull-100',         name: 'Ред Булл',              category: 'drinks', price: 160, description: '', photo: '', featured: true },
