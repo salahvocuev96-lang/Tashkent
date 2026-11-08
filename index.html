@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=48">
+  <link rel="stylesheet" href="style.css?v=49">
 </head>
 <body>
 
@@ -67,17 +67,25 @@
 
       <div class="hero-visual">
         <svg class="hero-sw-art" viewBox="0 0 320 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <filter id="steam-glow" x="-80%" y="-150%" width="260%" height="400%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
 
-          <!-- Фото шаурмы (покачивается) -->
+          <!-- Фото шаурмы (плавает) -->
           <g class="sw-body">
             <image href="images/hero-shawarma-real.png" x="75" y="20" width="170" height="438"/>
           </g>
 
-          <!-- Пар (поверх фото) -->
-          <g fill="none" stroke="rgba(255,255,255,.85)" stroke-width="3" stroke-linecap="round">
-            <path class="steam-a" d="M127,32 Q117,20 127,10 Q137,2 127,-6"/>
-            <path class="steam-b" d="M160,26 Q150,14 160,4 Q170,-4 160,-12"/>
-            <path class="steam-c" d="M193,32 Q183,20 193,10 Q203,2 193,-6"/>
+          <!-- Пар: 5 струй, размытие, горячее свечение -->
+          <g filter="url(#steam-glow)" fill="none" stroke-linecap="round">
+            <path class="steam-a" d="M118,34 Q106,16 118,-2  Q130,-18 118,-36" stroke="rgba(255,235,180,.75)" stroke-width="4"/>
+            <path class="steam-b" d="M140,27 Q128,9  140,-9  Q152,-25 140,-43" stroke="rgba(255,255,255,.88)" stroke-width="5"/>
+            <path class="steam-c" d="M160,22 Q148,4  160,-14 Q172,-30 160,-48" stroke="rgba(255,255,255,.95)" stroke-width="6.5"/>
+            <path class="steam-d" d="M180,27 Q168,9  180,-9  Q192,-25 180,-43" stroke="rgba(255,255,255,.88)" stroke-width="5"/>
+            <path class="steam-e" d="M202,34 Q190,16 202,-2  Q214,-18 202,-36" stroke="rgba(255,235,180,.75)" stroke-width="4"/>
           </g>
 
         </svg>
