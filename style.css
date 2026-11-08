@@ -246,83 +246,25 @@ a { color: inherit; }
 .hero {
   position: relative;
   overflow: hidden;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 0;
-  padding-bottom: 72px;
-  padding-left: var(--pad);
-  padding-right: var(--pad);
-  min-height: max(560px, 94svh);
+  display: grid; align-content: start; gap: 24px;
+  padding: calc(var(--header-h) - 12px) var(--pad) 76px;
   background: var(--cobalt);
   color: #fff;
 }
 .hero-visual {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 12px;
-  overflow: visible;
-  padding-top: calc(var(--header-h) + 12px);
-  z-index: 1;
-  pointer-events: none;
-}
-.food-flip {
   position: relative;
-  flex: 0 0 auto;
-  width: 46vw;
-  max-width: 320px;
-  animation: fade-up .9s var(--ease) .2s both;
+  justify-self: end;
+  width: 86vw; max-width: 520px;
+  margin-right: -26vw;
 }
-.food-flip__whole,
-.food-flip__cut {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(-4px 12px 22px rgba(4, 14, 42, .55));
+.hero-visual::before, .hero-visual::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
 }
-.food-flip__cut {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  animation: sw-cut 4s ease-in-out 1s infinite;
-}
-.food-flip__whole {
-  animation: sw-whole 4s ease-in-out 1s infinite;
-}
-/* Беляш анимируется одновременно с шаурмой */
-
-@keyframes sw-whole {
-  0%, 28%   { opacity: 1; transform: scale(1); }
-  35%       { opacity: 0; transform: scale(.88); }
-  90%       { opacity: 0; transform: scale(.88); }
-  98%, 100% { opacity: 1; transform: scale(1); }
-}
-@keyframes sw-cut {
-  0%, 33%   { opacity: 0; transform: scale(1.1); }
-  42%       { opacity: 1; transform: scale(1); }
-  85%       { opacity: 1; transform: scale(1); }
-  93%       { opacity: 0; transform: scale(.92); }
-  100%      { opacity: 0; transform: scale(1.1); }
-}
-.hero-copy {
-  position: relative;
-  z-index: 2;
-  padding-bottom: 4px;
-}
+.hero-visual::before { inset: -8%;  border: 1.5px solid rgba(255, 255, 255, .16); }
+.hero-visual::after  { inset: -17%; border: 1.5px solid rgba(255, 255, 255, .08); }
 
 .plate--hero { box-shadow: 0 40px 70px -28px rgba(4, 14, 42, .75); }
 .plate--hero .plate-mono { font-size: 34cqw; }
-
-.hero-stamp {
-  position: absolute; left: -3%; bottom: 2%;
-  width: 27%; min-width: 92px; max-width: 150px;
-  transform: rotate(-12deg);
-}
-.hero-stamp circle { fill: var(--saffron); }
-.hero-stamp text { font-family: var(--font-body); font-weight: 600; font-size: 10.5px; fill: var(--ink); }
-.stamp-bowl, .stamp-steam { fill: none; stroke: var(--ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 
 .hero-copy { position: relative; z-index: 1; }
 .hero-title {
@@ -364,31 +306,11 @@ a { color: inherit; }
     padding-top: calc(var(--header-h) + 32px);
     padding-bottom: 110px;
   }
-  .hero-copy { grid-row: 1; grid-column: 1; position: relative; z-index: 2; }
+  .hero-copy { grid-row: 1; grid-column: 1; }
   .hero-visual {
-    position: relative;
     grid-row: 1; grid-column: 2;
-    width: auto; max-width: none;
-    pointer-events: auto;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    overflow: visible;
-    margin-right: -6vw;
-  }
-  .hero-visual {
-    justify-content: flex-end;
-    gap: 28px;
-    margin-right: -4vw;
-  }
-  .food-flip {
-    width: 28vw;
-    max-width: 480px;
-  }
-  .food-flip__whole,
-  .food-flip__cut {
-    width: 100%;
-    height: auto;
+    width: 54vw; max-width: 900px;
+    margin-right: -13vw;
   }
   .hero-title-pre { font-size: clamp(1.6rem, 2.6vw, 2.6rem); }
   .hero-title-main { font-size: clamp(4rem, 7.6vw, 9rem); }
