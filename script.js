@@ -15,10 +15,10 @@
 
 const CATEGORIES = [
   { id: 'shawarma',    title: 'Шаурма' },
-  { id: 'baking',      title: 'Выпечка' },
-  { id: 'drinks',      title: 'Напитки' },
   { id: 'lyulya',      title: 'Люля-кебаб' },
   { id: 'doner',       title: 'Донер' },
+  { id: 'baking',      title: 'Выпечка' },
+  { id: 'drinks',      title: 'Напитки' },
 ];
 
 const SHAWARMA_MENU_PHOTO   = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-menu.jpg';
