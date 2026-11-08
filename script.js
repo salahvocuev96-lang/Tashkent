@@ -63,7 +63,7 @@ const MENU = [
   { id: 'natakhtari-dyushes',  name: 'Натахтари Дюшес',       category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-dyushes.jpg', featured: true },
   { id: 'natakhtari-cream',    name: 'Натахтари Крем-сода',   category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-cream.jpg', featured: true },
   { id: 'natakhtari-feijoa',   name: 'Натахтари Фейхоа',      category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-feijoa.jpg', featured: true },
-  { id: 'natakhtari-tarhun',   name: 'Натахтари Тархун',      category: 'drinks', price: 180, description: '', photo: '', featured: true },
+  { id: 'natakhtari-tarhun',   name: 'Натахтари Тархун',      category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-tarhun.jpg', featured: true },
   { id: 'sultan-lemon',        name: 'Султан чай Лимон',      category: 'drinks', price: 150, description: '', photo: '', featured: true },
   { id: 'sultan-peach',        name: 'Султан чай Персик',     category: 'drinks', price: 150, description: '', photo: '', featured: true },
   { id: 'svgran-dyushes',      name: 'Святая Грань Дюшес',    category: 'drinks', price: 120, description: '', photo: '', featured: true },
