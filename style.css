@@ -271,8 +271,8 @@ a { color: inherit; }
 }
 .hero-title > span { display: block; overflow: hidden; padding-bottom: .08em; }
 .hero-title > span > span { display: block; }
-.hero-title-pre { font-weight: 500; font-size: clamp(1.4rem, 6.4vw, 2.6rem); letter-spacing: -.01em; opacity: .85; }
-.hero-title-main { font-weight: 800; font-size: clamp(3.2rem, 15.5vw, 10rem); }
+.hero-title-pre { font-weight: 500; font-size: clamp(1.1rem, 5vw, 2.6rem); letter-spacing: -.01em; opacity: .85; }
+.hero-title-main { font-weight: 800; font-size: clamp(2rem, 10.5vw, 10rem); }
 
 .hero-lead {
   max-width: 34ch;
@@ -308,8 +308,8 @@ a { color: inherit; }
     width: 54vw; max-width: 900px;
     margin-right: -13vw;
   }
-  .hero-title-pre { font-size: clamp(1.6rem, 2.6vw, 2.6rem); }
-  .hero-title-main { font-size: clamp(4rem, 7.6vw, 9rem); }
+  .hero-title-pre { font-size: clamp(1.4rem, 2.2vw, 2.6rem); }
+  .hero-title-main { font-size: clamp(2.8rem, 6vw, 8rem); }
   .hero-lead { font-size: 1.25rem; margin-top: 28px; }
   .hero-actions { margin-top: 36px; }
   .hero-credit { left: var(--pad); right: auto; }
