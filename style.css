@@ -349,6 +349,37 @@ a { color: inherit; }
 .hero-actions { animation: fade-up .8s var(--ease) .62s both; }
 .hero-stamp   { animation: stamp-in 1s var(--ease) .9s both; }
 
+/* ---------- Иллюстрация шаурмы ---------- */
+.hero-sw-art { width: 100%; height: auto; display: block; }
+
+@keyframes sw-bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+.sw-body {
+  transform-box: view-box;
+  transform-origin: 160px 245px;
+  animation: sw-bob 3.5s ease-in-out infinite;
+}
+
+@keyframes steam-up {
+  0%   { opacity: .8; transform: translateY(0); }
+  100% { opacity: 0;  transform: translateY(-55px); }
+}
+.steam-a, .steam-b, .steam-c { transform-box: fill-box; transform-origin: 50% 100%; }
+.steam-a { animation: steam-up 2.3s 0s     ease-in infinite; }
+.steam-b { animation: steam-up 2.3s .77s   ease-in infinite; }
+.steam-c { animation: steam-up 2.3s 1.54s  ease-in infinite; }
+
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+.orbit-t1, .orbit-t2, .orbit-t3 {
+  transform-box: view-box;
+  transform-origin: 160px 245px;
+  animation: orbit-spin 7s linear infinite;
+}
+.orbit-t2 { animation-delay: -2.33s; }
+.orbit-t3 { animation-delay: -4.67s; }
+
 /* ---------- Реплика плова (облачко на первом экране) ---------- */
 .thought {
   position: absolute; z-index: 2;
