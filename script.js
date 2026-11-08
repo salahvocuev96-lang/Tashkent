@@ -15,7 +15,6 @@
 
 const CATEGORIES = [
   { id: 'shawarma',    title: 'Шаурма' },
-  { id: 'lyulya',      title: 'Люля-кебаб' },
   { id: 'doner',       title: 'Донер' },
   { id: 'baking',      title: 'Выпечка' },
   { id: 'drinks',      title: 'Напитки' },
@@ -40,8 +39,8 @@ const MENU = [
   { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: 'Сочная курица, свежие овощи, хрустящие листья салата и нежный соус «Цезарь». Знакомое сочетание любимых ингредиентов в хрустящем лаваше.', photo: SHAWARMA_CAESAR_PHOTO, featured: true },
   { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, description: 'Сочная курица, свежие овощи и сочетание фирменных соусов, создающее насыщенный и яркий вкус. Всё завернуто в тонкий лаваш и обжарено до золотистой корочки.', photo: SHAWARMA_MIX_PHOTO, featured: true },
   { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420, description: 'Сочная говядина, свежие овощи и нежный фирменный соус в тонком лаваше, обжаренном до золотистой корочки. Насыщенный мясной вкус в каждом кусочке!', photo: SHAWARMA_BEEF_PHOTO, featured: true },
-  { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
-  { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
+  { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'shawarma', price: null, description: '', photo: '', featured: true },
+  { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'shawarma', price: null, description: '', photo: '', featured: true },
   // Донер
   { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, description: 'Нежная сочная курица, свежие овощи и фирменный соус, собранные в мягкой ароматной лепёшке. Сытный донер с насыщенным вкусом и аппетитной начинкой.', photo: DONER_CHICKEN_PHOTO, featured: true },
   { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, description: 'Сочная говядина, свежие овощи и фирменный соус в мягкой ароматной лепёшке. Насыщенный мясной вкус и щедрая начинка в каждом кусочке.', photo: DONER_BEEF_PHOTO,    featured: true },
