@@ -42,6 +42,20 @@ const MENU = [
   { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'shawarma', price: 450, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lyulya-beef.jpg', featured: true },
   { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'shawarma', price: 470, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lyulya-beef.jpg', featured: true },
   // Донер
+  // Выпечка
+  { id: 'lepeshka-big',     name: 'Лепёшка большая',       category: 'baking', price: 120, description: '', photo: '', featured: true },
+  { id: 'lepeshka-small',   name: 'Лепёшка маленькая',     category: 'baking', price: 50,  description: '', photo: '', featured: true },
+  { id: 'fatir',            name: 'Фатир',                  category: 'baking', price: 110, description: '', photo: '', featured: true },
+  { id: 'cheburek-beef',    name: 'Чебурек с говядиной',   category: 'baking', price: 110, description: '', photo: '', featured: true },
+  { id: 'cheburek-cheese',  name: 'Чебурек с сыром',       category: 'baking', price: 100, description: '', photo: '', featured: true },
+  { id: 'belyash-beef',     name: 'Беляш с говядиной',     category: 'baking', price: 110, description: '', photo: '', featured: true },
+  { id: 'pirozhok-potato',  name: 'Пирожки с картошкой',   category: 'baking', price: 70,  description: '', photo: '', featured: true },
+  { id: 'pirozhok-beef',    name: 'Пирожки с говядиной',   category: 'baking', price: 90,  description: '', photo: '', featured: true },
+  { id: 'pirozhok-cabbage', name: 'Пирожки с капустой',    category: 'baking', price: 60,  description: '', photo: '', featured: true },
+  { id: 'sosiska',          name: 'Сосиска в тесте',       category: 'baking', price: 100, description: '', photo: '', featured: true },
+  { id: 'samsa-beef',       name: 'Самса с говядиной',     category: 'baking', price: 110, description: '', photo: '', featured: true },
+  { id: 'samsa-lamb',       name: 'Самса с бараниной',     category: 'baking', price: 120, description: '', photo: '', featured: true },
+  // Донер
   { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, description: 'Нежная сочная курица, свежие овощи и фирменный соус, собранные в мягкой ароматной лепёшке. Сытный донер с насыщенным вкусом и аппетитной начинкой.', photo: DONER_CHICKEN_PHOTO, featured: true },
   { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, description: 'Сочная говядина, свежие овощи и фирменный соус в мягкой ароматной лепёшке. Насыщенный мясной вкус и щедрая начинка в каждом кусочке.', photo: DONER_BEEF_PHOTO,    featured: true },
 ];
