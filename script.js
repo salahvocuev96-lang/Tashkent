@@ -43,8 +43,8 @@ const MENU = [
   { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
   { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
   // Донер
-  { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, description: '', photo: DONER_CHICKEN_PHOTO, featured: true },
-  { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, description: '', photo: DONER_BEEF_PHOTO,    featured: true },
+  { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, description: 'Нежная сочная курица, свежие овощи и фирменный соус, собранные в мягкой ароматной лепёшке. Сытный донер с насыщенным вкусом и аппетитной начинкой.', photo: DONER_CHICKEN_PHOTO, featured: true },
+  { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, description: 'Сочная говядина, свежие овощи и фирменный соус в мягкой ароматной лепёшке. Насыщенный мясной вкус и щедрая начинка в каждом кусочке.', photo: DONER_BEEF_PHOTO,    featured: true },
 ];
 
 const EXTRAS = [
