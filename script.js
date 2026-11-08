@@ -67,7 +67,33 @@ const catById  = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
 const itemById = Object.fromEntries(MENU.map(i => [i.id, i]));
 
 const state = { category: CATEGORIES[0].id, query: '' };
-const cart = new Map(); // id -> количество
+// cart: Map<lineKey, {itemId, extraIds, qty}>
+// lineKey = itemId  (без добавок)  или  itemId + '|' + sorted extraIds
+const cart = new Map();
+
+function makeLineKey(itemId, extraIds) {
+  if (!extraIds || !extraIds.length) return itemId;
+  return itemId + '|' + [...extraIds].sort().join(',');
+}
+function lineFromKey(lineKey) {
+  const [itemId, extrasStr] = lineKey.split('|');
+  return { itemId, extraIds: extrasStr ? extrasStr.split(',') : [] };
+}
+function lineUnitPrice(itemId, extraIds) {
+  const item = itemById[itemId];
+  if (!hasPrice(item)) return null;
+  const extrasSum = (extraIds || []).reduce((s, eid) => {
+    const ex = EXTRAS.find(e => e.id === eid);
+    return s + (ex ? ex.price : 0);
+  }, 0);
+  return item.price + extrasSum;
+}
+function lineDisplayName(itemId, extraIds) {
+  const item = itemById[itemId];
+  if (!extraIds || !extraIds.length) return item.name;
+  const names = extraIds.map(eid => EXTRAS.find(e => e.id === eid)?.name || eid);
+  return item.name + ' + ' + names.join(', ');
+}
 
 const DISH_FORMS    = ['блюдо', 'блюда', 'блюд'];
 const PORTION_FORMS = ['порция', 'порции', 'порций'];
@@ -125,11 +151,12 @@ function plateMarkup(item, extraClass = '') {
 }
 
 /* ---------- Карточки меню ---------- */
-function controlMarkup(item, qty) {
+function controlMarkup(lineKey, qty, label) {
+  const name = esc(label || '');
   if (qty <= 0) {
-    return `<button class="add-btn" type="button" data-action="add" aria-label="Добавить «${esc(item.name)}» в корзину">${icon('plus')}<span>В корзину</span></button>`;
+    return `<button class="add-btn" type="button" data-action="add" aria-label="Добавить «${name}» в корзину">${icon('plus')}<span>В корзину</span></button>`;
   }
-  return `<div class="stepper" role="group" aria-label="Количество: ${esc(item.name)}">
+  return `<div class="stepper" role="group" aria-label="Количество: ${name}">
       <button type="button" data-action="dec" aria-label="Убрать одну порцию">${icon('minus')}</button>
       <output aria-live="polite">${qty}</output>
       <button type="button" data-action="inc" aria-label="Добавить ещё одну порцию">${icon('plus')}</button>
@@ -137,7 +164,8 @@ function controlMarkup(item, qty) {
 }
 
 function cardMarkup(item) {
-  const qty = cart.get(item.id) || 0;
+  const lineKey = item.id; // карточки всегда используют базовую линию (без добавок)
+  const qty = cart.get(lineKey)?.qty || 0;
   return `<article class="dish${item.featured ? ' dish--featured' : ''}" data-id="${esc(item.id)}" data-tone="${item.category}">
       ${plateMarkup(item, 'dish-plate')}
       <div class="dish-body">
@@ -146,7 +174,7 @@ function cardMarkup(item) {
         </div>
         <div class="dish-foot">
           <span class="price${hasPrice(item) ? '' : ' price--tbd'}">${priceText(item)}</span>
-          <div class="dish-control">${controlMarkup(item, qty)}</div>
+          <div class="dish-control">${controlMarkup(lineKey, qty, item.name)}</div>
         </div>
       </div>
     </article>`;
@@ -290,55 +318,63 @@ menuList.addEventListener('click', e => {
   if (btn) {
     const card = btn.closest('.dish');
     const id = card.dataset.id;
-    const qty = cart.get(id) || 0;
+    const lineKey = id; // карточки — базовая линия
+    const qty = cart.get(lineKey)?.qty || 0;
 
     switch (btn.dataset.action) {
       case 'add':
-        setQty(id, 1, 'inc');
+        setQty(lineKey, 1, 'inc');
         flyToCart($('.dish-plate', card));
         showToast(`«${itemById[id].name}» в корзине`);
         break;
       case 'inc':
-        setQty(id, qty + 1, 'inc');
+        setQty(lineKey, qty + 1, 'inc');
         bumpCart();
         break;
       case 'dec':
-        setQty(id, qty - 1, qty - 1 > 0 ? 'dec' : 'add');
+        setQty(lineKey, qty - 1, qty - 1 > 0 ? 'dec' : 'add');
         break;
     }
     return;
   }
-  // Клик по карточке (не по кнопке) — открыть модалку с крупным фото
   const card = e.target.closest('.dish');
   if (card) openDishModal(card.dataset.id);
 });
 
-function setQty(id, qty, focusAction) {
-  if (qty > 0) cart.set(id, Math.min(qty, 99));
-  else cart.delete(id);
-  updateCardControl(id, focusAction);
-  updateModalControl(id);
+function setQty(lineKey, qty, focusAction) {
+  if (qty > 0) {
+    const existing = cart.get(lineKey);
+    if (existing) {
+      cart.set(lineKey, { ...existing, qty: Math.min(qty, 99) });
+    } else {
+      const { itemId, extraIds } = lineFromKey(lineKey);
+      cart.set(lineKey, { itemId, extraIds, qty: Math.min(qty, 99) });
+    }
+  } else {
+    cart.delete(lineKey);
+  }
+  const { itemId } = lineFromKey(lineKey);
+  updateCardControl(itemId, focusAction);
+  updateModalControl(); // обновляет кнопку в модалке для текущего lineKey
   renderCart();
   updateCount();
 }
 
-function updateCardControl(id, focusAction) {
-  const card = menuList.querySelector(`.dish[data-id="${CSS.escape(id)}"]`);
+function updateCardControl(itemId, focusAction) {
+  const lineKey = itemId; // карточки — базовая линия (без добавок)
+  const card = menuList.querySelector(`.dish[data-id="${CSS.escape(itemId)}"]`);
   if (!card) return;
   const ctrl = $('.dish-control', card);
-  const qty = cart.get(id) || 0;
+  const item = itemById[itemId];
+  const qty = cart.get(lineKey)?.qty || 0;
   const output = $('output', ctrl);
 
-  // Количество просто изменилось — меняем только цифру
-  if (output && qty > 0) {
-    output.textContent = qty;
-    return;
-  }
+  if (output && qty > 0) { output.textContent = qty; return; }
 
   const hadFocus = ctrl.contains(document.activeElement);
-  ctrl.innerHTML = controlMarkup(itemById[id], qty);
+  ctrl.innerHTML = controlMarkup(lineKey, qty, item.name);
   ctrl.classList.remove('is-changed');
-  void ctrl.offsetWidth; // перезапуск анимации
+  void ctrl.offsetWidth;
   ctrl.classList.add('is-changed');
   if (hadFocus && focusAction) $(`[data-action="${focusAction}"]`, ctrl)?.focus();
 }
@@ -346,7 +382,9 @@ function updateCardControl(id, focusAction) {
 function refreshAllCardControls() {
   $$('.dish', menuList).forEach(card => {
     const item = itemById[card.dataset.id];
-    $('.dish-control', card).innerHTML = controlMarkup(item, cart.get(item.id) || 0);
+    const lineKey = item.id;
+    const qty = cart.get(lineKey)?.qty || 0;
+    $('.dish-control', card).innerHTML = controlMarkup(lineKey, qty, item.name);
   });
 }
 
@@ -362,6 +400,7 @@ const dishModalControl = $('#dish-modal-control');
 const dishModalExtras  = $('#dish-modal-extras');
 let modalItemId = null;
 let modalLastFocus = null;
+let modalSelectedExtras = new Set();
 
 function openDishModal(id) {
   const item = itemById[id];
@@ -378,24 +417,24 @@ function openDishModal(id) {
     dishModalDesc.hidden = true;
   }
 
-  dishModalPrice.textContent = priceText(item);
-  dishModalPrice.classList.toggle('price--tbd', !hasPrice(item));
+  modalSelectedExtras = new Set();
+  updateModalPrice(item);
 
-  // Добавки — только для категории шаурма
-  if (item.category === 'shawarma') {
+  // Добавки — только для шаурмы
+  if (item.category === 'shawarma' && hasPrice(item)) {
     dishModalExtras.innerHTML = '<p class="extras-title">Добавки</p>' +
-      EXTRAS.map(ex => `<div class="extra-row">
+      EXTRAS.map(ex => `<label class="extra-row">
+        <input type="checkbox" class="extra-check" data-extra-id="${ex.id}" data-extra-price="${ex.price}">
         <span class="extra-name">${esc(ex.name)} <span class="extra-weight">${ex.weight} г</span></span>
         <span class="extra-price">+${formatPrice(ex.price)}</span>
-      </div>`).join('') +
-      '<p class="extras-note">Добавки заказывайте у кассира</p>';
+      </label>`).join('');
     dishModalExtras.hidden = false;
   } else {
     dishModalExtras.innerHTML = '';
     dishModalExtras.hidden = true;
   }
 
-  updateModalControl(id);
+  updateModalControl();
 
   // фото: берём то же, что в карточке — в кэше, покажется мгновенно
   dishModalPhoto.innerHTML = item.photo
@@ -437,29 +476,59 @@ function closeDishModal() {
   }
 }
 
-function updateModalControl(id) {
-  if (modalItemId !== id) return;
-  const item = itemById[id];
+function updateModalPrice(item) {
+  if (!item) item = itemById[modalItemId];
   if (!item) return;
-  dishModalControl.innerHTML = controlMarkup(item, cart.get(id) || 0);
+  if (!hasPrice(item)) {
+    dishModalPrice.textContent = 'Цена уточняется';
+    dishModalPrice.classList.add('price--tbd');
+    return;
+  }
+  dishModalPrice.classList.remove('price--tbd');
+  const extrasSum = [...modalSelectedExtras].reduce((s, eid) => {
+    const ex = EXTRAS.find(e => e.id === eid);
+    return s + (ex ? ex.price : 0);
+  }, 0);
+  dishModalPrice.textContent = formatPrice(item.price + extrasSum);
 }
+
+function currentModalLineKey() {
+  if (!modalItemId) return null;
+  return makeLineKey(modalItemId, [...modalSelectedExtras]);
+}
+
+function updateModalControl() {
+  if (!modalItemId) return;
+  const lineKey = currentModalLineKey();
+  const qty = cart.get(lineKey)?.qty || 0;
+  dishModalControl.innerHTML = controlMarkup(lineKey, qty, lineDisplayName(modalItemId, [...modalSelectedExtras]));
+}
+
+dishModalExtras.addEventListener('change', e => {
+  const cb = e.target.closest('.extra-check');
+  if (!cb) return;
+  if (cb.checked) modalSelectedExtras.add(cb.dataset.extraId);
+  else modalSelectedExtras.delete(cb.dataset.extraId);
+  updateModalPrice();
+  updateModalControl();
+});
 
 dishModalBackdrop.addEventListener('click', closeDishModal);
 dishModal.addEventListener('click', e => {
   if (e.target.closest('[data-close]')) { closeDishModal(); return; }
   const btn = e.target.closest('[data-action]');
   if (!btn || !modalItemId) return;
-  const id = modalItemId;
-  const qty = cart.get(id) || 0;
+  const lineKey = currentModalLineKey();
+  const qty = cart.get(lineKey)?.qty || 0;
   if (btn.dataset.action === 'add') {
-    setQty(id, 1, 'inc');
+    setQty(lineKey, 1, 'inc');
     bumpCart();
-    showToast(`«${itemById[id].name}» в корзине`);
+    showToast(`«${itemById[modalItemId].name}» в корзине`);
   } else if (btn.dataset.action === 'inc') {
-    setQty(id, qty + 1, 'inc');
+    setQty(lineKey, qty + 1, 'inc');
     bumpCart();
   } else if (btn.dataset.action === 'dec') {
-    setQty(id, qty - 1, qty - 1 > 0 ? 'dec' : 'add');
+    setQty(lineKey, qty - 1, qty - 1 > 0 ? 'dec' : 'add');
   }
 });
 
@@ -513,10 +582,10 @@ let lastFocus = null;
 
 function totals() {
   let sum = 0, unknown = 0, count = 0;
-  for (const [id, qty] of cart) {
-    const item = itemById[id];
+  for (const [lineKey, { itemId, extraIds, qty }] of cart) {
     count += qty;
-    if (hasPrice(item)) sum += item.price * qty;
+    const p = lineUnitPrice(itemId, extraIds);
+    if (p !== null) sum += p * qty;
     else unknown += qty;
   }
   return { sum, unknown, count };
@@ -531,50 +600,56 @@ function updateCount() {
     : 'Корзина пуста');
 }
 
-function cartItemPriceLine(item, qty) {
-  return hasPrice(item)
-    ? (qty > 1 ? `${formatPrice(item.price)} × ${qty} = ${formatPrice(item.price * qty)}` : formatPrice(item.price))
-    : 'Цена уточняется';
+function cartItemPriceLine(itemId, extraIds, qty) {
+  const p = lineUnitPrice(itemId, extraIds);
+  if (p === null) return 'Цена уточняется';
+  return qty > 1 ? `${formatPrice(p)} × ${qty} = ${formatPrice(p * qty)}` : formatPrice(p);
 }
 
-function cartItemMarkup(item, qty) {
-  return `<li class="cart-item" data-id="${esc(item.id)}">
+function cartItemMarkup(lineKey, { itemId, extraIds, qty }) {
+  const item = itemById[itemId];
+  const name = lineDisplayName(itemId, extraIds);
+  const extrasHtml = extraIds.length
+    ? `<p class="cart-item-extras">${extraIds.map(eid => EXTRAS.find(e => e.id === eid)?.name || '').join(', ')}</p>`
+    : '';
+  return `<li class="cart-item" data-line="${esc(lineKey)}">
       ${plateMarkup(item)}
       <div>
         <p class="cart-item-name">${esc(item.name)}</p>
-        <p class="cart-item-price">${cartItemPriceLine(item, qty)}</p>
+        ${extrasHtml}
+        <p class="cart-item-price">${cartItemPriceLine(itemId, extraIds, qty)}</p>
       </div>
-      ${controlMarkup(item, qty)}
-      <button class="icon-btn cart-remove" type="button" data-action="remove" aria-label="Удалить «${esc(item.name)}» из корзины">${icon('trash')}</button>
+      ${controlMarkup(lineKey, qty, name)}
+      <button class="icon-btn cart-remove" type="button" data-action="remove" aria-label="Удалить из корзины">${icon('trash')}</button>
     </li>`;
 }
 
 function renderCart() {
   const focused = document.activeElement;
-  const focusId = cartList.contains(focused) ? focused.closest('.cart-item')?.dataset.id : null;
-  const focusAction = focusId ? focused.dataset.action : null;
+  const focusLine = cartList.contains(focused) ? focused.closest('.cart-item')?.dataset.line : null;
+  const focusAction = focusLine ? focused.dataset.action : null;
 
   const entries = [...cart.entries()];
-  const cartIds = new Set(entries.map(([id]) => id));
+  const lineKeys = new Set(entries.map(([k]) => k));
 
-  // Удалить элементы, которых больше нет в корзине
+  // Удалить строки, которых больше нет в корзине
   $$('.cart-item', cartList).forEach(li => {
-    if (!cartIds.has(li.dataset.id)) li.remove();
+    if (!lineKeys.has(li.dataset.line)) li.remove();
   });
 
-  // Обновить существующие или добавить новые (без замены картинок)
-  entries.forEach(([id, qty]) => {
-    const item = itemById[id];
-    let li = cartList.querySelector(`.cart-item[data-id="${CSS.escape(id)}"]`);
+  // Обновить существующие или добавить новые
+  entries.forEach(([lineKey, entry]) => {
+    const { itemId, extraIds, qty } = entry;
+    let li = cartList.querySelector(`.cart-item[data-line="${CSS.escape(lineKey)}"]`);
     if (!li) {
       const tmpl = document.createElement('template');
-      tmpl.innerHTML = cartItemMarkup(item, qty);
+      tmpl.innerHTML = cartItemMarkup(lineKey, entry);
       cartList.appendChild(tmpl.content.firstElementChild);
     } else {
       const priceEl = li.querySelector('.cart-item-price');
-      if (priceEl) priceEl.textContent = cartItemPriceLine(item, qty);
+      if (priceEl) priceEl.textContent = cartItemPriceLine(itemId, extraIds, qty);
       const ctrl = li.querySelector('.dish-control');
-      if (ctrl) ctrl.innerHTML = controlMarkup(item, qty);
+      if (ctrl) ctrl.innerHTML = controlMarkup(lineKey, qty, lineDisplayName(itemId, extraIds));
     }
   });
 
@@ -590,9 +665,9 @@ function renderCart() {
     : unknown > 0 ? `Без учёта ${unknown} ${plural(unknown, PORTION_FORMS)} без цены.`
     : '';
 
-  if (focusId && drawer.classList.contains('is-open')) {
-    const target = $(`.cart-item[data-id="${CSS.escape(focusId)}"] [data-action="${focusAction}"]`, cartList)
-      || $(`.cart-item[data-id="${CSS.escape(focusId)}"] [data-action]`, cartList)
+  if (focusLine && drawer.classList.contains('is-open')) {
+    const target = $(`.cart-item[data-line="${CSS.escape(focusLine)}"] [data-action="${focusAction}"]`, cartList)
+      || $(`.cart-item[data-line="${CSS.escape(focusLine)}"] [data-action]`, cartList)
       || $('[data-action="remove"]', cartList)
       || $('[data-view="cart"] [data-close]', drawer);
     target?.focus();
@@ -603,21 +678,21 @@ cartList.addEventListener('click', e => {
   const btn = e.target.closest('[data-action]');
   if (!btn) return;
   const row = btn.closest('.cart-item');
-  const id = row.dataset.id;
-  const qty = cart.get(id) || 0;
+  const lineKey = row.dataset.line;
+  const qty = cart.get(lineKey)?.qty || 0;
 
-  if (btn.dataset.action === 'inc') setQty(id, qty + 1);
+  if (btn.dataset.action === 'inc') setQty(lineKey, qty + 1);
   if (btn.dataset.action === 'dec') {
-    if (qty - 1 > 0) setQty(id, qty - 1);
-    else removeRow(row, id);
+    if (qty - 1 > 0) setQty(lineKey, qty - 1);
+    else removeRow(row, lineKey);
   }
-  if (btn.dataset.action === 'remove') removeRow(row, id);
+  if (btn.dataset.action === 'remove') removeRow(row, lineKey);
 });
 
-function removeRow(row, id) {
-  if (reducedMotion()) { setQty(id, 0); return; }
+function removeRow(row, lineKey) {
+  if (reducedMotion()) { setQty(lineKey, 0); return; }
   row.classList.add('is-leaving');
-  row.addEventListener('animationend', () => setQty(id, 0), { once: true });
+  row.addEventListener('animationend', () => setQty(lineKey, 0), { once: true });
 }
 
 function showView(name, { back = false, instant = false } = {}) {
@@ -679,7 +754,8 @@ function renderSummary() {
   const { count } = totals();
   $('#order-summary-title').textContent = `В заказе ${count} ${plural(count, PORTION_FORMS)}`;
   $('#order-summary-list').innerHTML = [...cart.entries()]
-    .map(([id, qty]) => `<li><span>${esc(itemById[id].name)}</span><span>× ${qty}</span></li>`)
+    .map(([lineKey, { itemId, extraIds, qty }]) =>
+      `<li><span>${esc(lineDisplayName(itemId, extraIds))}</span><span>× ${qty}</span></li>`)
     .join('');
 }
 
