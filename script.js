@@ -57,7 +57,7 @@ const MENU = [
   { id: 'samsa-lamb',       name: 'Самса с бараниной',     category: 'baking', price: 120, description: '', photo: '', featured: true },
   // Донер
   // Напитки
-  { id: 'rich-apple',          name: 'Рич яблочный',          category: 'drinks', price: 200, description: '', photo: '', featured: true },
+  { id: 'rich-apple',          name: 'Рич яблочный',          category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/rich-apple.jpg', featured: true },
   { id: 'rich-cola',           name: 'Рич кола',              category: 'drinks', price: 200, description: '', photo: '', featured: true },
   { id: 'coca-cola-1l',        name: 'Кока-Кола',             category: 'drinks', price: 200, description: '', photo: '', featured: true },
   { id: 'natakhtari-dyushes',  name: 'Натахтари Дюшес',       category: 'drinks', price: 180, description: '', photo: '', featured: true },
