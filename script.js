@@ -143,7 +143,6 @@ function cardMarkup(item) {
       <div class="dish-body">
         <div>
           <h4 class="dish-name">${esc(item.name)}</h4>
-          ${item.description ? `<p class="dish-desc">${esc(item.description)}</p>` : ''}
         </div>
         <div class="dish-foot">
           <span class="price${hasPrice(item) ? '' : ' price--tbd'}">${priceText(item)}</span>
