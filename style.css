@@ -354,7 +354,7 @@ a { color: inherit; }
 }
 .sw-body {
   transform-box: view-box;
-  transform-origin: 160px 245px;
+  transform-origin: 160px 240px;
   animation: sw-bob 3.5s ease-in-out infinite;
 }
 
