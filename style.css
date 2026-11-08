@@ -346,7 +346,7 @@ a { color: inherit; }
 .hero-stamp   { animation: stamp-in 1s var(--ease) .9s both; }
 
 /* ---------- Иллюстрация шаурмы ---------- */
-.hero-sw-art { width: 100%; height: auto; display: block; }
+.hero-sw-art { width: 100%; height: auto; display: block; overflow: visible; }
 
 @keyframes sw-float {
   0%   { transform: translateY(0)     rotate(0deg); }
