@@ -31,13 +31,13 @@ const SHAWARMA_BEEF_PHOTO     = 'https://raw.githubusercontent.com/salahvocuev96
 
 const MENU = [
   // Шаурма
-  { id: 'shawarma',          name: 'Шаурма классическая', category: 'shawarma', price: 270,  description: '', photo: SHAWARMA_MENU_PHOTO, featured: true },
-  { id: 'shawarma-cheese',   name: 'Шаурма чиз',          category: 'shawarma', price: 320, description: '', photo: SHAWARMA_CHEESE_PHOTO, featured: true },
-  { id: 'shawarma-bbq',      name: 'Шаурма барбекю',      category: 'shawarma', price: 320, description: '', photo: SHAWARMA_BBQ_PHOTO, featured: true },
-  { id: 'shawarma-teriyaki', name: 'Шаурма терияки',      category: 'shawarma', price: 310, description: '', photo: SHAWARMA_TERIYAKI_PHOTO, featured: true },
-  { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: '', photo: SHAWARMA_CAESAR_PHOTO, featured: true },
-  { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, description: '', photo: SHAWARMA_MIX_PHOTO, featured: true },
-  { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420,  description: '', photo: SHAWARMA_BEEF_PHOTO, featured: true },
+  { id: 'shawarma',          name: 'Шаурма классическая', category: 'shawarma', price: 270, description: 'Сочная курица, свежие овощи и нежный фирменный соус, завернутые в тонкий лаваш и обжаренные до золотистой корочки. Классический вкус, который всегда к месту!', photo: SHAWARMA_MENU_PHOTO, featured: true },
+  { id: 'shawarma-cheese',   name: 'Шаурма чиз',          category: 'shawarma', price: 320, description: 'Сочная курица, расплавленный сыр, свежие овощи и нежный фирменный соус в хрустящем лаваше. Любимое сочетание ингредиентов с насыщенным сырным вкусом!', photo: SHAWARMA_CHEESE_PHOTO, featured: true },
+  { id: 'shawarma-bbq',      name: 'Шаурма барбекю',      category: 'shawarma', price: 320, description: 'Сочная курица, свежие овощи и фирменный соус барбекю с приятными копчёными нотками. Всё завернуто в тонкий лаваш и обжарено до золотистой корочки.', photo: SHAWARMA_BBQ_PHOTO, featured: true },
+  { id: 'shawarma-teriyaki', name: 'Шаурма терияки',      category: 'shawarma', price: 310, description: 'Сочная курица, свежие овощи и ароматный соус терияки с приятным сладко-солёным вкусом. Всё в тонком лаваше, обжаренном до золотистой корочки.', photo: SHAWARMA_TERIYAKI_PHOTO, featured: true },
+  { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: 'Сочная курица, свежие овощи, хрустящие листья салата и нежный соус «Цезарь». Знакомое сочетание любимых ингредиентов в хрустящем лаваше.', photo: SHAWARMA_CAESAR_PHOTO, featured: true },
+  { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, description: 'Сочная курица, свежие овощи и сочетание фирменных соусов, создающее насыщенный и яркий вкус. Всё завернуто в тонкий лаваш и обжарено до золотистой корочки.', photo: SHAWARMA_MIX_PHOTO, featured: true },
+  { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420, description: 'Сочная говядина, свежие овощи и нежный фирменный соус в тонком лаваше, обжаренном до золотистой корочки. Насыщенный мясной вкус в каждом кусочке!', photo: SHAWARMA_BEEF_PHOTO, featured: true },
   { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
   { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'lyulya', price: null, description: '', photo: '', featured: true },
 ];
