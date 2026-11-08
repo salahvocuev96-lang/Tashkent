@@ -24,12 +24,12 @@ const SHAWARMA_MENU_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lan
 const MENU = [
   // Шаурма
   { id: 'shawarma',          name: 'Шаурма классическая', category: 'shawarma', price: 270,  description: '', photo: SHAWARMA_MENU_PHOTO, featured: true },
-  { id: 'shawarma-cheese',   name: 'Шаурма чиз',          category: 'shawarma', price: null, description: '', photo: '', featured: true },
-  { id: 'shawarma-bbq',      name: 'Шаурма барбекю',      category: 'shawarma', price: null, description: '', photo: '', featured: true },
-  { id: 'shawarma-teriyaki', name: 'Шаурма терияки',      category: 'shawarma', price: null, description: '', photo: '', featured: true },
-  { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: null, description: '', photo: '', featured: true },
-  { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: null, description: '', photo: '', featured: true },
-  { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: null, description: '', photo: '', featured: true },
+  { id: 'shawarma-cheese',   name: 'Шаурма чиз',          category: 'shawarma', price: 320, description: '', photo: '', featured: true },
+  { id: 'shawarma-bbq',      name: 'Шаурма барбекю',      category: 'shawarma', price: 320, description: '', photo: '', featured: true },
+  { id: 'shawarma-teriyaki', name: 'Шаурма терияки',      category: 'shawarma', price: 310, description: '', photo: '', featured: true },
+  { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: '', photo: '', featured: true },
+  { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, description: '', photo: '', featured: true },
+  { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420, description: '', photo: '', featured: true },
 ];
 
 const ADDRESS = 'Москва, улица Зорге, 2';
