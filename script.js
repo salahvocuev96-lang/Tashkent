@@ -74,7 +74,7 @@ const MENU = [
   { id: 'fanta-033',           name: 'Фанта',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fanta.jpg', featured: true },
   { id: 'coca-cola-033',       name: 'Кока-Кола',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-033.jpg', featured: true },
   { id: 'ayran',               name: 'Айран',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/ayran.jpg', featured: true },
-  { id: 'mors',                name: 'Морс',                  category: 'drinks', price: 120, description: '', photo: '', featured: true },
+  { id: 'mors',                name: 'Морс',                  category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/mors.jpg', featured: true },
   { id: 'royal-granat',        name: 'Роял гранатовый',       category: 'drinks', price: 100, description: '', photo: '', featured: true },
   { id: 'drive',               name: 'Драйв',                 category: 'drinks', price: 120, description: '', photo: '', featured: true },
   { id: 'gorilla',             name: 'Горилла',               category: 'drinks', price: 120, description: '', photo: '', featured: true },
