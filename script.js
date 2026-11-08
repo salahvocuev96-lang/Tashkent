@@ -68,7 +68,7 @@ const MENU = [
   { id: 'sultan-peach',        name: 'Султан чай Персик',     category: 'drinks', price: 150, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sultan-peach.jpg', featured: true },
   { id: 'svgran-dyushes',      name: 'Святая Грань Дюшес',    category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/svgran-dyushes.jpg', featured: true },
   { id: 'svgran-tarhun',       name: 'Святая Грань Тархун',   category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/svgran-tarhun.jpg', featured: true },
-  { id: 'flavis',              name: 'Флавис',                category: 'drinks', price: 120, description: '', photo: '', featured: true },
+  { id: 'flavis',              name: 'Флавис',                category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/flavis.jpg', featured: true },
   { id: 'fanta-05',            name: 'Фанта',                 category: 'drinks', price: 120, description: '', photo: '', featured: true },
   { id: 'coca-cola-05',        name: 'Кока-Кола',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola.jpg', featured: true },
   { id: 'fanta-033',           name: 'Фанта',                 category: 'drinks', price: 120, description: '', photo: '', featured: true },
