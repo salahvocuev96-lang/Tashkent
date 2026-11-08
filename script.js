@@ -20,7 +20,7 @@ const CATEGORIES = [
   { id: 'salads', title: 'Салаты' },
 ];
 
-const SHAWARMA_MENU_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-menu.png';
+const SHAWARMA_MENU_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/shawarma-menu.jpg';
 const DOLMA_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/dolma.jpg';
 const KAZAN_KEBAB_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/kazan-kebab.jpg';
 const CHICKEN_SHASHLIK_PHOTO = 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/chicken-shashlik.jpg';
