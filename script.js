@@ -41,7 +41,7 @@ const reducedMotion = () => motionQuery.matches;
 const catById  = Object.fromEntries(CATEGORIES.map(c => [c.id, c]));
 const itemById = Object.fromEntries(MENU.map(i => [i.id, i]));
 
-const state = { category: 'all', query: '' };
+const state = { category: CATEGORIES[0].id, query: '' };
 const cart = new Map(); // id -> количество
 
 const DISH_FORMS    = ['блюдо', 'блюда', 'блюд'];
@@ -147,7 +147,6 @@ function filterItems(categoryId) {
 
 function renderTabs() {
   const tabs = [
-    { id: 'all', title: 'Всё меню', count: MENU.length },
     ...CATEGORIES.map(c => ({ id: c.id, title: c.title, count: MENU.filter(i => i.category === c.id).length })),
   ];
   tabsEl.innerHTML = tabs.map(t =>
