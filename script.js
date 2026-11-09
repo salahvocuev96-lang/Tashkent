@@ -83,7 +83,7 @@ const MENU = [
   { id: 'adrenalin-100',       name: 'Адреналин',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
   { id: 'redbull-473',         name: 'Ред Булл',              category: 'drinks', price: 300, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/redbull-473.jpg', featured: true },
   { id: 'redbull-100',         name: 'Ред Булл',              category: 'drinks', price: 160, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/redbull-100.jpg', featured: true },
-  { id: 'monster',             name: 'Монстер',               category: 'drinks', price: 250, description: '', photo: '', featured: true },
+  { id: 'monster',             name: 'Монстер',               category: 'drinks', price: 250, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/monster.jpg', featured: true },
   // Донер
   { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, description: 'Нежная сочная курица, свежие овощи и фирменный соус, собранные в мягкой ароматной лепёшке. Сытный донер с насыщенным вкусом и аппетитной начинкой.', photo: DONER_CHICKEN_PHOTO, featured: true },
   { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, description: 'Сочная говядина, свежие овощи и фирменный соус в мягкой ароматной лепёшке. Насыщенный мясной вкус и щедрая начинка в каждом кусочке.', photo: DONER_BEEF_PHOTO,    featured: true },
