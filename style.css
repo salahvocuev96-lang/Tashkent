@@ -303,6 +303,7 @@ a { color: inherit; }
     padding-bottom: 110px;
   }
   .hero-copy { grid-row: 1; grid-column: 1; }
+  .hero-sw-art .sp { display: none; }
   .hero-visual {
     grid-row: 1; grid-column: 2;
     justify-self: end;
