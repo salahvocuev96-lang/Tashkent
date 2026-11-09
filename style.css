@@ -254,7 +254,8 @@ a { color: inherit; }
 .hero-visual {
   position: relative;
   justify-self: center;
-  width: 92vw; max-width: 520px;
+  width: 89.5vw; max-width: 541px;
+  margin-top: 48px;
 }
 
 
@@ -304,15 +305,16 @@ a { color: inherit; }
   .hero-copy { grid-row: 1; grid-column: 1; }
   .hero-visual {
     grid-row: 1; grid-column: 2;
-    width: min(44vw, 82svh); max-width: 780px;
+    justify-self: end;
+    width: 48vw; max-width: 936px;
+    margin-right: calc(-1 * var(--pad));
+    margin-top: 0;
   }
   .hero-title-pre { font-size: clamp(1.4rem, 2.2vw, 2.6rem); }
   .hero-title-main { font-size: clamp(2.8rem, 6vw, 8rem); }
   .hero-lead { font-size: 1.25rem; margin-top: 28px; }
   .hero-actions { margin-top: 36px; }
   .hero-credit { left: var(--pad); right: auto; }
-  /* Пузырь вплотную к левому краю шаурмы */
-  .thought { right: 76%; top: 4%; }
 }
 
 /* Зубчатый край — как борт блюда. Цвета задаются переменными. */
@@ -385,115 +387,8 @@ a { color: inherit; }
 .sp-R1 { animation-delay: -0.8s; }
 .sp-R2 { animation-delay: -2.0s; }
 
-.sw-body--left  { transform-origin: 115px 240px; }
-.sw-body--right { transform-origin: 305px 240px; }
-
-/* ---------- Реплика плова (облачко на первом экране) ---------- */
-.thought {
-  position: absolute; z-index: 2;
-  top: 4%; right: 93%;
-  width: max-content;
-  animation: thought-drift 5s ease-in-out 1.6s infinite alternate;
-}
-.thought-cloud {
-  margin: 0;
-  padding: 16px 22px 18px;
-  border-radius: 30px 30px 8px 30px;
-  background: var(--paper);
-  color: var(--ink);
-  box-shadow:
-    inset 0 0 0 1px rgba(29, 63, 138, .06),
-    0 6px 14px -8px rgba(4, 14, 42, .45),
-    0 26px 48px -22px rgba(4, 14, 42, .7);
-  transform-origin: 92% 100%;
-  animation: thought-open .65s cubic-bezier(.34, 1.56, .64, 1) .4s both;
-}
-.thought-line { display: block; animation: thought-text .5s cubic-bezier(.22, 1, .36, 1) both; }
-.thought-line--lead {
-  font-size: 1rem; font-weight: 500; font-style: italic; line-height: 1.35;
-  color: var(--ink); opacity: .72;
-  animation-delay: .8s;
-}
-.thought-line--key {
-  margin-top: 4px;
-  font-family: var(--font-display); font-weight: 800;
-  font-size: 1.2rem; line-height: 1.2; letter-spacing: -.02em;
-  color: var(--cobalt);
-  white-space: nowrap;
-  animation-delay: .95s;
-}
-.thought-accent { position: relative; z-index: 0; }
-.thought-accent::after {
-  content: ""; position: absolute; z-index: -1;
-  left: -2px; right: -2px; bottom: .04em; height: .42em;
-  border-radius: 3px;
-  background: rgba(240, 168, 30, .5);
-  transform-origin: left center;
-  animation: thought-mark .5s cubic-bezier(.65, 0, .35, 1) 1.35s both;
-}
-
-/* цепочка пузырьков */
-.thought-dot {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--paper);
-  box-shadow: 0 6px 12px -6px rgba(4, 14, 42, .6);
-  animation: thought-dot .4s cubic-bezier(.34, 1.56, .64, 1) both;
-}
-.thought-dot--1 { width: 14px; height: 14px; right: 2px;   top: calc(100% + 9px);  animation-delay: 1.05s; }
-.thought-dot--2 { width: 9px;  height: 9px;  right: -14px; top: calc(100% + 27px); animation-delay: 1.15s; }
-.thought-dot--3 { width: 6px;  height: 6px;  right: -26px; top: calc(100% + 41px); animation-delay: 1.25s; }
-
-@keyframes thought-open {
-  0%   { opacity: 0; transform: scale(.55) translate(14px, 14px); }
-  60%  { transform: scale(1.04); }
-  100% { opacity: 1; transform: none; }
-}
-@keyframes thought-text {
-  from { opacity: 0; transform: translateY(5px); }
-  to   { opacity: 1; transform: none; }
-}
-@keyframes thought-mark { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes thought-dot  {
-  from { opacity: 0; transform: scale(.3); }
-  to   { opacity: 1; transform: none; }
-}
-@keyframes thought-drift {
-  from { transform: translateY(0) rotate(-.4deg); }
-  to   { transform: translateY(-5px) rotate(.4deg); }
-}
-
-/* Пузырь скрыт и заморожен — ждёт загрузки фото шаурмы */
-.thought { visibility: hidden; }
-.thought,
-.thought-cloud,
-.thought-line,
-.thought-accent::after,
-.thought-dot { animation-play-state: paused; }
-
-.sw-loaded .thought { visibility: visible; }
-.sw-loaded .thought,
-.sw-loaded .thought-cloud,
-.sw-loaded .thought-line,
-.sw-loaded .thought-accent::after,
-.sw-loaded .thought-dot { animation-play-state: running; }
-
-/* Телефон: освобождаем полосу над тарелкой и ставим облачко в неё */
-@media (max-width: 639px) {
-  .hero-visual { margin-top: 72px; }
-  .thought { top: -48px; right: auto; left: 0; }
-  .thought-cloud { padding: 12px 16px 14px; border-radius: 24px 24px 7px 24px; }
-  .thought-line--lead { font-size: .875rem; }
-  .thought-line--key { font-size: clamp(.8125rem, 3.6vw, .9375rem); }
-  .thought-dot--1 { width: 10px; height: 10px; right: -9px;  top: calc(100% - 7px); }
-  .thought-dot--2 { width: 7px;  height: 7px;  right: -21px; top: calc(100% + 1px); }
-  .thought-dot--3 { width: 5px;  height: 5px;  right: -30px; top: calc(100% + 8px); }
-}
-/* Планшет: пузырь ближе к шаурме */
-@media (min-width: 640px) and (max-width: 959px) {
-  .hero-visual { margin-top: 84px; }
-  .thought { top: -64px; right: auto; left: 0; }
-}
+.sw-body--left  { transform-origin: 85px 240px; }
+.sw-body--right { transform-origin: 257px 240px; }
 
 /* ---------- Заголовки секций ---------- */
 .section-title {

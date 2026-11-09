@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=81">
+  <link rel="stylesheet" href="style.css?v=82">
 </head>
 <body>
 
@@ -66,47 +66,36 @@
 
       <div class="hero-visual">
 
-        <div class="thought">
-          <p class="thought-cloud">
-            <span class="thought-line thought-line--lead">А ты попробовал нашу</span>
-            <span class="thought-line thought-line--key"><span class="thought-accent">фирменную шаурму</span>?</span>
-          </p>
-          <span class="thought-dot thought-dot--1" aria-hidden="true"></span>
-          <span class="thought-dot thought-dot--2" aria-hidden="true"></span>
-          <span class="thought-dot thought-dot--3" aria-hidden="true"></span>
-        </div>
 
-        <svg class="hero-sw-art" viewBox="0 0 420 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" overflow="visible">
+        <svg class="hero-sw-art" viewBox="5 0 333 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" overflow="visible">
           <defs>
             <filter id="sf" x="-200%" y="-200%" width="500%" height="500%">
               <feGaussianBlur stdDeviation="6"/>
             </filter>
           </defs>
 
-          <!-- Шаурма слева -->
           <g class="sw-body sw-body--left">
-            <image href="images/hero-shawarma2.png" x="30" y="20" width="170" height="438"/>
+            <image href="images/hero-shawarma-wrap.png" x="0" y="20" width="170" height="438"/>
           </g>
           <g fill="rgba(255,255,255,.66)">
-            <ellipse class="sp sp-L1" cx="90"  cy="28" rx="10" ry="7" filter="url(#sf)"/>
-            <ellipse class="sp sp-L2" cx="90"  cy="28" rx="10" ry="7" filter="url(#sf)"/>
-            <ellipse class="sp sp-C1" cx="115" cy="22" rx="14" ry="9" filter="url(#sf)"/>
-            <ellipse class="sp sp-C2" cx="115" cy="22" rx="14" ry="9" filter="url(#sf)"/>
-            <ellipse class="sp sp-R1" cx="140" cy="28" rx="10" ry="7" filter="url(#sf)"/>
-            <ellipse class="sp sp-R2" cx="140" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+            <ellipse class="sp sp-L1" cx="60" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+            <ellipse class="sp sp-L2" cx="60" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+            <ellipse class="sp sp-C1" cx="85" cy="22" rx="14" ry="9" filter="url(#sf)"/>
+            <ellipse class="sp sp-C2" cx="85" cy="22" rx="14" ry="9" filter="url(#sf)"/>
+            <ellipse class="sp sp-R1" cx="110" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+            <ellipse class="sp sp-R2" cx="110" cy="28" rx="10" ry="7" filter="url(#sf)"/>
           </g>
 
-          <!-- Шаурма справа -->
           <g class="sw-body sw-body--right">
-            <image href="images/hero-shawarma-real.png" x="220" y="20" width="170" height="438"/>
+            <image href="images/hero-shawarma-real.png" x="172" y="20" width="170" height="438"/>
           </g>
           <g fill="rgba(255,255,255,.66)">
-            <ellipse class="sp sp-L1" cx="280" cy="28" rx="10" ry="7" filter="url(#sf)"/>
-            <ellipse class="sp sp-L2" cx="280" cy="28" rx="10" ry="7" filter="url(#sf)"/>
-            <ellipse class="sp sp-C1" cx="305" cy="22" rx="14" ry="9" filter="url(#sf)"/>
-            <ellipse class="sp sp-C2" cx="305" cy="22" rx="14" ry="9" filter="url(#sf)"/>
-            <ellipse class="sp sp-R1" cx="330" cy="28" rx="10" ry="7" filter="url(#sf)"/>
-            <ellipse class="sp sp-R2" cx="330" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+            <ellipse class="sp sp-L1" cx="232" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+            <ellipse class="sp sp-L2" cx="232" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+            <ellipse class="sp sp-C1" cx="257" cy="22" rx="14" ry="9" filter="url(#sf)"/>
+            <ellipse class="sp sp-C2" cx="257" cy="22" rx="14" ry="9" filter="url(#sf)"/>
+            <ellipse class="sp sp-R1" cx="282" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+            <ellipse class="sp sp-R2" cx="282" cy="28" rx="10" ry="7" filter="url(#sf)"/>
           </g>
 
         </svg>
@@ -360,21 +349,5 @@
 
   <script src="script.js?v=83" defer></script>
   <script type="module" src="reviews.js?v=2"></script>
-  <script>
-  (function () {
-    var visual = document.querySelector('.hero-visual');
-    if (!visual) return;
-    function reveal() { visual.classList.add('sw-loaded'); }
-    var svgImg = document.querySelector('.hero-sw-art image');
-    var src = svgImg ? (svgImg.getAttribute('href') || svgImg.href.baseVal || '') : '';
-    if (!src) { reveal(); return; }
-    var tmp = new Image();
-    tmp.onload = tmp.onerror = reveal;
-    tmp.src = src;
-    if (tmp.complete) reveal();
-    // страховка: если window.load прошёл раньше — показываем в любом случае
-    window.addEventListener('load', reveal, { once: true });
-  })();
-  </script>
 </body>
 </html>
