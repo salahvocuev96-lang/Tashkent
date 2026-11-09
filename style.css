@@ -789,6 +789,18 @@ a { color: inherit; }
 .footer-sub { margin: 0 0 4px; opacity: .65; }
 .footer-brand { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(2.8rem, 13vw, 6rem); line-height: 1; letter-spacing: -.035em; }
 .footer-address { margin: 12px 0 0; opacity: .8; }
+.footer-info-cols { display: flex; flex-wrap: wrap; gap: 24px 48px; }
+.footer-info-col { min-width: 160px; }
+.footer-phone { display: block; color: var(--glaze); text-decoration: none; font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
+.footer-phone:hover { color: var(--saffron); }
+.footer-hours { margin: 0; opacity: .8; font-size: .9375rem; }
+.footer-transit { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: .9375rem; }
+.footer-transit li { display: flex; align-items: center; gap: 8px; opacity: .9; }
+.transit-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.transit-dot--black { background: #1a1a1a; border: 1.5px solid rgba(255,255,255,.4); }
+.transit-dot--teal  { background: #05a19c; }
+.transit-dot--red   { background: #ef3124; }
+.transit-bus { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 3px; background: #f5811f; color: #fff; font-size: .6875rem; font-weight: 700; flex-shrink: 0; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
 .footer-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-weight: 500; }
 .footer-nav a:hover { color: var(--saffron); }
