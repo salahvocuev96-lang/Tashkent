@@ -704,6 +704,7 @@ a { color: inherit; }
 .footer-nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
 .footer-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-weight: 500; }
 .footer-nav a:hover { color: var(--saffron); }
+.footer-copy { margin-top: 24px; font-size: .8125rem; opacity: .55; }
 .footer-small { margin: 0; font-size: .8125rem; opacity: .6; max-width: 60ch; }
 
 /* ---------- Отзывы ---------- */
