@@ -611,76 +611,58 @@ function bumpCart() {
 }
 
 function flyToCart(fromEl) {
-  if (reducedMotion() || !fromEl || !cartBtn.animate) { bumpCart(); return; }
+  if (reducedMotion() || !fromEl) { bumpCart(); return; }
   const a = fromEl.getBoundingClientRect();
   const b = cartBtn.getBoundingClientRect();
+
+  /* клон тарелки */
+  const clone = fromEl.cloneNode(true);
+  clone.style.cssText = `
+    position:fixed;
+    left:${a.left}px;
+    top:${a.top}px;
+    width:${a.width}px;
+    height:${a.height}px;
+    margin:0;
+    z-index:80;
+    pointer-events:none;
+    border-radius:50%;
+    overflow:hidden;
+    transform-origin:center center;
+    will-change:transform,opacity;
+  `;
+  document.body.appendChild(clone);
+
   const ox = a.left + a.width / 2;
   const oy = a.top + a.height / 2;
   const tx = b.left + b.width / 2;
   const ty = b.top + b.height / 2;
+  const cpx = ox + (tx - ox) * 0.3;
+  const cpy = Math.min(oy, ty) - Math.abs(tx - ox) * 0.5 - 20;
 
-  const COUNT = 10;
-  const BURST = 300;
-  const FLY   = 500;
-  const TOTAL = BURST + FLY;
-
-  const colors = ['#f5a623','#ffcc55','#ff6b35','#fff','#f5a623','#ffcc55','#ff6b35','#f5a623','#fff','#ffcc55'];
-  const sizes  = [7,5,8,5,6,7,5,8,6,7];
-
-  const particles = Array.from({length: COUNT}, (_, i) => {
-    const p = document.createElement('div');
-    p.className = 'fly-dot';
-    const sz = sizes[i];
-    p.style.cssText = `width:${sz}px;height:${sz}px;background:${colors[i]};box-shadow:0 0 6px 1px ${colors[i]}88;margin-left:${-sz/2}px;margin-top:${-sz/2}px;opacity:0`;
-    document.body.appendChild(p);
-
-    const angle = (i / COUNT) * Math.PI * 2 + Math.random() * 0.4;
-    const dist  = 28 + Math.random() * 22;
-    const bx = ox + Math.cos(angle) * dist;
-    const by = oy + Math.sin(angle) * dist;
-    const cpx = bx + (tx - bx) * 0.4 + (Math.random() - 0.5) * 60;
-    const cpy = Math.min(by, ty) - 60 - Math.random() * 50;
-
-    return { el: p, bx, by, cpx, cpy };
-  });
-
+  const DURATION = 600;
   let start = null;
   let done = false;
 
   function step(ts) {
     if (!start) start = ts;
-    const elapsed = ts - start;
-    const t = Math.min(elapsed / TOTAL, 1);
+    const t = Math.min((ts - start) / DURATION, 1);
+    const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
-    particles.forEach(({ el, bx, by, cpx, cpy }) => {
-      let x, y, scale, opacity;
-      if (elapsed < BURST) {
-        const bt = elapsed / BURST;
-        const be = 1 - Math.pow(1 - bt, 3);
-        x = ox + (bx - ox) * be;
-        y = oy + (by - oy) * be;
-        scale = 0.4 + be * 0.8;
-        opacity = bt < 0.15 ? bt / 0.15 : 1;
-      } else {
-        const ft = (elapsed - BURST) / FLY;
-        const fe = ft < 0.5 ? 2 * ft * ft : 1 - Math.pow(-2 * ft + 2, 2) / 2;
-        const mt = 1 - fe;
-        x = mt * mt * bx + 2 * mt * fe * cpx + fe * fe * tx;
-        y = mt * mt * by + 2 * mt * fe * cpy + fe * fe * ty;
-        scale = 1.2 - fe * 0.9;
-        opacity = ft > 0.75 ? 1 - (ft - 0.75) / 0.25 : 1;
-      }
-      el.style.left = x + 'px';
-      el.style.top  = y + 'px';
-      el.style.transform = `scale(${scale})`;
-      el.style.opacity = opacity;
-    });
+    const mt = 1 - e;
+    const cx = mt * mt * ox + 2 * mt * e * cpx + e * e * tx;
+    const cy = mt * mt * oy + 2 * mt * e * cpy + e * e * ty;
+    const scale = 1 - e * 0.82;
+    const opacity = e > 0.75 ? 1 - (e - 0.75) / 0.25 : 1;
+
+    clone.style.transform = `translate(${cx - ox}px, ${cy - oy}px) scale(${scale})`;
+    clone.style.opacity = opacity;
 
     if (t < 1) {
       requestAnimationFrame(step);
     } else if (!done) {
       done = true;
-      particles.forEach(({ el }) => el.remove());
+      clone.remove();
       bumpCart();
     }
   }
