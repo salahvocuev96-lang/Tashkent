@@ -726,38 +726,34 @@ a { color: inherit; }
 }
 .about-deco .rim-line { stroke: #fff; }
 .about-deco .rim-petal, .about-deco .rim-dot { fill: #fff; }
-/* промо-ролик вместо фото и текста */
+/* промо-ролик на весь блок */
 .about--video {
-  background: radial-gradient(120% 80% at 50% 40%, #2A57B8 0%, var(--cobalt) 45%, var(--cobalt-deep) 100%);
-  padding: 72px var(--pad) 92px;
-}
-.promo {
-  position: relative; margin: 0 auto;
-  width: min(100%, 440px, calc((100svh - 100px) * 9 / 16));
-  aspect-ratio: 9 / 16;
-  border-radius: 28px; overflow: hidden;
+  padding: 0;
   background: var(--cobalt-deep) url('images/promo-poster.jpg') center / cover no-repeat;
-  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .18), 0 30px 70px rgba(2, 10, 35, .55), 0 0 120px rgba(240, 168, 30, .18);
 }
+.about--video::before { content: none; }
+.promo-ambient { display: none; }
+.promo { position: relative; width: 100%; aspect-ratio: 9 / 16; }
 .promo-video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.promo-sound {
-  position: absolute; right: 14px; bottom: 14px;
-  width: 48px; height: 48px; border-radius: 50%; border: 0; padding: 12px;
-  background: rgba(10, 22, 60, .55); color: #fff; cursor: pointer;
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .35);
-  transition: transform .2s, background .2s;
-}
-.promo-sound:hover { transform: scale(1.06); background: rgba(10, 22, 60, .75); }
-.promo-sound:focus-visible { outline: 3px solid var(--saffron, #F0A81E); outline-offset: 3px; }
-.promo-ico { display: block; width: 100%; height: 100%; }
-.promo-ico--on, .promo-sound[aria-pressed="true"] .promo-ico--off { display: none; }
-.promo-sound[aria-pressed="true"] .promo-ico--on { display: block; }
 
-@media (min-width: 960px) {
-  .about--video { padding-top: 96px; padding-bottom: 120px; }
-  .promo { border-radius: 32px; }
-  .about-deco { width: 640px; right: -260px; bottom: -260px; }
+/* широкий экран: ролик по центру во всю высоту, по бокам — тот же ролик, размытый */
+@media (min-width: 768px) {
+  .about--video {
+    display: flex; justify-content: center;
+    height: clamp(560px, calc(100svh - 64px), 1100px);
+    background: var(--cobalt-deep);
+  }
+  .promo-ambient {
+    display: block; position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    filter: blur(28px) saturate(1.25) brightness(.8);
+    transform: scale(1.2);
+  }
+  .promo {
+    width: auto; height: 100%;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  }
 }
 
 /* ---------- Контакты ---------- */

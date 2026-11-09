@@ -951,11 +951,25 @@ $$('.plate-food img').forEach(img => {
   }
 });
 
-/* ---------- Промо-ролик: играет, пока виден на экране ---------- */
+/* ---------- Промо-ролик: играет без звука, пока виден на экране ---------- */
 const promoVideo = $('.promo-video');
-const promoSound = $('.promo-sound');
+const promoAmbient = $('.promo-ambient');
 if (promoVideo) {
   let promoVisible = false;
+  const wideQuery = window.matchMedia('(min-width: 768px)');
+  const actx = promoAmbient.getContext('2d');
+  let lastDraw = 0;
+  // размытый фон по бокам: копия кадра в маленький canvas, ~15 раз в секунду
+  const drawAmbient = now => {
+    if (promoVideo.paused || !wideQuery.matches) return;
+    if (now - lastDraw > 66 && promoVideo.readyState >= 2) {
+      actx.drawImage(promoVideo, 0, 0, promoAmbient.width, promoAmbient.height);
+      lastDraw = now;
+    }
+    requestAnimationFrame(drawAmbient);
+  };
+  promoVideo.addEventListener('play', () => requestAnimationFrame(drawAmbient));
+  wideQuery.addEventListener('change', () => requestAnimationFrame(drawAmbient));
   const syncPromo = () => {
     if (promoVisible && !motionQuery.matches) promoVideo.play().catch(() => {});
     else promoVideo.pause();
@@ -963,14 +977,7 @@ if (promoVideo) {
   new IntersectionObserver(([entry]) => {
     promoVisible = entry.isIntersecting;
     syncPromo();
-  }, { threshold: 0.35 }).observe(promoVideo);
-  promoSound.addEventListener('click', () => {
-    const on = promoVideo.muted;
-    promoVideo.muted = !on;
-    promoSound.setAttribute('aria-pressed', String(on));
-    promoSound.setAttribute('aria-label', on ? 'Выключить звук' : 'Включить звук');
-    if (on) promoVideo.play().catch(() => {});
-  });
+  }, { threshold: 0.25 }).observe(promoVideo);
 }
 
 drawer.inert = true;

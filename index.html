@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=67">
+  <link rel="stylesheet" href="style.css?v=68">
 </head>
 <body>
 
@@ -146,19 +146,14 @@
 
     <!-- О ЗАВЕДЕНИИ: промо-ролик -->
     <section class="about about--video" id="about" aria-label="Промо-ролик «Авторская шаурма»">
-      <div class="about-deco" data-rim aria-hidden="true"></div>
-      <div class="promo" data-reveal>
+      <canvas class="promo-ambient" width="54" height="96" aria-hidden="true"></canvas>
+      <div class="promo">
         <video class="promo-video" poster="images/promo-poster.jpg"
                muted loop playsinline preload="metadata" aria-label="Промо-ролик: шаурма и донер">
           <source src="images/promo.mp4" type="video/mp4">
           <source src="images/promo.webm" type="video/webm">
         </video>
-        <button class="promo-sound" type="button" aria-pressed="false" aria-label="Включить звук">
-          <svg class="promo-ico promo-ico--off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M17 9l5 6M22 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
-          <svg class="promo-ico promo-ico--on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
-        </button>
       </div>
-      <div class="scallop scallop--teal" aria-hidden="true"></div>
     </section>
 
     <!-- КОНТАКТЫ -->
@@ -328,7 +323,7 @@
     </div>
   </aside>
 
-  <script src="script.js?v=72" defer></script>
+  <script src="script.js?v=73" defer></script>
   <script>
   (function () {
     var visual = document.querySelector('.hero-visual');
