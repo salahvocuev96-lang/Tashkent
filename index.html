@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=69">
+  <link rel="stylesheet" href="style.css?v=70">
 </head>
 <body>
 
@@ -144,14 +144,18 @@
       </div>
     </section>
 
-    <!-- О ЗАВЕДЕНИИ: промо-ролик -->
+    <!-- О ЗАВЕДЕНИИ: промо-ролик (вертикальный для телефона, горизонтальный для компьютера) -->
     <section class="about about--video" id="about" aria-label="Промо-ролик «Авторская шаурма»">
-      <canvas class="promo-ambient" width="54" height="96" aria-hidden="true"></canvas>
       <div class="promo">
-        <video class="promo-video" poster="images/promo-poster.jpg"
-               muted loop playsinline preload="metadata" aria-label="Промо-ролик: шаурма и донер">
+        <video class="promo-video promo-video--tall" poster="images/promo-poster.jpg"
+               muted loop playsinline preload="none" aria-label="Промо-ролик: шаурма и донер">
           <source src="images/promo.mp4" type="video/mp4">
           <source src="images/promo.webm" type="video/webm">
+        </video>
+        <video class="promo-video promo-video--wide" poster="images/promo-wide-poster.jpg"
+               muted loop playsinline preload="none" aria-label="Промо-ролик: шаурма и донер">
+          <source src="images/promo-wide.mp4" type="video/mp4">
+          <source src="images/promo-wide.webm" type="video/webm">
         </video>
       </div>
     </section>
@@ -323,7 +327,7 @@
     </div>
   </aside>
 
-  <script src="script.js?v=74" defer></script>
+  <script src="script.js?v=75" defer></script>
   <script>
   (function () {
     var visual = document.querySelector('.hero-visual');

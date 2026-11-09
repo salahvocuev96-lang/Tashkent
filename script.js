@@ -952,32 +952,23 @@ $$('.plate-food img').forEach(img => {
 });
 
 /* ---------- Промо-ролик: играет без звука, пока виден на экране ---------- */
-const promoVideo = $('.promo-video');
-const promoAmbient = $('.promo-ambient');
-if (promoVideo) {
-  let promoVisible = false;
+const promoBox = $('.promo');
+if (promoBox) {
   const wideQuery = window.matchMedia('(min-width: 768px)');
-  const actx = promoAmbient.getContext('2d');
-  let lastDraw = 0;
-  // размытый фон по бокам: копия кадра в маленький canvas, ~15 раз в секунду
-  const drawAmbient = now => {
-    if (promoVideo.paused || !wideQuery.matches) return;
-    if (now - lastDraw > 66 && promoVideo.readyState >= 2) {
-      actx.drawImage(promoVideo, 0, 0, promoAmbient.width, promoAmbient.height);
-      lastDraw = now;
-    }
-    requestAnimationFrame(drawAmbient);
-  };
-  promoVideo.addEventListener('play', () => requestAnimationFrame(drawAmbient));
-  wideQuery.addEventListener('change', () => requestAnimationFrame(drawAmbient));
+  const tall = $('.promo-video--tall'), wide = $('.promo-video--wide');
+  let promoVisible = false;
   const syncPromo = () => {
-    if (promoVisible) promoVideo.play().catch(() => {});
-    else promoVideo.pause();
+    const active = wideQuery.matches ? wide : tall;
+    const idle = active === wide ? tall : wide;
+    idle.pause();
+    if (promoVisible) active.play().catch(() => {});
+    else active.pause();
   };
+  wideQuery.addEventListener('change', syncPromo);
   new IntersectionObserver(([entry]) => {
     promoVisible = entry.isIntersecting;
     syncPromo();
-  }, { threshold: 0.25 }).observe(promoVideo);
+  }, { threshold: 0.25 }).observe(promoBox);
 }
 
 drawer.inert = true;
