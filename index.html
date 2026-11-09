@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=70">
+  <link rel="stylesheet" href="style.css?v=71">
 </head>
 <body>
 
@@ -313,11 +313,11 @@
     <div class="dish-modal-body">
       <span class="dish-modal-cat" id="dish-modal-cat"></span>
       <h3 class="dish-modal-name" id="dish-modal-name" tabindex="-1"></h3>
+      <p class="dish-modal-weight" id="dish-modal-weight" hidden></p>
       <p class="dish-modal-desc" id="dish-modal-desc" hidden></p>
       <div class="dish-modal-extras" id="dish-modal-extras" hidden></div>
       <div class="dish-modal-tags">
         <span class="dish-tag">✓ халяль</span>
-        <span class="dish-tag dish-tag--weight" id="dish-modal-weight" hidden></span>
         <span class="dish-tag">свежее приготовление</span>
       </div>
     </div>
@@ -327,7 +327,7 @@
     </div>
   </aside>
 
-  <script src="script.js?v=79" defer></script>
+  <script src="script.js?v=80" defer></script>
   <script>
   (function () {
     var visual = document.querySelector('.hero-visual');
