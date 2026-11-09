@@ -43,7 +43,7 @@ const MENU = [
   { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'shawarma', price: 470, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lyulya-beef.jpg', featured: true },
   // Донер
   // Выпечка
-  { id: 'lepeshka-big',     name: 'Лепёшка большая',       category: 'baking', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka.jpg', featured: true },
+  { id: 'lepeshka-big',     name: 'Лепёшка большая',       category: 'baking', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka-big.jpg', featured: true },
   { id: 'lepeshka-small',   name: 'Лепёшка маленькая',     category: 'baking', price: 50,  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka.jpg', featured: true },
   { id: 'fatir',            name: 'Фатир',                  category: 'baking', price: 110, description: '', photo: '', featured: true },
   { id: 'cheburek-beef',    name: 'Чебурек с говядиной',   category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/cheburek.jpg', featured: true },
