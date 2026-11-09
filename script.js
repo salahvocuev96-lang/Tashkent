@@ -45,7 +45,7 @@ const MENU = [
   // Выпечка
   { id: 'lepeshka-big',     name: 'Лепёшка большая',       category: 'baking', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka-big.jpg', featured: true },
   { id: 'lepeshka-small',   name: 'Лепёшка маленькая',     category: 'baking', price: 50,  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka.jpg', featured: true },
-  { id: 'fatir',            name: 'Фатир',                  category: 'baking', price: 110, description: '', photo: '', featured: true },
+  { id: 'fatir',            name: 'Фатир',                  category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fatir.jpg', featured: true },
   { id: 'cheburek-beef',    name: 'Чебурек с говядиной',   category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/cheburek.jpg', featured: true },
   { id: 'cheburek-cheese',  name: 'Чебурек с сыром',       category: 'baking', price: 100, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/cheburek.jpg', featured: true },
   { id: 'belyash-beef',     name: 'Беляш с говядиной',     category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/belyash.jpg', featured: true },
@@ -53,8 +53,8 @@ const MENU = [
   { id: 'pirozhok-beef',    name: 'Пирожки с говядиной',   category: 'baking', price: 90,  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pirozhok.jpg', featured: true },
   { id: 'pirozhok-cabbage', name: 'Пирожки с капустой',    category: 'baking', price: 60,  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pirozhok.jpg', featured: true },
   { id: 'sosiska',          name: 'Сосиска в тесте',       category: 'baking', price: 100, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sosiska.jpg', featured: true },
-  { id: 'samsa-beef',       name: 'Самса с говядиной',     category: 'baking', price: 110, description: '', photo: '', featured: true },
-  { id: 'samsa-lamb',       name: 'Самса с бараниной',     category: 'baking', price: 120, description: '', photo: '', featured: true },
+  { id: 'samsa-beef',       name: 'Самса с говядиной',     category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/samsa.jpg', featured: true },
+  { id: 'samsa-lamb',       name: 'Самса с бараниной',     category: 'baking', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/samsa.jpg', featured: true },
   // Донер
   // Напитки
   { id: 'rich-apple',          name: 'Рич яблочный',          category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/rich-apple.jpg', featured: true },
