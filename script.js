@@ -930,7 +930,7 @@ document.addEventListener('error', e => {
 }, true);
 
 /* ---------- Копирование адреса ---------- */
-$('#copy-address').addEventListener('click', async () => {
+$('#copy-address')?.addEventListener('click', async () => {
   let ok = false;
   try {
     await navigator.clipboard.writeText(ADDRESS);
