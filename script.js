@@ -614,26 +614,86 @@ function flyToCart(fromEl) {
   if (reducedMotion() || !fromEl || !cartBtn.animate) { bumpCart(); return; }
   const a = fromEl.getBoundingClientRect();
   const b = cartBtn.getBoundingClientRect();
-  const size = 44;
-  const x0 = a.left + a.width / 2 - size / 2;
-  const y0 = a.top + a.height / 2 - size / 2;
-  const x1 = b.left + b.width / 2 - size / 2;
-  const y1 = b.top + b.height / 2 - size / 2;
-  const mx = x0 + (x1 - x0) * 0.45;
-  const my = Math.max(8, Math.min(y0, y1) - 90);
+  const size = 40;
+  const cx0 = a.left + a.width / 2;
+  const cy0 = a.top + a.height / 2;
+  const cx1 = b.left + b.width / 2;
+  const cy1 = b.top + b.height / 2;
 
+  /* контрольная точка дуги — выше середины пути */
+  const cpx = cx0 + (cx1 - cx0) * 0.5;
+  const cpy = Math.min(cy0, cy1) - Math.abs(cx1 - cx0) * 0.45 - 40;
+
+  /* точка на кривой Безье при t */
+  function bezier(t) {
+    const mt = 1 - t;
+    return {
+      x: mt * mt * cx0 + 2 * mt * t * cpx + t * t * cx1,
+      y: mt * mt * cy0 + 2 * mt * t * cpy + t * t * cy1,
+    };
+  }
+
+  const TRAIL = 6;
+  const DURATION = 680;
+  const trails = [];
+
+  /* хвост — затухающие кружки */
+  for (let i = 0; i < TRAIL; i++) {
+    const tr = document.createElement('div');
+    tr.className = 'fly-trail';
+    const frac = (i + 1) / (TRAIL + 1);
+    const s = 0.55 - frac * 0.35;
+    tr.style.cssText = `width:${size}px;height:${size}px;margin-left:${-size/2}px;margin-top:${-size/2}px;opacity:${0.55 - frac * 0.45};transform:scale(${s})`;
+    document.body.appendChild(tr);
+    trails.push(tr);
+  }
+
+  /* основной кружок */
   const dot = document.createElement('div');
   dot.className = 'fly-dot';
+  dot.style.cssText = `width:${size}px;height:${size}px;margin-left:${-size/2}px;margin-top:${-size/2}px`;
   document.body.appendChild(dot);
 
-  const anim = dot.animate([
-    { transform: `translate(${x0}px, ${y0}px) scale(1.5)`, opacity: 0 },
-    { transform: `translate(${x0}px, ${y0}px) scale(1.2)`, opacity: 1, offset: 0.12 },
-    { transform: `translate(${mx}px, ${my}px) scale(.9)`, offset: 0.55 },
-    { transform: `translate(${x1}px, ${y1}px) scale(.35)`, opacity: 0.85 },
-  ], { duration: 720, easing: 'cubic-bezier(.45,0,.25,1)' });
+  let start = null;
+  let finished = false;
 
-  anim.onfinish = () => { dot.remove(); bumpCart(); };
+  function step(ts) {
+    if (!start) start = ts;
+    const t = Math.min((ts - start) / DURATION, 1);
+    /* ease-in-out cubic */
+    const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const pos = bezier(e);
+    const scale = 1 - e * 0.65;
+    dot.style.left = pos.x + 'px';
+    dot.style.top  = pos.y + 'px';
+    dot.style.transform = `scale(${scale})`;
+    dot.style.opacity = t > 0.85 ? 1 - (t - 0.85) / 0.15 : 1;
+
+    /* хвост на предыдущих позициях */
+    for (let i = 0; i < TRAIL; i++) {
+      const frac = (i + 1) / (TRAIL + 1);
+      const te = Math.max(0, e - frac * 0.18);
+      const mt = te < 0.5 ? 4 * te * te * te : 1 - Math.pow(-2 * te + 2, 3) / 2;
+      const p = bezier(mt);
+      const s = (1 - mt * 0.65) * (0.55 - (i / TRAIL) * 0.3);
+      trails[i].style.left = p.x + 'px';
+      trails[i].style.top  = p.y + 'px';
+      trails[i].style.transform = `scale(${s})`;
+      trails[i].style.opacity = t > 0.75 ? Math.max(0, 1 - (t - 0.75) / 0.25) * (0.45 - i * 0.06) : (0.45 - i * 0.06);
+    }
+
+    if (t < 1) {
+      requestAnimationFrame(step);
+    } else if (!finished) {
+      finished = true;
+      dot.remove();
+      trails.forEach(tr => tr.remove());
+      bumpCart();
+    }
+  }
+
+  requestAnimationFrame(step);
 }
 
 /* ---------- Корзина ---------- */
