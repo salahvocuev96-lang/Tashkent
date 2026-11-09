@@ -614,81 +614,73 @@ function flyToCart(fromEl) {
   if (reducedMotion() || !fromEl || !cartBtn.animate) { bumpCart(); return; }
   const a = fromEl.getBoundingClientRect();
   const b = cartBtn.getBoundingClientRect();
-  const size = 40;
-  const cx0 = a.left + a.width / 2;
-  const cy0 = a.top + a.height / 2;
-  const cx1 = b.left + b.width / 2;
-  const cy1 = b.top + b.height / 2;
+  const ox = a.left + a.width / 2;
+  const oy = a.top + a.height / 2;
+  const tx = b.left + b.width / 2;
+  const ty = b.top + b.height / 2;
 
-  /* контрольная точка дуги — выше середины пути */
-  const cpx = cx0 + (cx1 - cx0) * 0.5;
-  const cpy = Math.min(cy0, cy1) - Math.abs(cx1 - cx0) * 0.45 - 40;
+  const COUNT = 10;
+  const BURST = 300;
+  const FLY   = 500;
+  const TOTAL = BURST + FLY;
 
-  /* точка на кривой Безье при t */
-  function bezier(t) {
-    const mt = 1 - t;
-    return {
-      x: mt * mt * cx0 + 2 * mt * t * cpx + t * t * cx1,
-      y: mt * mt * cy0 + 2 * mt * t * cpy + t * t * cy1,
-    };
-  }
+  const colors = ['#f5a623','#ffcc55','#ff6b35','#fff','#f5a623','#ffcc55','#ff6b35','#f5a623','#fff','#ffcc55'];
+  const sizes  = [7,5,8,5,6,7,5,8,6,7];
 
-  const TRAIL = 6;
-  const DURATION = 680;
-  const trails = [];
+  const particles = Array.from({length: COUNT}, (_, i) => {
+    const p = document.createElement('div');
+    p.className = 'fly-dot';
+    const sz = sizes[i];
+    p.style.cssText = `width:${sz}px;height:${sz}px;background:${colors[i]};box-shadow:0 0 6px 1px ${colors[i]}88;margin-left:${-sz/2}px;margin-top:${-sz/2}px;opacity:0`;
+    document.body.appendChild(p);
 
-  /* хвост — затухающие кружки */
-  for (let i = 0; i < TRAIL; i++) {
-    const tr = document.createElement('div');
-    tr.className = 'fly-trail';
-    const frac = (i + 1) / (TRAIL + 1);
-    const s = 0.55 - frac * 0.35;
-    tr.style.cssText = `width:${size}px;height:${size}px;margin-left:${-size/2}px;margin-top:${-size/2}px;opacity:${0.55 - frac * 0.45};transform:scale(${s})`;
-    document.body.appendChild(tr);
-    trails.push(tr);
-  }
+    const angle = (i / COUNT) * Math.PI * 2 + Math.random() * 0.4;
+    const dist  = 28 + Math.random() * 22;
+    const bx = ox + Math.cos(angle) * dist;
+    const by = oy + Math.sin(angle) * dist;
+    const cpx = bx + (tx - bx) * 0.4 + (Math.random() - 0.5) * 60;
+    const cpy = Math.min(by, ty) - 60 - Math.random() * 50;
 
-  /* основной кружок */
-  const dot = document.createElement('div');
-  dot.className = 'fly-dot';
-  dot.style.cssText = `width:${size}px;height:${size}px;margin-left:${-size/2}px;margin-top:${-size/2}px`;
-  document.body.appendChild(dot);
+    return { el: p, bx, by, cpx, cpy };
+  });
 
   let start = null;
-  let finished = false;
+  let done = false;
 
   function step(ts) {
     if (!start) start = ts;
-    const t = Math.min((ts - start) / DURATION, 1);
-    /* ease-in-out cubic */
-    const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const elapsed = ts - start;
+    const t = Math.min(elapsed / TOTAL, 1);
 
-    const pos = bezier(e);
-    const scale = 1 - e * 0.65;
-    dot.style.left = pos.x + 'px';
-    dot.style.top  = pos.y + 'px';
-    dot.style.transform = `scale(${scale})`;
-    dot.style.opacity = t > 0.85 ? 1 - (t - 0.85) / 0.15 : 1;
-
-    /* хвост на предыдущих позициях */
-    for (let i = 0; i < TRAIL; i++) {
-      const frac = (i + 1) / (TRAIL + 1);
-      const te = Math.max(0, e - frac * 0.18);
-      const mt = te < 0.5 ? 4 * te * te * te : 1 - Math.pow(-2 * te + 2, 3) / 2;
-      const p = bezier(mt);
-      const s = (1 - mt * 0.65) * (0.55 - (i / TRAIL) * 0.3);
-      trails[i].style.left = p.x + 'px';
-      trails[i].style.top  = p.y + 'px';
-      trails[i].style.transform = `scale(${s})`;
-      trails[i].style.opacity = t > 0.75 ? Math.max(0, 1 - (t - 0.75) / 0.25) * (0.45 - i * 0.06) : (0.45 - i * 0.06);
-    }
+    particles.forEach(({ el, bx, by, cpx, cpy }) => {
+      let x, y, scale, opacity;
+      if (elapsed < BURST) {
+        const bt = elapsed / BURST;
+        const be = 1 - Math.pow(1 - bt, 3);
+        x = ox + (bx - ox) * be;
+        y = oy + (by - oy) * be;
+        scale = 0.4 + be * 0.8;
+        opacity = bt < 0.15 ? bt / 0.15 : 1;
+      } else {
+        const ft = (elapsed - BURST) / FLY;
+        const fe = ft < 0.5 ? 2 * ft * ft : 1 - Math.pow(-2 * ft + 2, 2) / 2;
+        const mt = 1 - fe;
+        x = mt * mt * bx + 2 * mt * fe * cpx + fe * fe * tx;
+        y = mt * mt * by + 2 * mt * fe * cpy + fe * fe * ty;
+        scale = 1.2 - fe * 0.9;
+        opacity = ft > 0.75 ? 1 - (ft - 0.75) / 0.25 : 1;
+      }
+      el.style.left = x + 'px';
+      el.style.top  = y + 'px';
+      el.style.transform = `scale(${scale})`;
+      el.style.opacity = opacity;
+    });
 
     if (t < 1) {
       requestAnimationFrame(step);
-    } else if (!finished) {
-      finished = true;
-      dot.remove();
-      trails.forEach(tr => tr.remove());
+    } else if (!done) {
+      done = true;
+      particles.forEach(({ el }) => el.remove());
       bumpCart();
     }
   }
