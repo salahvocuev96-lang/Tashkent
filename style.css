@@ -746,6 +746,7 @@ a { color: inherit; }
   .promo-ambient {
     display: block; position: absolute; inset: 0;
     width: 100%; height: 100%; object-fit: cover;
+    background: url('images/promo-poster.jpg') center / cover no-repeat;
     filter: blur(28px) saturate(1.25) brightness(.8);
     transform: scale(1.2);
   }

@@ -971,7 +971,7 @@ if (promoVideo) {
   promoVideo.addEventListener('play', () => requestAnimationFrame(drawAmbient));
   wideQuery.addEventListener('change', () => requestAnimationFrame(drawAmbient));
   const syncPromo = () => {
-    if (promoVisible && !motionQuery.matches) promoVideo.play().catch(() => {});
+    if (promoVisible) promoVideo.play().catch(() => {});
     else promoVideo.pause();
   };
   new IntersectionObserver(([entry]) => {
