@@ -836,6 +836,9 @@ a { color: inherit; }
 
 .reviews-list { display: flex; flex-direction: column; gap: 16px; }
 .reviews-empty { color: var(--muted); }
+.reviews-more-btn { display: block; margin: 24px auto 0; padding: 12px 32px; background: transparent; color: var(--ink); border: 2px solid var(--ink); border-radius: 24px; font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background .2s, color .2s; }
+.reviews-more-btn:hover { background: var(--ink); color: var(--glaze); }
+.reviews-more-btn:disabled { opacity: .5; cursor: not-allowed; }
 .review-card { background: #fff; border-radius: 16px; padding: 20px 24px; box-shadow: 0 1px 6px rgba(0,0,0,.07); }
 .review-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
 .review-card-name { font-weight: 600; font-size: 1rem; }

@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=77">
+  <link rel="stylesheet" href="style.css?v=78">
 </head>
 <body>
 
@@ -183,9 +183,8 @@
         </form>
 
         <!-- Список отзывов -->
-        <div class="reviews-list" id="reviews-list">
-          <p class="reviews-empty" id="reviews-empty" hidden></p>
-        </div>
+        <div class="reviews-list" id="reviews-list"></div>
+        <button class="reviews-more-btn" id="reviews-more" hidden>Показать ещё</button>
       </div>
     </section>
 
@@ -350,7 +349,7 @@
   </aside>
 
   <script src="script.js?v=83" defer></script>
-  <script type="module" src="reviews.js?v=1"></script>
+  <script type="module" src="reviews.js?v=2"></script>
   <script>
   (function () {
     var visual = document.querySelector('.hero-visual');

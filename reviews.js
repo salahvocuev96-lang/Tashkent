@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, collection, addDoc, getDocs, orderBy, query, serverTimestamp }
+import { getFirestore, collection, addDoc, getDocs, orderBy, query, limit, startAfter, serverTimestamp }
   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -13,6 +13,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
+
+const PAGE_SIZE = 5;
+let lastDoc = null;
+let allLoaded = false;
 
 /* ---------- звёзды ---------- */
 let selectedStars = 0;
@@ -29,18 +33,33 @@ starBtns.forEach(b => {
 
 /* ---------- загрузка отзывов ---------- */
 async function loadReviews() {
-  const list  = document.getElementById('reviews-list');
-  const empty = document.getElementById('reviews-empty');
+  const list    = document.getElementById('reviews-list');
+  const moreBtn = document.getElementById('reviews-more');
+
+  let q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'), limit(PAGE_SIZE));
+  if (lastDoc) q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'), startAfter(lastDoc), limit(PAGE_SIZE));
+
+  if (moreBtn) moreBtn.disabled = true;
+
   try {
-    const q    = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'));
     const snap = await getDocs(q);
-    if (snap.empty) { empty.hidden = false; return; }
-    empty.hidden = true;
-    snap.forEach(doc => {
-      const d = doc.data();
-      list.insertBefore(makeCard(d), list.firstChild);
-    });
-  } catch(e) { console.error('load reviews', e); }
+    if (!snap.empty) {
+      snap.forEach(doc => {
+        list.appendChild(makeCard(doc.data()));
+      });
+      lastDoc = snap.docs[snap.docs.length - 1];
+    }
+
+    if (snap.size < PAGE_SIZE) {
+      allLoaded = true;
+      if (moreBtn) moreBtn.hidden = true;
+    } else {
+      if (moreBtn) { moreBtn.hidden = false; moreBtn.disabled = false; }
+    }
+  } catch(e) {
+    console.error('load reviews', e);
+    if (moreBtn) moreBtn.disabled = false;
+  }
 }
 
 function makeCard({ name, rating, text, createdAt }) {
@@ -74,7 +93,7 @@ form.addEventListener('submit', async e => {
   const text   = document.getElementById('review-text').value.trim();
   const rating = selectedStars;
 
-  if (!name) { showMsg('Введите ваше имя', 'error'); return; }
+  if (!name)   { showMsg('Введите ваше имя', 'error'); return; }
   if (!rating) { showMsg('Поставьте оценку', 'error'); return; }
 
   const btn = form.querySelector('.review-submit');
@@ -83,9 +102,7 @@ form.addEventListener('submit', async e => {
 
   try {
     await addDoc(collection(db, 'reviews'), { name, text, rating, createdAt: serverTimestamp() });
-    const list  = document.getElementById('reviews-list');
-    const empty = document.getElementById('reviews-empty');
-    empty.hidden = true;
+    const list = document.getElementById('reviews-list');
     list.insertBefore(makeCard({ name, text, rating }), list.firstChild);
     form.reset();
     selectedStars = 0;
@@ -106,5 +123,8 @@ function showMsg(text, type) {
   msg.hidden = false;
   setTimeout(() => { msg.hidden = true; }, 4000);
 }
+
+/* ---------- кнопка «показать ещё» ---------- */
+document.getElementById('reviews-more').addEventListener('click', loadReviews);
 
 loadReviews();
