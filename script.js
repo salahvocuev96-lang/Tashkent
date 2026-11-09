@@ -81,7 +81,7 @@ const MENU = [
   { id: 'adrenalin-449',       name: 'Адреналин',             category: 'drinks', price: 160, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
   { id: 'adrenalin-zero',      name: 'Адреналин Зеро',        category: 'drinks', price: 160, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin-zero.jpg', featured: true },
   { id: 'adrenalin-100',       name: 'Адреналин',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
-  { id: 'redbull-473',         name: 'Ред Булл',              category: 'drinks', price: 300, description: '', photo: '', featured: true },
+  { id: 'redbull-473',         name: 'Ред Булл',              category: 'drinks', price: 300, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/redbull-473.jpg', featured: true },
   { id: 'redbull-100',         name: 'Ред Булл',              category: 'drinks', price: 160, description: '', photo: '', featured: true },
   { id: 'monster',             name: 'Монстер',               category: 'drinks', price: 250, description: '', photo: '', featured: true },
   // Донер
