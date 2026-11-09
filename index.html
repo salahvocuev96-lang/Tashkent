@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=66">
+  <link rel="stylesheet" href="style.css?v=67">
 </head>
 <body>
 
@@ -144,28 +144,19 @@
       </div>
     </section>
 
-    <!-- О ЗАВЕДЕНИИ -->
-    <section class="about" id="about" aria-labelledby="about-title">
+    <!-- О ЗАВЕДЕНИИ: промо-ролик -->
+    <section class="about about--video" id="about" aria-label="Промо-ролик «Авторская шаурма»">
       <div class="about-deco" data-rim aria-hidden="true"></div>
-      <div class="about-inner">
-        <div data-reveal>
-          <h2 class="about-title" id="about-title">Авторская шаурма и горячий обед</h2>
-          <p class="about-lead">Шаурмячная — место, куда приходят за вкусной едой. Готовим авторскую шаурму, донер и люля-кебаб из свежих продуктов каждый день.</p>
-        </div>
-        <dl class="about-list" data-reveal>
-          <div>
-            <dt>Узбекская и центральноазиатская кухня</dt>
-            <dd>Плов, шурпа из баранины, лагман, манты, казан-кебаб, ханум.</dd>
-          </div>
-          <div>
-            <dt>Домашние блюда</dt>
-            <dd>Борщ, гуляш, бефстроганов, тефтели, жаркое, курица в сметане, долма.</dd>
-          </div>
-          <div>
-            <dt>Обед рядом с работой и учёбой</dt>
-            <dd>Доступные цены и выбор от салата до горячего — удобно зайти в перерыв.</dd>
-          </div>
-        </dl>
+      <div class="promo" data-reveal>
+        <video class="promo-video" poster="images/promo-poster.jpg"
+               muted loop playsinline preload="metadata" aria-label="Промо-ролик: шаурма и донер">
+          <source src="images/promo.mp4" type="video/mp4">
+          <source src="images/promo.webm" type="video/webm">
+        </video>
+        <button class="promo-sound" type="button" aria-pressed="false" aria-label="Включить звук">
+          <svg class="promo-ico promo-ico--off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M17 9l5 6M22 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          <svg class="promo-ico promo-ico--on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+        </button>
       </div>
       <div class="scallop scallop--teal" aria-hidden="true"></div>
     </section>
@@ -337,7 +328,7 @@
     </div>
   </aside>
 
-  <script src="script.js?v=71" defer></script>
+  <script src="script.js?v=72" defer></script>
   <script>
   (function () {
     var visual = document.querySelector('.hero-visual');

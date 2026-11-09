@@ -951,6 +951,28 @@ $$('.plate-food img').forEach(img => {
   }
 });
 
+/* ---------- Промо-ролик: играет, пока виден на экране ---------- */
+const promoVideo = $('.promo-video');
+const promoSound = $('.promo-sound');
+if (promoVideo) {
+  let promoVisible = false;
+  const syncPromo = () => {
+    if (promoVisible && !motionQuery.matches) promoVideo.play().catch(() => {});
+    else promoVideo.pause();
+  };
+  new IntersectionObserver(([entry]) => {
+    promoVisible = entry.isIntersecting;
+    syncPromo();
+  }, { threshold: 0.35 }).observe(promoVideo);
+  promoSound.addEventListener('click', () => {
+    const on = promoVideo.muted;
+    promoVideo.muted = !on;
+    promoSound.setAttribute('aria-pressed', String(on));
+    promoSound.setAttribute('aria-label', on ? 'Выключить звук' : 'Включить звук');
+    if (on) promoVideo.play().catch(() => {});
+  });
+}
+
 drawer.inert = true;
 renderTabs();
 renderMenu();

@@ -726,23 +726,37 @@ a { color: inherit; }
 }
 .about-deco .rim-line { stroke: #fff; }
 .about-deco .rim-petal, .about-deco .rim-dot { fill: #fff; }
-.about-inner { position: relative; max-width: 1280px; margin: 0 auto; display: grid; gap: 40px; }
-.about-title {
-  margin: 0;
-  font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(2.3rem, 9.5vw, 5rem); line-height: 1.02; letter-spacing: -.03em;
-  max-width: 13ch;
+/* промо-ролик вместо фото и текста */
+.about--video {
+  background: radial-gradient(120% 80% at 50% 40%, #2A57B8 0%, var(--cobalt) 45%, var(--cobalt-deep) 100%);
+  padding: 72px var(--pad) 92px;
 }
-.about-lead { max-width: 40ch; margin: 24px 0 0; font-size: 1.1875rem; line-height: 1.6; color: rgba(255, 255, 255, .9); }
-.about-list { margin: 0; }
-.about-list > div { padding: 22px 0; border-top: 1.5px solid rgba(255, 255, 255, .22); }
-.about-list > div:last-child { border-bottom: 1.5px solid rgba(255, 255, 255, .22); }
-.about-list dt { font-family: var(--font-display); font-weight: 600; font-size: 1.125rem; line-height: 1.3; letter-spacing: -.01em; }
-.about-list dd { margin: 8px 0 0; color: rgba(255, 255, 255, .85); max-width: 46ch; }
+.promo {
+  position: relative; margin: 0 auto;
+  width: min(100%, 440px, calc((100svh - 100px) * 9 / 16));
+  aspect-ratio: 9 / 16;
+  border-radius: 28px; overflow: hidden;
+  background: var(--cobalt-deep) url('images/promo-poster.jpg') center / cover no-repeat;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .18), 0 30px 70px rgba(2, 10, 35, .55), 0 0 120px rgba(240, 168, 30, .18);
+}
+.promo-video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.promo-sound {
+  position: absolute; right: 14px; bottom: 14px;
+  width: 48px; height: 48px; border-radius: 50%; border: 0; padding: 12px;
+  background: rgba(10, 22, 60, .55); color: #fff; cursor: pointer;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .35);
+  transition: transform .2s, background .2s;
+}
+.promo-sound:hover { transform: scale(1.06); background: rgba(10, 22, 60, .75); }
+.promo-sound:focus-visible { outline: 3px solid var(--saffron, #F0A81E); outline-offset: 3px; }
+.promo-ico { display: block; width: 100%; height: 100%; }
+.promo-ico--on, .promo-sound[aria-pressed="true"] .promo-ico--off { display: none; }
+.promo-sound[aria-pressed="true"] .promo-ico--on { display: block; }
 
 @media (min-width: 960px) {
-  .about { padding-top: 140px; padding-bottom: 150px; }
-  .about-inner { grid-template-columns: 1.1fr 1fr; gap: 6vw; align-items: start; }
+  .about--video { padding-top: 96px; padding-bottom: 120px; }
+  .promo { border-radius: 32px; }
   .about-deco { width: 640px; right: -260px; bottom: -260px; }
 }
 
