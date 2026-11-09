@@ -32,61 +32,61 @@ const DONER_BEEF_PHOTO        = 'https://raw.githubusercontent.com/salahvocuev96
 
 const MENU = [
   // Шаурма
-  { id: 'shawarma',          name: 'Шаурма классическая', category: 'shawarma', price: 270, description: 'Сочная курица, свежие овощи и нежный фирменный соус, завернутые в тонкий лаваш и обжаренные до золотистой корочки. Классический вкус, который всегда к месту!', photo: SHAWARMA_MENU_PHOTO, featured: true },
-  { id: 'shawarma-cheese',   name: 'Шаурма чиз',          category: 'shawarma', price: 320, description: 'Сочная курица, расплавленный сыр, свежие овощи и нежный фирменный соус в хрустящем лаваше. Любимое сочетание ингредиентов с насыщенным сырным вкусом!', photo: SHAWARMA_CHEESE_PHOTO, featured: true },
-  { id: 'shawarma-bbq',      name: 'Шаурма барбекю',      category: 'shawarma', price: 320, description: 'Сочная курица, свежие овощи и фирменный соус барбекю с приятными копчёными нотками. Всё завернуто в тонкий лаваш и обжарено до золотистой корочки.', photo: SHAWARMA_BBQ_PHOTO, featured: true },
-  { id: 'shawarma-teriyaki', name: 'Шаурма терияки',      category: 'shawarma', price: 310, description: 'Сочная курица, свежие овощи и ароматный соус терияки с приятным сладко-солёным вкусом. Всё в тонком лаваше, обжаренном до золотистой корочки.', photo: SHAWARMA_TERIYAKI_PHOTO, featured: true },
-  { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, description: 'Сочная курица, свежие овощи, хрустящие листья салата и нежный соус «Цезарь». Знакомое сочетание любимых ингредиентов в хрустящем лаваше.', photo: SHAWARMA_CAESAR_PHOTO, featured: true },
-  { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, description: 'Сочная курица, свежие овощи и сочетание фирменных соусов, создающее насыщенный и яркий вкус. Всё завернуто в тонкий лаваш и обжарено до золотистой корочки.', photo: SHAWARMA_MIX_PHOTO, featured: true },
-  { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420, description: 'Сочная говядина, свежие овощи и нежный фирменный соус в тонком лаваше, обжаренном до золотистой корочки. Насыщенный мясной вкус в каждом кусочке!', photo: SHAWARMA_BEEF_PHOTO, featured: true },
-  { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'shawarma', price: 450, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lyulya-beef.jpg', featured: true },
-  { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'shawarma', price: 470, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lyulya-beef.jpg', featured: true },
+  { id: 'shawarma',          name: 'Шаурма классическая', category: 'shawarma', price: 270, weight: '350 г', description: 'Сочная курица, свежие овощи и нежный фирменный соус, завернутые в тонкий лаваш и обжаренные до золотистой корочки. Классический вкус, который всегда к месту!', photo: SHAWARMA_MENU_PHOTO, featured: true },
+  { id: 'shawarma-cheese',   name: 'Шаурма чиз',          category: 'shawarma', price: 320, weight: '350 г', description: 'Сочная курица, расплавленный сыр, свежие овощи и нежный фирменный соус в хрустящем лаваше. Любимое сочетание ингредиентов с насыщенным сырным вкусом!', photo: SHAWARMA_CHEESE_PHOTO, featured: true },
+  { id: 'shawarma-bbq',      name: 'Шаурма барбекю',      category: 'shawarma', price: 320, weight: '350 г', description: 'Сочная курица, свежие овощи и фирменный соус барбекю с приятными копчёными нотками. Всё завернуто в тонкий лаваш и обжарено до золотистой корочки.', photo: SHAWARMA_BBQ_PHOTO, featured: true },
+  { id: 'shawarma-teriyaki', name: 'Шаурма терияки',      category: 'shawarma', price: 310, weight: '350 г', description: 'Сочная курица, свежие овощи и ароматный соус терияки с приятным сладко-солёным вкусом. Всё в тонком лаваше, обжаренном до золотистой корочки.', photo: SHAWARMA_TERIYAKI_PHOTO, featured: true },
+  { id: 'shawarma-caesar',   name: 'Шаурма цезарь',       category: 'shawarma', price: 320, weight: '350 г', description: 'Сочная курица, свежие овощи, хрустящие листья салата и нежный соус «Цезарь». Знакомое сочетание любимых ингредиентов в хрустящем лаваше.', photo: SHAWARMA_CAESAR_PHOTO, featured: true },
+  { id: 'shawarma-mix',      name: 'Шаурма микс',         category: 'shawarma', price: 370, weight: '750 г', description: 'Сочная курица, свежие овощи и сочетание фирменных соусов, создающее насыщенный и яркий вкус. Всё завернуто в тонкий лаваш и обжарено до золотистой корочки.', photo: SHAWARMA_MIX_PHOTO, featured: true },
+  { id: 'shawarma-beef',     name: 'Шаурма с говядиной',  category: 'shawarma', price: 420, weight: '750 г', description: 'Сочная говядина, свежие овощи и нежный фирменный соус в тонком лаваше, обжаренном до золотистой корочки. Насыщенный мясной вкус в каждом кусочке!', photo: SHAWARMA_BEEF_PHOTO, featured: true },
+  { id: 'lyulya-beef',      name: 'Люля-кебаб говядина', category: 'shawarma', price: 450, weight: '350 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lyulya-beef.jpg', featured: true },
+  { id: 'lyulya-lamb',      name: 'Люля-кебаб баранина', category: 'shawarma', price: 470, weight: '350 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lyulya-beef.jpg', featured: true },
   // Донер
   // Выпечка
-  { id: 'lepeshka-big',     name: 'Лепёшка большая',       category: 'baking', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka-big.jpg', featured: true },
-  { id: 'lepeshka-small',   name: 'Лепёшка маленькая',     category: 'baking', price: 50,  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka.jpg', featured: true },
-  { id: 'fatir',            name: 'Фатир',                  category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fatir.jpg', featured: true },
-  { id: 'cheburek-beef',    name: 'Чебурек с говядиной',   category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/cheburek.jpg', featured: true },
-  { id: 'cheburek-cheese',  name: 'Чебурек с сыром',       category: 'baking', price: 100, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/cheburek.jpg', featured: true },
-  { id: 'belyash-beef',     name: 'Беляш с говядиной',     category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/belyash.jpg', featured: true },
-  { id: 'pirozhok-potato',  name: 'Пирожки с картошкой',   category: 'baking', price: 70,  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pirozhok.jpg', featured: true },
-  { id: 'pirozhok-beef',    name: 'Пирожки с говядиной',   category: 'baking', price: 90,  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pirozhok.jpg', featured: true },
-  { id: 'pirozhok-cabbage', name: 'Пирожки с капустой',    category: 'baking', price: 60,  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pirozhok.jpg', featured: true },
-  { id: 'sosiska',          name: 'Сосиска в тесте',       category: 'baking', price: 100, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sosiska.jpg', featured: true },
-  { id: 'samsa-beef',       name: 'Самса с говядиной',     category: 'baking', price: 110, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/samsa.jpg', featured: true },
-  { id: 'samsa-lamb',       name: 'Самса с бараниной',     category: 'baking', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/samsa.jpg', featured: true },
+  { id: 'lepeshka-big',     name: 'Лепёшка большая',       category: 'baking', price: 120, weight: '550 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka-big.jpg', featured: true },
+  { id: 'lepeshka-small',   name: 'Лепёшка маленькая',     category: 'baking', price: 50, weight: '250 г',  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/lepeshka.jpg', featured: true },
+  { id: 'fatir',            name: 'Фатир',                  category: 'baking', price: 110, weight: '300 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fatir.jpg', featured: true },
+  { id: 'cheburek-beef',    name: 'Чебурек с говядиной',   category: 'baking', price: 110, weight: '250 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/cheburek.jpg', featured: true },
+  { id: 'cheburek-cheese',  name: 'Чебурек с сыром',       category: 'baking', price: 100, weight: '150 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/cheburek.jpg', featured: true },
+  { id: 'belyash-beef',     name: 'Беляш с говядиной',     category: 'baking', price: 110, weight: '130 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/belyash.jpg', featured: true },
+  { id: 'pirozhok-potato',  name: 'Пирожки с картошкой',   category: 'baking', price: 70, weight: '140 г',  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pirozhok.jpg', featured: true },
+  { id: 'pirozhok-beef',    name: 'Пирожки с говядиной',   category: 'baking', price: 90, weight: '130 г',  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pirozhok.jpg', featured: true },
+  { id: 'pirozhok-cabbage', name: 'Пирожки с капустой',    category: 'baking', price: 60, weight: '130 г',  description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/pirozhok.jpg', featured: true },
+  { id: 'sosiska',          name: 'Сосиска в тесте',       category: 'baking', price: 100, weight: '150 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sosiska.jpg', featured: true },
+  { id: 'samsa-beef',       name: 'Самса с говядиной',     category: 'baking', price: 110, weight: '160 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/samsa.jpg', featured: true },
+  { id: 'samsa-lamb',       name: 'Самса с бараниной',     category: 'baking', price: 120, weight: '160 г', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/samsa.jpg', featured: true },
   // Донер
   // Напитки
-  { id: 'rich-apple',          name: 'Рич яблочный',          category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/rich-apple.jpg', featured: true },
-  { id: 'rich-cola',           name: 'Рич кола',              category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/rich-cola.jpg', featured: true },
-  { id: 'coca-cola-1l',        name: 'Кока-Кола',             category: 'drinks', price: 200, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-1l.jpg', featured: true },
-  { id: 'natakhtari-dyushes',  name: 'Натахтари Дюшес',       category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-dyushes.jpg', featured: true },
-  { id: 'natakhtari-cream',    name: 'Натахтари Крем-сода',   category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-cream.jpg', featured: true },
-  { id: 'natakhtari-feijoa',   name: 'Натахтари Фейхоа',      category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-feijoa.jpg', featured: true },
-  { id: 'natakhtari-tarhun',   name: 'Натахтари Тархун',      category: 'drinks', price: 180, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-tarhun.jpg', featured: true },
-  { id: 'sultan-lemon',        name: 'Султан чай Лимон',      category: 'drinks', price: 150, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sultan-lemon.jpg', featured: true },
-  { id: 'sultan-peach',        name: 'Султан чай Персик',     category: 'drinks', price: 150, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sultan-peach.jpg', featured: true },
-  { id: 'svgran-dyushes',      name: 'Святая Грань Дюшес',    category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/svgran-dyushes.jpg', featured: true },
-  { id: 'svgran-tarhun',       name: 'Святая Грань Тархун',   category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/svgran-tarhun.jpg', featured: true },
-  { id: 'flavis',              name: 'Флавис',                category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/flavis.jpg', featured: true },
-  { id: 'fanta-05',            name: 'Фанта',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fanta-05.jpg', featured: true },
-  { id: 'coca-cola-05',        name: 'Кока-Кола',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-05.jpg', featured: true },
-  { id: 'fanta-033',           name: 'Фанта',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fanta-033.jpg', featured: true },
-  { id: 'coca-cola-033',       name: 'Кока-Кола',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-033.jpg', featured: true },
-  { id: 'ayran',               name: 'Айран',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/ayran.jpg', featured: true },
-  { id: 'mors',                name: 'Морс',                  category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/mors.jpg', featured: true },
-  { id: 'royal-granat',        name: 'Роял гранатовый',       category: 'drinks', price: 100, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/royal-granat.jpg', featured: true },
-  { id: 'drive',               name: 'Драйв',                 category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/drive.jpg', featured: true },
-  { id: 'gorilla',             name: 'Горилла',               category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/gorilla.jpg', featured: true },
-  { id: 'adrenalin-449',       name: 'Адреналин',             category: 'drinks', price: 160, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
-  { id: 'adrenalin-zero',      name: 'Адреналин Зеро',        category: 'drinks', price: 160, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin-zero.jpg', featured: true },
-  { id: 'adrenalin-100',       name: 'Адреналин',             category: 'drinks', price: 120, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
-  { id: 'redbull-473',         name: 'Ред Булл',              category: 'drinks', price: 300, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/redbull-473.jpg', featured: true },
-  { id: 'redbull-100',         name: 'Ред Булл',              category: 'drinks', price: 160, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/redbull-100.jpg', featured: true },
-  { id: 'monster',             name: 'Монстер',               category: 'drinks', price: 250, description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/monster.jpg', featured: true },
+  { id: 'rich-apple',          name: 'Рич яблочный',          category: 'drinks', price: 200, weight: '1 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/rich-apple.jpg', featured: true },
+  { id: 'rich-cola',           name: 'Рич кола',              category: 'drinks', price: 200, weight: '1 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/rich-cola.jpg', featured: true },
+  { id: 'coca-cola-1l',        name: 'Кока-Кола',             category: 'drinks', price: 200, weight: '1 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-1l.jpg', featured: true },
+  { id: 'natakhtari-dyushes',  name: 'Натахтари Дюшес',       category: 'drinks', price: 180, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-dyushes.jpg', featured: true },
+  { id: 'natakhtari-cream',    name: 'Натахтари Крем-сода',   category: 'drinks', price: 180, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-cream.jpg', featured: true },
+  { id: 'natakhtari-feijoa',   name: 'Натахтари Фейхоа',      category: 'drinks', price: 180, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-feijoa.jpg', featured: true },
+  { id: 'natakhtari-tarhun',   name: 'Натахтари Тархун',      category: 'drinks', price: 180, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/natakhtari-tarhun.jpg', featured: true },
+  { id: 'sultan-lemon',        name: 'Султан чай Лимон',      category: 'drinks', price: 150, weight: '1 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sultan-lemon.jpg', featured: true },
+  { id: 'sultan-peach',        name: 'Султан чай Персик',     category: 'drinks', price: 150, weight: '1 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/sultan-peach.jpg', featured: true },
+  { id: 'svgran-dyushes',      name: 'Святая Грань Дюшес',    category: 'drinks', price: 120, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/svgran-dyushes.jpg', featured: true },
+  { id: 'svgran-tarhun',       name: 'Святая Грань Тархун',   category: 'drinks', price: 120, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/svgran-tarhun.jpg', featured: true },
+  { id: 'flavis',              name: 'Флавис',                category: 'drinks', price: 120, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/flavis.jpg', featured: true },
+  { id: 'fanta-05',            name: 'Фанта',                 category: 'drinks', price: 120, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fanta-05.jpg', featured: true },
+  { id: 'coca-cola-05',        name: 'Кока-Кола',             category: 'drinks', price: 120, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-05.jpg', featured: true },
+  { id: 'fanta-033',           name: 'Фанта',                 category: 'drinks', price: 120, weight: '330 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/fanta-033.jpg', featured: true },
+  { id: 'coca-cola-033',       name: 'Кока-Кола',             category: 'drinks', price: 120, weight: '330 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/coca-cola-033.jpg', featured: true },
+  { id: 'ayran',               name: 'Айран',                 category: 'drinks', price: 120, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/ayran.jpg', featured: true },
+  { id: 'mors',                name: 'Морс',                  category: 'drinks', price: 120, weight: '0.5 л', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/mors.jpg', featured: true },
+  { id: 'royal-granat',        name: 'Роял гранатовый',       category: 'drinks', price: 100, weight: '300 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/royal-granat.jpg', featured: true },
+  { id: 'drive',               name: 'Драйв',                 category: 'drinks', price: 120, weight: '445 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/drive.jpg', featured: true },
+  { id: 'gorilla',             name: 'Горилла',               category: 'drinks', price: 120, weight: '450 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/gorilla.jpg', featured: true },
+  { id: 'adrenalin-449',       name: 'Адреналин',             category: 'drinks', price: 160, weight: '445 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
+  { id: 'adrenalin-zero',      name: 'Адреналин Зеро',        category: 'drinks', price: 160, weight: '445 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin-zero.jpg', featured: true },
+  { id: 'adrenalin-100',       name: 'Адреналин',             category: 'drinks', price: 120, weight: '100 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/adrenalin.jpg', featured: true },
+  { id: 'redbull-473',         name: 'Ред Булл',              category: 'drinks', price: 300, weight: '473 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/redbull-473.jpg', featured: true },
+  { id: 'redbull-100',         name: 'Ред Булл',              category: 'drinks', price: 160, weight: '500 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/redbull-100.jpg', featured: true },
+  { id: 'monster',             name: 'Монстер',               category: 'drinks', price: 250, weight: '449 мл', description: '', photo: 'https://raw.githubusercontent.com/salahvocuev96-lang/Tashkent/main/images/monster.jpg', featured: true },
   // Донер
-  { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, description: 'Нежная сочная курица, свежие овощи и фирменный соус, собранные в мягкой ароматной лепёшке. Сытный донер с насыщенным вкусом и аппетитной начинкой.', photo: DONER_CHICKEN_PHOTO, featured: true },
-  { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, description: 'Сочная говядина, свежие овощи и фирменный соус в мягкой ароматной лепёшке. Насыщенный мясной вкус и щедрая начинка в каждом кусочке.', photo: DONER_BEEF_PHOTO,    featured: true },
+  { id: 'doner-chicken',    name: 'Донер с курицей',     category: 'doner',  price: 300, weight: '370 г', description: 'Нежная сочная курица, свежие овощи и фирменный соус, собранные в мягкой ароматной лепёшке. Сытный донер с насыщенным вкусом и аппетитной начинкой.', photo: DONER_CHICKEN_PHOTO, featured: true },
+  { id: 'doner-beef',       name: 'Донер с говядиной',   category: 'doner',  price: 430, weight: '370 г', description: 'Сочная говядина, свежие овощи и фирменный соус в мягкой ароматной лепёшке. Насыщенный мясной вкус и щедрая начинка в каждом кусочке.', photo: DONER_BEEF_PHOTO,    featured: true },
 ];
 
 const EXTRAS = [
@@ -445,6 +445,7 @@ const dishModalDesc    = $('#dish-modal-desc');
 const dishModalPrice   = $('#dish-modal-price');
 const dishModalControl = $('#dish-modal-control');
 const dishModalExtras  = $('#dish-modal-extras');
+const dishModalWeight  = $('#dish-modal-weight');
 let modalItemId = null;
 let modalLastFocus = null;
 let modalSelectedExtras = new Set();
@@ -462,6 +463,12 @@ function openDishModal(id) {
     dishModalDesc.hidden = false;
   } else {
     dishModalDesc.hidden = true;
+  }
+  if (item.weight) {
+    dishModalWeight.textContent = item.weight;
+    dishModalWeight.hidden = false;
+  } else {
+    dishModalWeight.hidden = true;
   }
 
   modalSelectedExtras = new Set();
