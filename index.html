@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=79">
+  <link rel="stylesheet" href="style.css?v=80">
 </head>
 <body>
 
@@ -76,19 +76,19 @@
           <span class="thought-dot thought-dot--3" aria-hidden="true"></span>
         </div>
 
-        <svg class="hero-sw-art" viewBox="0 0 320 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" overflow="visible">
+        <svg class="hero-sw-art" viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" overflow="visible">
           <defs>
             <filter id="sf" x="-200%" y="-200%" width="500%" height="500%">
               <feGaussianBlur stdDeviation="6"/>
             </filter>
           </defs>
 
-          <!-- Фото шаурмы (плавает) -->
+          <!-- Шаурма 1 (оригинальная, плавает) -->
           <g class="sw-body">
             <image href="images/hero-shawarma-real.png" x="75" y="20" width="170" height="438"/>
           </g>
 
-          <!-- Пар: мягкие клубы -->
+          <!-- Пар шаурмы 1 -->
           <g fill="rgba(255,255,255,.66)">
             <ellipse class="sp sp-L1" cx="135" cy="28" rx="10" ry="7" filter="url(#sf)"/>
             <ellipse class="sp sp-L2" cx="135" cy="28" rx="10" ry="7" filter="url(#sf)"/>
@@ -96,6 +96,21 @@
             <ellipse class="sp sp-C2" cx="160" cy="22" rx="14" ry="9"  filter="url(#sf)"/>
             <ellipse class="sp sp-R1" cx="185" cy="28" rx="10" ry="7" filter="url(#sf)"/>
             <ellipse class="sp sp-R2" cx="185" cy="28" rx="10" ry="7" filter="url(#sf)"/>
+          </g>
+
+          <!-- Шаурма 2 (новая, плавает с задержкой) -->
+          <g class="sw-body sw-body--2">
+            <image href="images/hero-shawarma2.png" x="285" y="40" width="155" height="400"/>
+          </g>
+
+          <!-- Пар шаурмы 2 -->
+          <g fill="rgba(255,255,255,.55)">
+            <ellipse class="sp sp2-L1" cx="335" cy="48" rx="9" ry="6" filter="url(#sf)"/>
+            <ellipse class="sp sp2-L2" cx="335" cy="48" rx="9" ry="6" filter="url(#sf)"/>
+            <ellipse class="sp sp2-C1" cx="360" cy="42" rx="12" ry="8" filter="url(#sf)"/>
+            <ellipse class="sp sp2-C2" cx="360" cy="42" rx="12" ry="8" filter="url(#sf)"/>
+            <ellipse class="sp sp2-R1" cx="385" cy="48" rx="9" ry="6" filter="url(#sf)"/>
+            <ellipse class="sp sp2-R2" cx="385" cy="48" rx="9" ry="6" filter="url(#sf)"/>
           </g>
 
         </svg>

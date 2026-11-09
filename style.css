@@ -387,6 +387,20 @@ a { color: inherit; }
 .sp-R1 { animation-delay: -0.8s; }
 .sp-R2 { animation-delay: -2.0s; }
 
+/* Вторая шаурма — качается с небольшой задержкой */
+.sw-body--2 {
+  transform-box: view-box;
+  transform-origin: 360px 240px;
+  animation: sw-float 4.5s ease-in-out infinite;
+  animation-delay: -1.8s;
+}
+.sp2-L1 { animation-delay: -0.3s; }
+.sp2-L2 { animation-delay: -1.5s; }
+.sp2-C1 { animation-delay: -0.7s; }
+.sp2-C2 { animation-delay: -1.9s; }
+.sp2-R1 { animation-delay: -1.1s; }
+.sp2-R2 { animation-delay: -2.3s; }
+
 /* ---------- Реплика плова (облачко на первом экране) ---------- */
 .thought {
   position: absolute; z-index: 2;
