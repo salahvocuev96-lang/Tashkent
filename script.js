@@ -389,6 +389,17 @@ menuList.addEventListener('click', e => {
   if (card) openDishModal(card.dataset.id);
 });
 
+function saveCart() {
+  try { localStorage.setItem('cart_v1', JSON.stringify([...cart.entries()])); } catch(e) {}
+}
+function loadCart() {
+  try {
+    const raw = localStorage.getItem('cart_v1');
+    if (!raw) return;
+    JSON.parse(raw).forEach(([k, v]) => cart.set(k, v));
+  } catch(e) {}
+}
+
 function setQty(lineKey, qty, focusAction) {
   if (qty > 0) {
     const existing = cart.get(lineKey);
@@ -401,6 +412,7 @@ function setQty(lineKey, qty, focusAction) {
   } else {
     cart.delete(lineKey);
   }
+  saveCart();
   const { itemId } = lineFromKey(lineKey);
   updateCardControl(itemId, focusAction);
   updateModalControl(); // обновляет кнопку в модалке для текущего lineKey
@@ -979,8 +991,31 @@ if (promoBox) {
   }, { threshold: 0.25 }).observe(promoBox);
 }
 
+loadCart();
 drawer.inert = true;
 renderTabs();
 renderMenu();
 renderCart();
 updateCount();
+
+/* ---------- Баннер cookie ---------- */
+(function() {
+  if (localStorage.getItem('cookie_consent')) return;
+  const banner = document.createElement('div');
+  banner.id = 'cookie-banner';
+  banner.innerHTML = `
+    <p class="cookie-text">Мы используем cookies для работы корзины. <a href="privacy.html">Политика конфиденциальности</a></p>
+    <div class="cookie-btns">
+      <button class="cookie-btn cookie-btn--accept" id="cookie-accept">Принять</button>
+      <button class="cookie-btn cookie-btn--decline" id="cookie-decline">Отказаться</button>
+    </div>`;
+  document.body.appendChild(banner);
+  document.getElementById('cookie-accept').addEventListener('click', function() {
+    try { localStorage.setItem('cookie_consent', 'accepted'); } catch(e) {}
+    banner.remove();
+  });
+  document.getElementById('cookie-decline').addEventListener('click', function() {
+    try { localStorage.setItem('cookie_consent', 'declined'); } catch(e) {}
+    banner.remove();
+  });
+})();
