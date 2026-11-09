@@ -789,6 +789,8 @@ a { color: inherit; }
 .footer-sub { margin: 0 0 4px; opacity: .65; }
 .footer-brand { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(2.8rem, 13vw, 6rem); line-height: 1; letter-spacing: -.035em; }
 .footer-address { margin: 12px 0 0; opacity: .8; }
+.footer-address-link { display: block; margin: 10px 0 0; opacity: .8; color: var(--glaze); text-decoration: underline; text-underline-offset: 3px; font-size: .9375rem; }
+.footer-address-link:hover { opacity: 1; color: var(--saffron); }
 .footer-info-cols { display: flex; flex-wrap: wrap; gap: 24px 48px; }
 .footer-info-col { min-width: 160px; }
 .footer-phone { display: block; color: var(--glaze); text-decoration: none; font-weight: 600; font-size: 1rem; margin-bottom: 4px; }
