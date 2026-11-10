@@ -847,7 +847,7 @@ drawer.addEventListener('keydown', e => {
 });
 
 /* ---------- Оформление (демо) ---------- */
-const TG_TOKEN  = '9086301385:AAE97GcKXZ05hlsDzro03wiyetNADIQVw0E';
+const TG_TOKEN  = '9086301385:AAH4JEGP84ESAxuECKy_hNttfjsGMP1CgTE';
 const TG_CHAT   = '-1004440411000';
 
 const form       = $('#checkout-form');
