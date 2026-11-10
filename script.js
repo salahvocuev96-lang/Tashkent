@@ -847,9 +847,14 @@ drawer.addEventListener('keydown', e => {
 });
 
 /* ---------- Оформление (демо) ---------- */
-const form = $('#checkout-form');
-const nameInput = $('#f-name');
-const nameError = $('#f-name-error');
+const TG_TOKEN  = '9086301385:AAE97GcKXZ05hlsDzro03wiyetNADIQVWOE';
+const TG_CHAT   = '-1008688778044';
+
+const form       = $('#checkout-form');
+const nameInput  = $('#f-name');
+const nameError  = $('#f-name-error');
+const phoneInput = $('#f-phone');
+const phoneError = $('#f-phone-error');
 
 function renderSummary() {
   const { count } = totals();
@@ -878,11 +883,64 @@ function validateName() {
   nameInput.setAttribute('aria-invalid', String(!ok));
   return ok;
 }
-nameInput.addEventListener('input', () => { if (!nameError.hidden) validateName(); });
+function validatePhone() {
+  const ok = phoneInput.value.trim().length >= 6;
+  phoneError.hidden = ok;
+  phoneInput.setAttribute('aria-invalid', String(!ok));
+  return ok;
+}
+nameInput.addEventListener('input',  () => { if (!nameError.hidden)  validateName(); });
+phoneInput.addEventListener('input', () => { if (!phoneError.hidden) validatePhone(); });
 
-form.addEventListener('submit', e => {
-  e.preventDefault(); // демо: ничего никуда не отправляем
-  if (!validateName()) { nameInput.focus(); return; }
+async function sendToTelegram(name, phone, mode, comment) {
+  const modeText = mode === 'inside' ? 'Поем здесь' : 'Заберу с собой';
+  const { sum } = totals();
+  const items = [...cart.entries()]
+    .map(([, { itemId, extraIds, qty }]) => `  • ${lineDisplayName(itemId, extraIds)} × ${qty}`)
+    .join('\n');
+  const text = [
+    '🛒 <b>Новый заказ</b>',
+    `👤 ${name}`,
+    `📞 ${phone}`,
+    `🍽 ${modeText}`,
+    '',
+    items,
+    '',
+    `💰 Итого: ${sum} ₽`,
+    comment ? `💬 ${comment}` : '',
+  ].filter(Boolean).join('\n');
+
+  await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' }),
+  });
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const nameOk  = validateName();
+  const phoneOk = validatePhone();
+  if (!nameOk) { nameInput.focus(); return; }
+  if (!phoneOk) { phoneInput.focus(); return; }
+
+  const btn = $('#submit-order');
+  btn.disabled = true;
+  btn.textContent = 'Отправка...';
+
+  const name    = nameInput.value.trim();
+  const phone   = phoneInput.value.trim();
+  const mode    = form.querySelector('[name="mode"]:checked')?.value || 'takeaway';
+  const comment = $('#f-comment').value.trim();
+
+  try {
+    await sendToTelegram(name, phone, mode, comment);
+  } catch(err) {
+    console.error('TG send error', err);
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Подтвердить заказ';
   showView('done');
   $('#done-title').focus({ preventScroll: true });
 });
