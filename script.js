@@ -892,8 +892,7 @@ function validatePhone() {
 nameInput.addEventListener('input',  () => { if (!nameError.hidden)  validateName(); });
 phoneInput.addEventListener('input', () => { if (!phoneError.hidden) validatePhone(); });
 
-async function sendToTelegram(name, phone, mode, comment) {
-  const modeText = mode === 'inside' ? 'Поем здесь' : 'Заберу с собой';
+async function sendToTelegram(name, phone, comment) {
   const { sum } = totals();
   const items = [...cart.entries()]
     .map(([, { itemId, extraIds, qty }]) => `  • ${lineDisplayName(itemId, extraIds)} × ${qty}`)
@@ -902,7 +901,6 @@ async function sendToTelegram(name, phone, mode, comment) {
     '🛒 <b>Новый заказ</b>',
     `👤 ${name}`,
     `📞 ${phone}`,
-    `🍽 ${modeText}`,
     '',
     items,
     '',
@@ -910,11 +908,18 @@ async function sendToTelegram(name, phone, mode, comment) {
     comment ? `💬 ${comment}` : '',
   ].filter(Boolean).join('\n');
 
-  await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' }),
-  });
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 5000);
+  try {
+    await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' }),
+      signal: ctrl.signal,
+    });
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 form.addEventListener('submit', async e => {
@@ -934,7 +939,7 @@ form.addEventListener('submit', async e => {
   const comment = $('#f-comment').value.trim();
 
   try {
-    await sendToTelegram(name, phone, mode, comment);
+    await sendToTelegram(name, phone, comment);
   } catch(err) {
     console.error('TG send error', err);
   }
