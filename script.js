@@ -911,12 +911,14 @@ async function sendToTelegram(name, phone, comment) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 5000);
   try {
-    await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+    const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' }),
       signal: ctrl.signal,
     });
+    const json = await res.json().catch(() => ({}));
+    if (!json.ok) console.error('TG error:', JSON.stringify(json));
   } finally {
     clearTimeout(timer);
   }
