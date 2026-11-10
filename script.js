@@ -848,7 +848,7 @@ drawer.addEventListener('keydown', e => {
 
 /* ---------- Оформление (демо) ---------- */
 const TG_TOKEN  = '9086301385:AAE97GcKXZ05hlsDzro03wiyetNADIQVWOE';
-const TG_CHAT   = '-1008688778044';
+const TG_CHAT   = '-1004440411000';
 
 const form       = $('#checkout-form');
 const nameInput  = $('#f-name');
