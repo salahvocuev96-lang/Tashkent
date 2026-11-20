@@ -847,6 +847,8 @@ drawer.addEventListener('keydown', e => {
 });
 
 /* ---------- Оформление (демо) ---------- */
+const TG_TOKEN = '9086301385:AAFVRgKV0mI5oybfX96CSrS1jRy-pkKlFE4';
+const TG_CHAT  = '-1004440411000';
 
 const form       = $('#checkout-form');
 const nameInput  = $('#f-name');
@@ -895,18 +897,28 @@ async function sendToTelegram(name, phone, comment) {
   const items = [...cart.entries()]
     .map(([, { itemId, extraIds, qty }]) => `  • ${lineDisplayName(itemId, extraIds)} × ${qty}`)
     .join('\n');
+  const text = [
+    '🛒 <b>Новый заказ</b>',
+    `👤 ${name}`,
+    `📞 ${phone}`,
+    '',
+    items,
+    '',
+    `💰 Итого: ${sum} ₽`,
+    comment ? `💬 ${comment}` : '',
+  ].filter(Boolean).join('\n');
 
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 25000);
+  const timer = setTimeout(() => ctrl.abort(), 10000);
   try {
-    const res = await fetch('/api/order', {
+    const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, comment, items, sum }),
+      body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' }),
       signal: ctrl.signal,
     });
     const json = await res.json().catch(() => ({}));
-    if (!json.ok) console.error('Order error:', JSON.stringify(json));
+    if (!json.ok) console.error('TG error:', JSON.stringify(json));
   } finally {
     clearTimeout(timer);
   }
