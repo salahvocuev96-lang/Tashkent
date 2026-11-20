@@ -897,7 +897,7 @@ async function sendToTelegram(name, phone, comment) {
     .join('\n');
 
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 8000);
+  const timer = setTimeout(() => ctrl.abort(), 25000);
   try {
     const res = await fetch('/api/order', {
       method: 'POST',
