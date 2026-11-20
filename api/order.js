@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -11,6 +11,8 @@ export default async function handler(req, res) {
 
   const TG_TOKEN = process.env.TELEGRAM_TOKEN;
   const TG_CHAT  = '-1004440411000';
+
+  if (!TG_TOKEN) return res.status(500).json({ error: 'Token not configured' });
 
   const text = [
     '🛒 <b>Новый заказ</b>',
@@ -35,4 +37,4 @@ export default async function handler(req, res) {
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
-}
+};
