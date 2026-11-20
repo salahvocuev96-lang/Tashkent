@@ -1,7 +1,11 @@
 {
+  "regions": ["cdg1"],
   "functions": {
     "api/order.js": {
       "maxDuration": 30
+    },
+    "api/ping.js": {
+      "maxDuration": 10
     }
   }
 }
