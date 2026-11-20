@@ -26,15 +26,23 @@ module.exports = async function handler(req, res) {
   ].filter(Boolean).join('\n');
 
   try {
-    const tgRes = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' }),
-    });
+    const tgCtrl = new AbortController();
+    const tgTimer = setTimeout(() => tgCtrl.abort(), 8000);
+    let tgRes;
+    try {
+      tgRes = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' }),
+        signal: tgCtrl.signal,
+      });
+    } finally {
+      clearTimeout(tgTimer);
+    }
     const data = await tgRes.json();
     if (!data.ok) return res.status(500).json({ error: data.description });
     return res.status(200).json({ ok: true });
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message, type: err.name });
   }
 };
