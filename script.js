@@ -852,8 +852,6 @@ const WA_PHONE = '79152841166';
 const form       = $('#checkout-form');
 const nameInput  = $('#f-name');
 const nameError  = $('#f-name-error');
-const phoneInput = $('#f-phone');
-const phoneError = $('#f-phone-error');
 
 function renderSummary() {
   const { count } = totals();
@@ -882,16 +880,9 @@ function validateName() {
   nameInput.setAttribute('aria-invalid', String(!ok));
   return ok;
 }
-function validatePhone() {
-  const ok = phoneInput.value.trim().length >= 6;
-  phoneError.hidden = ok;
-  phoneInput.setAttribute('aria-invalid', String(!ok));
-  return ok;
-}
-nameInput.addEventListener('input',  () => { if (!nameError.hidden)  validateName(); });
-phoneInput.addEventListener('input', () => { if (!phoneError.hidden) validatePhone(); });
+nameInput.addEventListener('input', () => { if (!nameError.hidden) validateName(); });
 
-function buildWhatsAppLink(name, phone, comment) {
+function buildWhatsAppLink(name, comment) {
   const { sum } = totals();
   const lines = [...cart.entries()].map(([, { itemId, extraIds, qty }]) =>
     `• ${lineDisplayName(itemId, extraIds)} × ${qty}`
@@ -903,7 +894,6 @@ function buildWhatsAppLink(name, phone, comment) {
     '',
     `Итого: ${sum} ₽`,
     `Имя: ${name}`,
-    `Телефон: ${phone}`,
     comment ? `Комментарий: ${comment}` : '',
   ].filter(Boolean).join('\n');
   return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
@@ -911,17 +901,14 @@ function buildWhatsAppLink(name, phone, comment) {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  const nameOk  = validateName();
-  const phoneOk = validatePhone();
+  const nameOk = validateName();
   if (!nameOk) { nameInput.focus(); return; }
-  if (!phoneOk) { phoneInput.focus(); return; }
 
   const name    = nameInput.value.trim();
-  const phone   = phoneInput.value.trim();
   const comment = $('#f-comment').value.trim();
 
   const waBtn = $('#wa-btn');
-  if (waBtn) waBtn.href = buildWhatsAppLink(name, phone, comment);
+  if (waBtn) waBtn.href = buildWhatsAppLink(name, comment);
 
   showView('done');
   $('#done-title').focus({ preventScroll: true });
