@@ -846,9 +846,8 @@ drawer.addEventListener('keydown', e => {
   else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
 });
 
-/* ---------- Оформление (демо) ---------- */
-const TG_TOKEN = '9086301385:AAFVRgKV0mI5oybfX96CSrS1jRy-pkKlFE4';
-const TG_CHAT  = '-1004440411000';
+/* ---------- Оформление ---------- */
+const WA_PHONE = '79152841166';
 
 const form       = $('#checkout-form');
 const nameInput  = $('#f-name');
@@ -892,62 +891,38 @@ function validatePhone() {
 nameInput.addEventListener('input',  () => { if (!nameError.hidden)  validateName(); });
 phoneInput.addEventListener('input', () => { if (!phoneError.hidden) validatePhone(); });
 
-async function sendToTelegram(name, phone, comment) {
+function buildWhatsAppLink(name, phone, comment) {
   const { sum } = totals();
-  const items = [...cart.entries()]
-    .map(([, { itemId, extraIds, qty }]) => `  • ${lineDisplayName(itemId, extraIds)} × ${qty}`)
-    .join('\n');
+  const lines = [...cart.entries()].map(([, { itemId, extraIds, qty }]) =>
+    `• ${lineDisplayName(itemId, extraIds)} × ${qty}`
+  );
   const text = [
-    '🛒 <b>Новый заказ</b>',
-    `👤 ${name}`,
-    `📞 ${phone}`,
+    'Здравствуйте! Хочу сделать заказ:',
     '',
-    items,
+    ...lines,
     '',
-    `💰 Итого: ${sum} ₽`,
-    comment ? `💬 ${comment}` : '',
+    `Итого: ${sum} ₽`,
+    `Имя: ${name}`,
+    `Телефон: ${phone}`,
+    comment ? `Комментарий: ${comment}` : '',
   ].filter(Boolean).join('\n');
-
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), 10000);
-  try {
-    const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' }),
-      signal: ctrl.signal,
-    });
-    const json = await res.json().catch(() => ({}));
-    if (!json.ok) console.error('TG error:', JSON.stringify(json));
-  } finally {
-    clearTimeout(timer);
-  }
+  return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
 }
 
-form.addEventListener('submit', async e => {
+form.addEventListener('submit', e => {
   e.preventDefault();
   const nameOk  = validateName();
   const phoneOk = validatePhone();
   if (!nameOk) { nameInput.focus(); return; }
   if (!phoneOk) { phoneInput.focus(); return; }
 
-  const btn = $('#submit-order');
-  btn.disabled = true;
-  btn.textContent = 'Отправка...';
-
   const name    = nameInput.value.trim();
   const phone   = phoneInput.value.trim();
-  const mode    = form.querySelector('[name="mode"]:checked')?.value || 'takeaway';
   const comment = $('#f-comment').value.trim();
 
-  try {
-    await sendToTelegram(name, phone, comment);
-  } catch(err) {
-    console.error('TG send error', err);
-  }
+  const waBtn = $('#wa-btn');
+  if (waBtn) waBtn.href = buildWhatsAppLink(name, phone, comment);
 
-  btn.disabled = false;
-  btn.textContent = 'Подтвердить заказ';
   showView('done');
   $('#done-title').focus({ preventScroll: true });
 });

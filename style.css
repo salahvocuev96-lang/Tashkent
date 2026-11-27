@@ -1153,3 +1153,12 @@ a { color: inherit; }
     transition-delay: 0s !important;
   }
 }
+
+/* ---------- WhatsApp-кнопка ---------- */
+.btn--wa {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  margin-bottom: 12px;
+}
+.btn--wa:hover, .btn--wa:focus-visible { background: #1ebe5a; }
